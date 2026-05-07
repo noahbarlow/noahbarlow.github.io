@@ -163,48 +163,98 @@
     position: relative;
   }
 
-  .hero-portrait {
-    position: absolute;
-    top: 100px;
-    right: var(--side);
-    width: 220px;
-    aspect-ratio: 900 / 1013;
-    z-index: 2;
-    transform: rotate(-1.5deg);
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* ============== Contact-sheet polaroid strip ============== */
+  .strip {
+    padding: 80px var(--side) 100px;
+    max-width: var(--max);
+    margin: 0 auto;
+    overflow: hidden;
   }
-  .hero-portrait::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--lime);
-    transform: translate(10px, 10px);
-    z-index: -1;
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  .strip-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--gap);
+    margin-bottom: 50px;
+    flex-wrap: wrap;
   }
-  .hero-portrait img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 1px solid var(--ink-3);
-    filter: contrast(1.05);
-  }
-  .hero-portrait .cap {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 10px);
+  .strip-head .meta {
     font-family: var(--mono);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--mute);
-    white-space: nowrap;
+    max-width: 32ch;
+    line-height: 1.7;
   }
-  .hero-portrait .cap span { color: var(--lime); }
-  .hero-portrait:hover { transform: rotate(0deg) translateY(-2px); }
-  .hero-portrait:hover::before { transform: translate(14px, 14px); }
-  @media (max-width: 1024px) { .hero-portrait { display: none; } }
+  .strip-head .meta span { color: var(--lime); }
+  .strip-row {
+    display: flex;
+    gap: clamp(16px, 2.4vw, 36px);
+    align-items: flex-start;
+    padding: 30px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .strip-row::-webkit-scrollbar { display: none; }
+  .pol {
+    flex: 0 0 auto;
+    width: clamp(200px, 22vw, 280px);
+    background: var(--bone);
+    padding: 14px 14px 50px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s;
+    position: relative;
+    will-change: transform;
+  }
+  .pol img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--ink-2);
+  }
+  .pol .cap {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .pol .cap .num { color: var(--lime-deep); margin-right: 6px; font-weight: 500; }
+  .pol::before {
+    /* tape */
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 70px;
+    height: 18px;
+    background: rgba(212,255,58,0.55);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+  .pol:nth-child(1) { transform: rotate(-2.2deg); }
+  .pol:nth-child(2) { transform: rotate(1.4deg) translateY(8px); }
+  .pol:nth-child(3) { transform: rotate(-1.1deg); }
+  .pol:nth-child(4) { transform: rotate(2.6deg) translateY(6px); }
+  .pol:nth-child(5) { transform: rotate(-1.8deg); }
+  .pol:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.03);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.5), 0 8px 14px rgba(0,0,0,0.35);
+    z-index: 3;
+  }
+  @media (max-width: 760px) {
+    .strip { padding: 60px var(--side) 80px; }
+    .strip-row { gap: 20px; padding: 20px 0 30px; margin: 0 calc(var(--side) * -1); padding-left: var(--side); padding-right: var(--side); }
+  }
 
   .hero-meta {
     display: grid;
@@ -989,11 +1039,6 @@
 
 <!-- HERO -->
 <section class="hero">
-  <figure class="hero-portrait" aria-hidden="true">
-    <img src="img/portrait.jpg" alt="" loading="eager" />
-    <figcaption class="cap"><span>●</span> The author</figcaption>
-  </figure>
-
   <div class="hero-meta">
     <div><span class="key">LOC /</span> Toronto, ON</div>
     <div><span class="key">YRS /</span> 20 + counting</div>
@@ -1109,6 +1154,42 @@
     </div>
   </div>
 </div>
+
+<!-- OFF-ROSTER / CONTACT SHEET -->
+<section class="strip" id="off-roster">
+  <div class="strip-head reveal">
+    <div>
+      <div class="sec-tag">/ Off-roster</div>
+      <h2 class="sec-h">When the deck's <span class="ital">closed</span>.</h2>
+    </div>
+    <p class="meta">
+      Father of three. <span>BJJ coach</span>. Lifts heavy things on purpose. Climbs ropes to clear cache. Drives past the pavement. The work works because the rest of it does too.
+    </p>
+  </div>
+
+  <div class="strip-row reveal">
+    <figure class="pol">
+      <img src="img/p1-author.jpg" alt="Portrait of Noah Barlow" loading="lazy" />
+      <figcaption class="cap"><span class="num">01</span>The author. On a Tuesday.</figcaption>
+    </figure>
+    <figure class="pol">
+      <img src="img/p2-coach.jpg" alt="Climbing rope at the gym" loading="lazy" />
+      <figcaption class="cap"><span class="num">02</span>Coach mode. Mat &amp; rope.</figcaption>
+    </figure>
+    <figure class="pol">
+      <img src="img/p3-lift.jpg" alt="Deadlift at competition" loading="lazy" />
+      <figcaption class="cap"><span class="num">03</span>Heavy is patience under load.</figcaption>
+    </figure>
+    <figure class="pol">
+      <img src="img/p4-offgrid.jpg" alt="Overland vehicle by mountain lake" loading="lazy" />
+      <figcaption class="cap"><span class="num">04</span>Off-grid. Kananaskis.</figcaption>
+    </figure>
+    <figure class="pol">
+      <img src="img/p5-mtn.jpg" alt="Mountain overlook" loading="lazy" />
+      <figcaption class="cap"><span class="num">05</span>Mountain therapy. Cheaper.</figcaption>
+    </figure>
+  </div>
+</section>
 
 <!-- TRAJECTORY -->
 <section id="trajectory" class="trajectory">
