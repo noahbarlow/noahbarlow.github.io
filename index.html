@@ -59,7 +59,7 @@
   /* Show real cursor on touch / when not supported */
   @media (hover: none), (pointer: coarse) {
     body { cursor: auto; }
-    .cursor, .cursor-dot { display: none !important; }
+    .cursor { display: none !important; }
   }
 
   ::selection { background: var(--lime); color: var(--ink); }
@@ -69,28 +69,22 @@
   /* ============== Custom Cursor ============== */
   .cursor {
     position: fixed;
-    width: 32px; height: 32px;
-    border: 1.5px solid var(--lime);
-    border-radius: 50%;
+    width: 40px; height: 40px;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: width 0.25s, height 0.25s, background 0.25s, border-color 0.25s, opacity 0.25s;
-    mix-blend-mode: difference;
+    transition: width 0.18s ease, height 0.18s ease, background-image 0.1s;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23d4ff3a' stroke='%230e0e10' stroke-width='1.5'/><circle cx='14' cy='16' r='2' fill='%230e0e10'/><circle cx='26' cy='16' r='2' fill='%230e0e10'/><path d='M12 24 Q20 31 28 24' stroke='%230e0e10' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 6px rgba(212,255,58,0.55));
     will-change: transform;
   }
-  .cursor-dot {
-    position: fixed;
-    width: 4px; height: 4px;
-    background: var(--lime);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    will-change: transform;
+  .cursor.hover {
+    width: 56px; height: 56px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23d4ff3a' stroke='%230e0e10' stroke-width='1.5'/><circle cx='14' cy='15' r='2.5' fill='%230e0e10'/><circle cx='26' cy='15' r='2.5' fill='%230e0e10'/><ellipse cx='20' cy='26' rx='3' ry='4' fill='%230e0e10'/></svg>");
   }
-  .cursor.hover { width: 64px; height: 64px; background: rgba(212,255,58,0.15); }
-  .cursor.click { width: 24px; height: 24px; background: var(--lime); }
+  .cursor.click { width: 32px; height: 32px; }
 
   /* ============== Grain overlay ============== */
   body::before {
@@ -929,7 +923,7 @@
     .ticker-track, .nav .brand .blip, .end-col .pill .blip { animation: none !important; }
     .ticker .star { animation: none !important; }
     body { cursor: auto; }
-    .cursor, .cursor-dot { display: none; }
+    .cursor { display: none; }
   }
 </style>
 </head>
@@ -937,7 +931,6 @@
 
 <!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursor-dot"></div>
 
 <!-- Nav -->
 <header class="nav">
@@ -1232,10 +1225,33 @@
   </div>
 </section>
 
+<!-- FRAMEWORKS -->
+<section>
+  <div class="reveal">
+    <div class="sec-tag">04 / Frameworks</div>
+    <h2 class="sec-h">Strategy on <span class="ital">paper</span>.</h2>
+  </div>
+
+  <div class="press-list reveal">
+    <a href="docs/Smaller_ChallengerPlaybook_V9.pdf" target="_blank" rel="noopener">
+      <span class="idx">001</span>
+      <span class="pub"><em>Challenger Playbook</em> — Smaller Agency, V9</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+    <a href="docs/Smaller_GenZ_OS_V3.pdf" target="_blank" rel="noopener">
+      <span class="idx">002</span>
+      <span class="pub"><em>Gen Z OS</em> — Smaller Agency, V3</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+  </div>
+</section>
+
 <!-- PRESS -->
 <section>
   <div class="reveal">
-    <div class="sec-tag">04 / Press</div>
+    <div class="sec-tag">05 / Press</div>
     <h2 class="sec-h">In <span class="ital">print</span>.</h2>
   </div>
 
@@ -1281,7 +1297,7 @@
 
 <!-- END / Contact -->
 <section class="end" id="contact">
-  <div class="sec-tag">05 / Talk</div>
+  <div class="sec-tag">06 / Talk</div>
   <h2 class="end-h">Let's <span class="ital">build</span> something.</h2>
 
   <div class="end-contact">
@@ -1327,13 +1343,10 @@
   (function() {
     if (window.matchMedia('(hover: none)').matches) return;
     const c = document.getElementById('cursor');
-    const d = document.getElementById('cursor-dot');
-    let mx = 0, my = 0, cx = 0, cy = 0, dx = 0, dy = 0;
+    let mx = 0, my = 0, cx = 0, cy = 0;
 
     document.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
-      dx = mx; dy = my;
-      d.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
     });
 
     function tick() {
