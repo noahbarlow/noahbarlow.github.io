@@ -163,6 +163,49 @@
     position: relative;
   }
 
+  .hero-portrait {
+    position: absolute;
+    top: 100px;
+    right: var(--side);
+    width: 220px;
+    aspect-ratio: 900 / 1013;
+    z-index: 2;
+    transform: rotate(-1.5deg);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hero-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--lime);
+    transform: translate(10px, 10px);
+    z-index: -1;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hero-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--ink-3);
+    filter: contrast(1.05);
+  }
+  .hero-portrait .cap {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mute);
+    white-space: nowrap;
+  }
+  .hero-portrait .cap span { color: var(--lime); }
+  .hero-portrait:hover { transform: rotate(0deg) translateY(-2px); }
+  .hero-portrait:hover::before { transform: translate(14px, 14px); }
+  @media (max-width: 1024px) { .hero-portrait { display: none; } }
+
   .hero-meta {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -946,6 +989,11 @@
 
 <!-- HERO -->
 <section class="hero">
+  <figure class="hero-portrait" aria-hidden="true">
+    <img src="img/portrait.jpg" alt="" loading="eager" />
+    <figcaption class="cap"><span>●</span> The author</figcaption>
+  </figure>
+
   <div class="hero-meta">
     <div><span class="key">LOC /</span> Toronto, ON</div>
     <div><span class="key">YRS /</span> 20 + counting</div>
