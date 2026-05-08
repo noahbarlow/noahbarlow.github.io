@@ -698,8 +698,8 @@
 
   .work-tile .meta {
     position: absolute; left: 0; right: 0; bottom: 0;
-    padding: 18px 22px;
-    background: linear-gradient(to top, rgba(14,14,16,0.95) 0%, transparent 100%);
+    padding: 22px 60px 22px 22px;
+    background: linear-gradient(to top, rgba(14,14,16,0.97) 0%, rgba(14,14,16,0.85) 55%, transparent 100%);
     color: var(--bone);
     transform: translateY(8px);
     opacity: 0;
@@ -713,7 +713,17 @@
     font-weight: 500;
     letter-spacing: -0.01em;
     font-variation-settings: "opsz" 144, "WONK" 1;
+    margin-bottom: 6px;
   }
+  .work-tile .meta .credits {
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+  .work-tile .meta .credits .dot { color: var(--lime); margin: 0 4px; }
   .work-tile .meta .arrow {
     position: absolute;
     right: 22px; bottom: 22px;
@@ -1270,94 +1280,193 @@
   </div>
 
   <div class="work-grid">
+    <div class="work-tile wt-feat reveal" data-name="Miller Lite" data-cat="Beer · Canadian Launch">
+      <img src="img/work/miller-lite.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Miller Lite</h4>
+        <div class="credits">Canadian Launch<span class="dot">·</span>TV<span class="dot">·</span>OOH<span class="dot">·</span>Strategy<span class="dot">·</span>Consumer Research<span class="dot">·</span>Packaging<span class="dot">·</span>Website<span class="dot">·</span>Partnership Marketing</div>
+      </div>
+    </div>
+    <div class="work-tile wt-tall reveal" data-name="MGD" data-cat="Beer · Brand">
+      <img src="img/work/mgd.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>MGD</h4>
+        <div class="credits">Branding<span class="dot">·</span>Partnership Marketing<span class="dot">·</span>OOH<span class="dot">·</span>TV<span class="dot">·</span>Print<span class="dot">·</span>Strategy<span class="dot">·</span>Consumer Research<span class="dot">·</span>Website</div>
+      </div>
+    </div>
+
+    <a class="work-tile wt-half reveal" href="https://smalleragency.com/grolsch-tiff" target="_blank" rel="noopener" data-name="Grolsch × TIFF" data-cat="Beer · Experiential">
+      <img src="img/work/grolsch.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Grolsch × TIFF</h4>
+        <div class="credits">Partnership Marketing<span class="dot">·</span>OOH<span class="dot">·</span>TV<span class="dot">·</span>Print<span class="dot">·</span>Strategy<span class="dot">·</span>Consumer Research<span class="dot">·</span>Experiential</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+    <div class="work-tile wt-half reveal" data-name="Carlsberg" data-cat="Beer · Strategy">
+      <img src="img/work/carlsberg.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Carlsberg</h4>
+        <div class="credits">Partnership Marketing<span class="dot">·</span>OOH<span class="dot">·</span>Strategy<span class="dot">·</span>Consumer Research<span class="dot">·</span>Experiential</div>
+      </div>
+    </div>
+
+    <div class="work-tile wt-half reveal" data-name="Pilsner Urquell" data-cat="Beer · Content">
+      <img src="img/work/pilsner-urquell.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Pilsner Urquell</h4>
+        <div class="credits">Content<span class="dot">·</span>Experiential<span class="dot">·</span>Partnerships<span class="dot">·</span>Events</div>
+      </div>
+    </div>
+    <a class="work-tile wt-half reveal" href="https://smalleragency.com/peller-estates" target="_blank" rel="noopener" data-name="Peller Estates" data-cat="Wine · Brand">
+      <img src="img/work/peller.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Peller Estates</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+
+    <div class="work-tile wt-third reveal" data-name="Jack Link's" data-cat="Snacks · Social">
+      <img src="img/work/jack-links.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Jack Link's</h4>
+        <div class="credits">Social Media<span class="dot">·</span>Content<span class="dot">·</span>Strategy<span class="dot">·</span>Digital<span class="dot">·</span>E-Commerce</div>
+      </div>
+    </div>
+    <div class="work-tile wt-third reveal" data-name="Kit Kat" data-cat="Confectionary · Experiential">
+      <img src="img/work/kit-kat.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Kit Kat</h4>
+        <div class="credits">Experiential<span class="dot">·</span>Social<span class="dot">·</span>Retail<span class="dot">·</span>E-Commerce</div>
+      </div>
+    </div>
+    <div class="work-tile wt-third reveal" data-name="PlayStation" data-cat="Gaming · Digital">
+      <img src="img/work/playstation.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>PlayStation</h4>
+        <div class="credits">Digital<span class="dot">·</span>Content<span class="dot">·</span>Production</div>
+      </div>
+    </div>
+
     <a class="work-tile wt-feat reveal" href="https://smalleragency.com/mind-movement" target="_blank" rel="noopener" data-name="Mind The Movement" data-cat="Wellness · Brand & Identity">
       <img src="img/work/mind-movement.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Mind The Movement</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Mind The Movement</h4>
+        <div class="credits">Logo<span class="dot">·</span>Branding<span class="dot">·</span>Website Design</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
-    <a class="work-tile wt-tall reveal" href="https://smalleragency.com/supa" target="_blank" rel="noopener" data-name="Supa" data-cat="Beverage · Packaging">
-      <img src="img/work/supa.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Supa</h4><div class="arrow">↗</div></div>
+    <a class="work-tile wt-tall reveal" href="https://smalleragency.com/rclub" target="_blank" rel="noopener" data-name="RCLUB" data-cat="Lifestyle · Launch">
+      <img src="img/work/rclub.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>RCLUB</h4>
+        <div class="credits">Launch<span class="dot">·</span>PR<span class="dot">·</span>Social Media<span class="dot">·</span>Branding<span class="dot">·</span>Experiential</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/doseology" target="_blank" rel="noopener" data-name="Doseology" data-cat="Wellness · GTM">
+      <img src="img/work/doseology.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Doseology</h4>
+        <div class="credits">Identity<span class="dot">·</span>Investor Decks<span class="dot">·</span>Web Design<span class="dot">·</span>Retail Packaging<span class="dot">·</span>Strategy<span class="dot">·</span>Everything</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/drool" target="_blank" rel="noopener" data-name="Drool" data-cat="Pet · Brand">
+      <img src="img/work/drool.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Drool</h4>
+        <div class="credits">DTC Marketing<span class="dot">·</span>Branding<span class="dot">·</span>Growth Marketing<span class="dot">·</span>Website</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+    <a class="work-tile wt-third reveal" href="https://offgridtrailers.com" target="_blank" rel="noopener" data-name="Off Grid Trailers" data-cat="Overland · DTC">
+      <img src="img/work/off-grid.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Off Grid Trailers</h4>
+        <div class="credits">E-Commerce<span class="dot">·</span>DTC<span class="dot">·</span>Growth Marketing<span class="dot">·</span>Content<span class="dot">·</span>Social<span class="dot">·</span>Website<span class="dot">·</span>Marketing Strategy<span class="dot">·</span>Planning</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/saturday-cannabis" target="_blank" rel="noopener" data-name="Saturday" data-cat="Cannabis · Identity">
+      <img src="img/work/saturday.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Saturday</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/best-dish" target="_blank" rel="noopener" data-name="Best Dish" data-cat="Meal Kits · Brand">
+      <img src="img/work/bestdish.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Best Dish</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
+    </a>
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/hudson-college" target="_blank" rel="noopener" data-name="Hudson College" data-cat="Education · Brand">
+      <img src="img/work/hudson.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>Hudson College</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
 
     <a class="work-tile wt-third reveal" href="https://smalleragency.com/enerje" target="_blank" rel="noopener" data-name="Enerje" data-cat="Functional · Brand">
       <img src="img/work/enerje.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Enerje</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Enerje</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
     <a class="work-tile wt-third reveal" href="https://smalleragency.com/serviss" target="_blank" rel="noopener" data-name="Serviss" data-cat="Beverage · Identity">
       <img src="img/work/serviss.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Serviss</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Serviss</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
     <a class="work-tile wt-third reveal" href="https://smalleragency.com/syndicate" target="_blank" rel="noopener" data-name="Syndicate" data-cat="Cannabis · Brand">
       <img src="img/work/syndicate.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Syndicate</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Syndicate</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
 
-    <a class="work-tile wt-wide reveal" href="https://smalleragency.com/golden-baked-goods" target="_blank" rel="noopener" data-name="Golden Baked Goods" data-cat="Food · Packaging">
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/golden-baked-goods" target="_blank" rel="noopener" data-name="Golden Baked Goods" data-cat="Food · Packaging">
       <img src="img/work/golden.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Golden Baked Goods</h4><div class="arrow">↗</div></div>
-    </a>
-    <a class="work-tile wt-quarter reveal" href="https://smalleragency.com/twp" target="_blank" rel="noopener" data-name="TWP" data-cat="Lifestyle · Brand">
-      <img src="img/work/twp.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>TWP</h4><div class="arrow">↗</div></div>
-    </a>
-
-    <a class="work-tile wt-third reveal" href="https://smalleragency.com/drool" target="_blank" rel="noopener" data-name="Drool" data-cat="Pet · Brand">
-      <img src="img/work/drool.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Drool</h4><div class="arrow">↗</div></div>
-    </a>
-    <a class="work-tile wt-third reveal" href="https://smalleragency.com/doseology" target="_blank" rel="noopener" data-name="Doseology" data-cat="Wellness · GTM">
-      <img src="img/work/doseology.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Doseology</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Golden Baked Goods</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
     <a class="work-tile wt-third reveal" href="https://smalleragency.com/edwin-county-farms" target="_blank" rel="noopener" data-name="Edwin County Farms" data-cat="Food · Packaging">
       <img src="img/work/edwin.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Edwin County Farms</h4><div class="arrow">↗</div></div>
+      <div class="meta">
+        <h4>Edwin County Farms</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
-
-    <a class="work-tile wt-half reveal" href="https://smalleragency.com/grolsch-tiff" target="_blank" rel="noopener" data-name="Grolsch × TIFF" data-cat="Beverage · Activation">
-      <img src="img/work/grolsch.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Grolsch × TIFF</h4><div class="arrow">↗</div></div>
-    </a>
-    <a class="work-tile wt-half reveal" href="https://smalleragency.com/rclub" target="_blank" rel="noopener" data-name="RCLUB" data-cat="Lifestyle · Launch">
-      <img src="img/work/rclub.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>RCLUB</h4><div class="arrow">↗</div></div>
-    </a>
-
-    <a class="work-tile wt-third reveal" href="https://smalleragency.com/peller-estates" target="_blank" rel="noopener" data-name="Peller Estates" data-cat="Wine · Brand">
-      <img src="img/work/peller.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Peller Estates</h4><div class="arrow">↗</div></div>
-    </a>
-    <a class="work-tile wt-third reveal" href="https://smalleragency.com/aloha-cannabis-co" target="_blank" rel="noopener" data-name="Aloha Cannabis" data-cat="Cannabis · Brand">
-      <img src="img/work/aloha.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Aloha Cannabis</h4><div class="arrow">↗</div></div>
-    </a>
-    <a class="work-tile wt-third reveal" href="https://smalleragency.com/saturday-cannabis" target="_blank" rel="noopener" data-name="Saturday" data-cat="Cannabis · Identity">
-      <img src="img/work/saturday.jpg" alt="" loading="lazy">
-      <div class="meta"><h4>Saturday</h4><div class="arrow">↗</div></div>
+    <a class="work-tile wt-third reveal" href="https://smalleragency.com/twp" target="_blank" rel="noopener" data-name="TWP" data-cat="Lifestyle · Brand">
+      <img src="img/work/twp.jpg" alt="" loading="lazy">
+      <div class="meta">
+        <h4>TWP</h4>
+        <div class="credits">Branding<span class="dot">·</span>Website<span class="dot">·</span>Packaging</div>
+        <div class="arrow">↗</div>
+      </div>
     </a>
   </div>
 
-  <div class="logos reveal">
-    <div class="lbl">/ Brands I've worked with along the way</div>
-    <div class="logos-grid">
-      <div class="logo-cell">Miller Lite<span class="yr">SABMiller</span></div>
-      <div class="logo-cell">Grolsch<span class="yr">Carlsberg</span></div>
-      <div class="logo-cell">Pilsner Urquell<span class="yr">SABMiller</span></div>
-      <div class="logo-cell">Peroni<span class="yr">SABMiller</span></div>
-      <div class="logo-cell">Andrew Peller<span class="yr">Wine</span></div>
-      <div class="logo-cell">PlayStation<span class="yr">Sony</span></div>
-      <div class="logo-cell">Telus<span class="yr">Telco</span></div>
-      <div class="logo-cell">TD<span class="yr">Banking</span></div>
-      <div class="logo-cell">Weetabix<span class="yr">CPG</span></div>
-      <div class="logo-cell">Virgin Gaming<span class="yr">Gaming</span></div>
-      <div class="logo-cell">Avant Brands<span class="yr">Cannabis</span></div>
-      <div class="logo-cell">Friday Brands<span class="yr">Beverage</span></div>
-      <div class="logo-cell">Entourage Health<span class="yr">Cannabis</span></div>
-      <div class="logo-cell">Color Cannabis<span class="yr">Cannabis</span></div>
-      <div class="logo-cell">New Standard<span class="yr">Cannabis</span></div>
-      <div class="logo-cell">Clarity<span class="yr">Wellness</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- FRAMEWORKS -->
@@ -1368,15 +1477,39 @@
   </div>
 
   <div class="press-list reveal">
-    <a href="docs/Smaller_ChallengerPlaybook_V9.pdf" target="_blank" rel="noopener">
+    <a href="docs/Smaller_TheChallengerPlaybook_Scorecard_V3.pdf" target="_blank" rel="noopener">
       <span class="idx">001</span>
-      <span class="pub"><em>Challenger Playbook</em> — Smaller Agency, V9</span>
+      <span class="pub"><em>Challenger Scorecard</em> — Smaller Agency</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+    <a href="docs/Smaller_ChallengerPlaybook_V9.pdf" target="_blank" rel="noopener">
+      <span class="idx">002</span>
+      <span class="pub"><em>Challenger Playbook</em> — Smaller Agency</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+    <a href="docs/Smaller_RiskAssesment_Alcohol_V3.pdf" target="_blank" rel="noopener">
+      <span class="idx">003</span>
+      <span class="pub"><em>Alcohol Risk Assessment</em> — Smaller Agency</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+    <a href="docs/Smaller_Whitepaper_Beer_V3.pdf" target="_blank" rel="noopener">
+      <span class="idx">004</span>
+      <span class="pub"><em>Beer for Gen Z</em> — Smaller Agency Whitepaper</span>
+      <span class="yr">PDF</span>
+      <span class="arr">↓</span>
+    </a>
+    <a href="docs/Smaller_GenZStarterGuide_V5.pdf" target="_blank" rel="noopener">
+      <span class="idx">005</span>
+      <span class="pub"><em>Gen Z Starter Guide</em> — Smaller Agency</span>
       <span class="yr">PDF</span>
       <span class="arr">↓</span>
     </a>
     <a href="docs/Smaller_GenZ_OS_V3.pdf" target="_blank" rel="noopener">
-      <span class="idx">002</span>
-      <span class="pub"><em>Gen Z OS</em> — Smaller Agency, V3</span>
+      <span class="idx">006</span>
+      <span class="pub"><em>Gen Z OS</em> — Smaller Agency</span>
       <span class="yr">PDF</span>
       <span class="arr">↓</span>
     </a>
