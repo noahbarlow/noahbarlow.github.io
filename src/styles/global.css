@@ -719,11 +719,16 @@ section.dark .pull { color: var(--paper); }
 section.dark .muted, section.dark .right p, section.dark .body { color: rgba(245,241,232,0.7); }
 section.dark .lede { color: rgba(245,241,232,0.85); }
 section.dark .ink-bar { background: var(--paper); }
+/* On dark sections the italic em sits inside a tight lime slab — not the
+   highlighter stripe used on cream. Tightened vertical bounds so the
+   slab stays inside its own line and never bleeds into the line above. */
 section.dark h1 em, section.dark h2 em, section.dark h3 em {
   color: var(--ink);
-  background-image: linear-gradient(transparent 0 0, var(--accent) 0 100%);
-  background-position: 0 0;
-  padding: 0.05em 0.18em;
+  background: none;
+  background-image: linear-gradient(transparent 0 10%, var(--accent) 10% 90%, transparent 90% 100%);
+  background-repeat: no-repeat;
+  background-position: 0 0.04em;
+  padding: 0 0.22em;
 }
 
 /* MARQUEE — horizontal ticker strip. The v1's "Challenger thinking ✦"
@@ -740,9 +745,14 @@ section.dark h1 em, section.dark h2 em, section.dark h3 em {
 .ticker-track {
   display: inline-flex;
   white-space: nowrap;
-  animation: ticker 28s linear infinite;
+  animation: ticker 60s linear infinite;
   gap: 2.5rem;
   padding-right: 2.5rem;
+  will-change: transform;
+}
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track {
+  animation-play-state: paused;
 }
 .ticker-track > * {
   font-family: var(--font-display);
