@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Full work list. Anything with a `slug` links to a detail page;
+// the rest render as static cards.
+const work = [
+  { slug: 'miller-lite-canada', name: 'Miller Lite', cat: 'Beer · Canadian Launch', img: '/img/work/miller-lite.jpg', span: 'span-8' },
+  { slug: 'mgd-portfolio', name: 'MGD', cat: 'Beer · Heritage', img: '/img/work/mgd.jpg', span: 'span-4' },
+  { slug: null, name: 'Grolsch', cat: 'Beer · Premium', img: '/img/work/grolsch.jpg', span: 'span-6' },
+  { slug: 'carlsberg-portfolio', name: 'Carlsberg', cat: 'Beer · Brand Strategy', img: '/img/work/carlsberg.jpg', span: 'span-6' },
+  { slug: 'pilsner-urquell-canada', name: 'Pilsner Urquell', cat: 'Beer · Premium Positioning', img: '/img/work/pilsner-urquell.jpg', span: 'span-6' },
+  { slug: null, name: 'Peller Estates', cat: 'Wine · Brand System', img: '/img/work/peller.jpg', span: 'span-6' },
+  { slug: null, name: "Jack Link's", cat: 'Snacks · Social', img: '/img/work/jack-links.jpg', span: 'span-4' },
+  { slug: 'kit-kat-chocolatory', name: 'Kit Kat Chocolatory', cat: 'Confectionary · Retail', img: '/img/work/kit-kat.jpg', span: 'span-4' },
+  { slug: null, name: 'PlayStation', cat: 'Gaming · Brand', img: '/img/work/playstation.jpg', span: 'span-4' },
+  { slug: null, name: 'Mind Movement', cat: 'Wellness · Brand', img: '/img/work/mind-movement.jpg', span: 'span-6' },
+  { slug: null, name: 'Rclub', cat: 'Hospitality · Brand', img: '/img/work/rclub.jpg', span: 'span-6' },
+  { slug: null, name: 'Doseology', cat: 'Cannabis · Brand', img: '/img/work/doseology.jpg', span: 'span-4' },
+  { slug: null, name: 'Drool', cat: 'Lifestyle · Brand', img: '/img/work/drool.jpg', span: 'span-4' },
+  { slug: null, name: 'Hudson', cat: 'Spirits · Brand', img: '/img/work/hudson.jpg', span: 'span-4' },
+];
+---
+
+<BaseLayout
+  title="Work · Noah Barlow"
+  description="Selected case studies across beverage, wellness, RTD, cannabis, food, and lifestyle — brand strategy, packaging systems, and growth leadership."
+>
+  <section style="padding-block: clamp(4rem,8vw,9rem) clamp(2rem,4vw,4rem);">
+    <div class="shell">
+      <p class="eyebrow">Work</p>
+      <h1 style="margin-top:1.25rem; max-width: 14ch;">Twenty years of demand.</h1>
+      <p class="lede" style="margin-top:1.75rem;">
+        Selected engagements across beverage, wellness, RTD, cannabis, food,
+        and lifestyle — challenger brands, category leaders, and the
+        positioning work behind both.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="shell">
+      <div class="work-grid">
+        {work.map((w) => (
+          w.slug ? (
+            <a href={`/work/${w.slug}`} class={`work-card ${w.span}`}>
+              <div class="frame"><img src={w.img} alt={`${w.name} — case study`} loading="lazy" /></div>
+              <div class="meta">
+                <span class="name">{w.name}</span>
+                <span class="cat">{w.cat}</span>
+              </div>
+            </a>
+          ) : (
+            <div class={`work-card ${w.span}`} aria-disabled="true">
+              <div class="frame"><img src={w.img} alt={`${w.name}`} loading="lazy" /></div>
+              <div class="meta">
+                <span class="name">{w.name}</span>
+                <span class="cat">{w.cat}</span>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="contact-card">
+        <div class="left">
+          <p class="eyebrow">Working together</p>
+          <h2 style="margin-top:0.85rem;">Have a brief? Bring it.</h2>
+        </div>
+        <div class="right">
+          <p>
+            Selective engagements only. Strategy, packaging, and embedded
+            growth leadership for founder-led brands ready to make a real move.
+          </p>
+          <div class="actions">
+            <a href="/contact" class="btn hot">Book a call</a>
+            <a href="/advisory" class="btn ghost">See engagement model</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

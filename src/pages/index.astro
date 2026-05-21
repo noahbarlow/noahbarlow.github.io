@@ -1,0 +1,382 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const selectedWork = [
+  {
+    slug: 'miller-lite-canada',
+    name: 'Miller Lite',
+    cat: 'Beer · Canadian Launch',
+    img: '/img/work/miller-lite.jpg',
+    span: 'span-8',
+  },
+  {
+    slug: 'kit-kat-chocolatory',
+    name: 'Kit Kat Chocolatory',
+    cat: 'Confectionary · Retail',
+    img: '/img/work/kit-kat.jpg',
+    span: 'span-4',
+  },
+  {
+    slug: 'pilsner-urquell-canada',
+    name: 'Pilsner Urquell',
+    cat: 'Beer · Premium Positioning',
+    img: '/img/work/pilsner-urquell.jpg',
+    span: 'span-4',
+  },
+  {
+    slug: 'carlsberg-portfolio',
+    name: 'Carlsberg',
+    cat: 'Beer · Brand Strategy',
+    img: '/img/work/carlsberg.jpg',
+    span: 'span-4',
+  },
+  {
+    slug: 'mgd-portfolio',
+    name: 'MGD',
+    cat: 'Beer · Heritage',
+    img: '/img/work/mgd.jpg',
+    span: 'span-4',
+  },
+];
+
+const articles = [
+  { slug: 'packaging-is-media', title: 'Packaging is media.', when: 'Essay · 2026', read: '5 min' },
+  { slug: 'consensus-kills-demand', title: 'Consensus kills demand.', when: 'Essay · 2026', read: '4 min' },
+  { slug: 'why-most-packaging-fails-in-3-seconds', title: 'Why most packaging fails in three seconds.', when: 'Essay · 2026', read: '6 min' },
+];
+
+// Ticker tokens — the recurring strapline from the Smaller Agency assets
+const tickerItems = [
+  'Brand strategy',
+  'Packaging systems',
+  'Demand engineering',
+  'Founder advisory',
+  'Retail psychology',
+  'Category positioning',
+  'GTM leadership',
+  'Cultural fluency',
+];
+// Render twice so the marquee loop is seamless
+const ticker = [...tickerItems, ...tickerItems];
+---
+
+<BaseLayout
+  title="Noah Barlow — Brand, packaging, and growth for challenger brands"
+  description="Senior strategic operator helping founder-led companies build demand through brand, packaging, and growth leadership."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="shell">
+      <div class="hero-split">
+        <div>
+          <p class="eyebrow">Brand &rarr; Package &rarr; Demand</p>
+          <h1 style="margin-top:1.5rem;">
+            I help challenger brands<br />
+            <em>create demand.</em>
+          </h1>
+          <p class="hero-sub">
+            Brand strategy, packaging systems, positioning, and growth
+            leadership for founder-led companies &mdash; twenty years of
+            operating experience, delivered as a partner rather than an
+            agency.
+          </p>
+          <div class="hero-actions">
+            <a href="/contact" class="btn hot">Book a strategy call</a>
+            <a href="/scorecard" class="btn ghost">Take the Scorecard &rarr;</a>
+          </div>
+        </div>
+        <div class="hero-portrait" aria-hidden="true">
+          <div class="tag-overlay">
+            <span class="tag hot">Selectively available</span>
+            <span class="tag">Toronto &middot; 2026</span>
+          </div>
+          <img src="/img/p1-author.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div class="item"><strong>20+</strong><span>years operating</span></div>
+        <div class="item"><strong>7</strong><span>years founder</span></div>
+        <div class="item"><strong>12+</strong><span>brands launched</span></div>
+        <div class="item"><strong>$1B+</strong><span>portfolios advised</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      {ticker.map((t, i) => (
+        <>
+          <span>{t}</span>
+          <span class="star">&#10022;</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- WHAT I SOLVE -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">01</span><span class="l">What I solve</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Brands stall when strategy, package, and demand <em>drift apart.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Most founder-led companies don't fail at execution. They fail at
+            the seam: positioning that doesn't translate to packaging,
+            packaging that doesn't translate to retail, retail that doesn't
+            translate to repeat. I work at that seam &mdash; as the operator
+            who connects what a brand says to what it sells.
+          </p>
+          <p style="margin-top:1.2em;">
+            Engagements typically start with a sharp diagnostic and resolve
+            into one of three modes: brand strategy, packaging system, or
+            embedded growth leadership.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK CALLOUT -->
+  <section class="dark">
+    <div class="shell">
+      <div class="callout">
+        <span class="mark">&ldquo;</span>
+        <p class="q">
+          Packaging is the most under&#8209;leveraged growth lever a founder
+          owns. It's <em>media</em> you've already paid for.
+        </p>
+        <p class="attr">&mdash; Noah Barlow, on shelf economics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">02</span><span class="l">The framework</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Brand &rarr; Package &rarr; <em>Demand.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            The order is not decorative. A brand without a clear package will
+            not earn shelf. A package without a brand will not earn loyalty.
+            Neither without demand will earn a P&amp;L.
+          </p>
+        </div>
+      </div>
+
+      <div class="framework">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Brand</h3>
+          <p>
+            Positioning, point of view, and the strategic narrative that lets
+            a founder say no to the wrong opportunities. Sharp enough to be
+            useful inside the building, durable enough to survive a category
+            shift.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Package</h3>
+          <p>
+            The package is the brand's most-touched media buy. We design the
+            system: hierarchy, semiotics, retail psychology, structural
+            cues &mdash; built to win the three-second test before it tests
+            anything else.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Demand</h3>
+          <p>
+            What moves a SKU off-shelf and a brand into culture: distribution
+            strategy, GTM sequencing, retail readiness, and the demand
+            generation engine that turns trial into preference.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">03</span><span class="l">Selected work</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Twenty years of <em>building demand.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            A pull from across beverage, wellness, RTD, cannabis, food, and
+            lifestyle &mdash; challenger brands and category leaders.
+            Strategy, packaging, retail systems, and the operating thinking
+            behind them.
+          </p>
+          <p style="margin-top:1em;"><a href="/work">See all work &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="work-grid">
+        {selectedWork.map((w) => (
+          <a href={`/work/${w.slug}`} class={`work-card ${w.span}`}>
+            <div class="frame"><img src={w.img} alt={`${w.name} — case study`} loading="lazy" /></div>
+            <div class="meta">
+              <span class="name">{w.name}</span>
+              <span class="cat">{w.cat}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER 2 — different angle -->
+  <div class="ticker lime" aria-hidden="true">
+    <div class="ticker-track">
+      {ticker.map((t, i) => (
+        <>
+          <span>Selectively available</span>
+          <span class="star">&#10022;</span>
+          <span>2&ndash;3 engagements per quarter</span>
+          <span class="star">&#10022;</span>
+          <span>Founders only</span>
+          <span class="star">&#10022;</span>
+          <span>Toronto &amp; remote</span>
+          <span class="star">&#10022;</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- ADVISORY -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">04</span><span class="l">Advisory</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Fractional brand &amp; <em>growth leadership.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            An embedded strategic partner for founder-led companies &mdash;
+            not an outsourced production shop. I take a small number of
+            engagements per year, work in the room, and stay close enough
+            to the P&amp;L to be useful to it.
+          </p>
+        </div>
+      </div>
+
+      <div class="advisory">
+        <div>
+          <p class="pull">
+            For founders who need a senior operator <em>in the room</em> &mdash;
+            not another agency on the roster.
+          </p>
+          <div style="margin-top:1.75rem;"><a href="/advisory" class="btn">See engagement model</a></div>
+        </div>
+        <ul class="bullets">
+          <li><span class="k">01</span><span class="v">Brand strategy and positioning</span></li>
+          <li><span class="k">02</span><span class="v">Packaging systems and retail psychology</span></li>
+          <li><span class="k">03</span><span class="v">Creative direction and category point of view</span></li>
+          <li><span class="k">04</span><span class="v">GTM sequencing and launch leadership</span></li>
+          <li><span class="k">05</span><span class="v">Founder support and board-level brand thinking</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTICS -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">05</span><span class="l">Diagnostics</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Two short tools. <em>Ninety seconds each.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Interactive versions of the frameworks I use with clients. Score
+            your brand, get a personal note back, decide whether a
+            conversation makes sense.
+          </p>
+        </div>
+      </div>
+
+      <div class="articles">
+        <a href="/scorecard" class="diagnostic-row">
+          <div class="left">
+            <span class="when">Diagnostic &middot; 8 questions &middot; 90s</span>
+            <span class="title">The Challenger Scorecard.</span>
+            <div class="dek">Score your brand against the moves real challengers actually make.</div>
+          </div>
+          <span class="go">Start &rarr;</span>
+        </a>
+        <a href="/packaging-audit" class="diagnostic-row">
+          <div class="left">
+            <span class="when">Diagnostic &middot; 8 questions &middot; 90s</span>
+            <span class="title">The Packaging Audit.</span>
+            <div class="dek">Is your pack winning the three-second test at retail?</div>
+          </div>
+          <span class="go">Start &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINKING -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">06</span><span class="l">Thinking</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Field notes from the <em>operator's seat.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Essays on packaging, positioning, founder traps, and the parts
+            of the category most agencies are paid not to see.
+          </p>
+          <p style="margin-top:1em;"><a href="/thinking">All essays &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="articles">
+        {articles.map((a) => (
+          <a href={`/thinking/${a.slug}`} class="article-row">
+            <span class="when">{a.when}</span>
+            <span class="title">{a.title}</span>
+            <span class="read">{a.read}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA — dark inverted final band -->
+  <section class="dark">
+    <div class="shell">
+      <div class="runhead"><span class="n">07</span><span class="l">Work together</span></div>
+      <h2 style="font-size: var(--t-4xl); max-width: 18ch; line-height: 1;">
+        If the brief is sharp, <em>the next move is a conversation.</em>
+      </h2>
+      <p class="lede" style="margin-top: 1.75rem;">
+        Selective engagements, senior involvement, no production overhead.
+        Start with a thirty-minute call &mdash; we'll know quickly whether
+        there's a fit.
+      </p>
+      <div style="margin-top: 2rem; display: flex; gap: 0.85rem; flex-wrap: wrap;">
+        <a href="/contact" class="btn">Book a strategy call</a>
+        <a href="mailto:noah@smalleragency.com" class="btn ghost">Email directly</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

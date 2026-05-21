@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    slug: 'packaging-is-media',
+    title: 'Packaging is media.',
+    when: 'Essay · 2026',
+    read: '5 min',
+    dek: 'The package is the most under-leveraged growth lever a founder owns — and the only piece of media every customer actually touches.',
+  },
+  {
+    slug: 'consensus-kills-demand',
+    title: 'Consensus kills demand.',
+    when: 'Essay · 2026',
+    read: '4 min',
+    dek: 'Strategy meetings optimize for the survivable answer. Demand requires the answer most people in the room would not have signed off on.',
+  },
+  {
+    slug: 'why-most-packaging-fails-in-3-seconds',
+    title: 'Why most packaging fails in three seconds.',
+    when: 'Essay · 2026',
+    read: '6 min',
+    dek: 'The shelf is a hostile environment for nuance. If the package cannot say what it is, what it costs, and why it matters before a shopper looks away — it does not exist.',
+  },
+];
+
+const whitepapers = [
+  {
+    file: '/docs/Smaller_ChallengerPlaybook_V9.pdf',
+    title: 'The Challenger Playbook.',
+    when: 'Whitepaper · PDF',
+    size: '7 MB',
+    dek: 'A working framework for founders building challenger brands in mature categories — positioning, distribution, packaging, and demand systems for companies that need to behave bigger than they spend.',
+    theme: 'Challenger',
+  },
+  {
+    file: '/docs/Smaller_TheChallengerPlaybook_Scorecard_V3.pdf',
+    title: 'The Challenger Scorecard.',
+    when: 'Companion · PDF',
+    size: '2 MB',
+    dek: 'A diagnostic companion to the Playbook. Score your brand against the seven moves challengers actually make — and find the ones you have not committed to yet.',
+    theme: 'Challenger',
+  },
+  {
+    file: '/docs/Smaller_GenZ_OS_V3.pdf',
+    title: 'The Gen Z Operating System.',
+    when: 'Whitepaper · PDF',
+    size: '6 MB',
+    dek: 'How Gen Z actually evaluates brands, content, and category. An operating model for marketers who keep getting told to "talk to Gen Z" and need something other than another deck full of TikTok trends.',
+    theme: 'Gen Z',
+  },
+  {
+    file: '/docs/Smaller_GenZStarterGuide_V5.pdf',
+    title: 'Gen Z Starter Guide.',
+    when: 'Field guide · PDF',
+    size: '3 MB',
+    dek: 'A short briefing for founders entering the Gen Z conversation cold. The codes, the platforms, the things that read as authentic, and the things that read as a 38-year-old marketer trying.',
+    theme: 'Gen Z',
+  },
+  {
+    file: '/docs/Smaller_Whitepaper_Beer_V3.pdf',
+    title: 'Beer for Gen Z.',
+    when: 'Whitepaper · PDF',
+    size: '7 MB',
+    dek: 'A category-specific look at the most disrupted alcohol segment in twenty years. Why Gen Z is drinking less, drinking different, and how beer brands win back occasions they no longer own.',
+    theme: 'Gen Z · Beer',
+  },
+];
+---
+
+<BaseLayout
+  title="Thinking · Noah Barlow"
+  description="Field notes and whitepapers on packaging, positioning, challenger brands, Gen Z behavior, and the parts of the consumer category most agencies are paid not to see."
+>
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">Thinking</p>
+      <h1 style="margin-top:1.5rem; max-width: 14ch;">
+        Field notes from the<br /><em>operator's seat.</em>
+      </h1>
+      <p class="hero-sub">
+        Two short diagnostics. A handful of essays. Five whitepapers. The
+        thinking the consultancy is built on — pick a tool to use, an
+        argument to read, or a framework to download.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="shell">
+      <div class="s-head" style="margin-bottom: 1.5rem;">
+        <div class="left">
+          <span class="eyebrow">Diagnostics</span>
+          <h2 style="margin-top: 0.5rem;">Short tools, real signal.</h2>
+        </div>
+        <div class="right">
+          <p>
+            Two interactive diagnostics, ninety seconds each. Use them on your
+            own brand — or send to a partner who needs a sharper read than
+            their last agency audit.
+          </p>
+        </div>
+      </div>
+
+      <div class="articles">
+        <a href="/scorecard" class="diagnostic-row">
+          <div class="left">
+            <span class="when">Diagnostic · 8 questions · 90s</span>
+            <span class="title">The Challenger Scorecard.</span>
+            <div class="dek">Score your brand against the moves real challengers actually make. Built on the framework from the Challenger Playbook.</div>
+          </div>
+          <span class="go">Start →</span>
+        </a>
+        <a href="/packaging-audit" class="diagnostic-row">
+          <div class="left">
+            <span class="when">Diagnostic · 8 questions · 90s</span>
+            <span class="title">The Packaging Audit.</span>
+            <div class="dek">Is your pack winning the three-second test? A retail-honest audit against the three jobs every package has to do at shelf.</div>
+          </div>
+          <span class="go">Start →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="s-head" style="margin-bottom: 1.5rem;">
+        <div class="left">
+          <span class="eyebrow">Essays</span>
+        </div>
+        <div class="right" style="font-size: var(--t-md); color: var(--mute);">
+          <p style="margin:0;">Short-form POV. Three to seven minutes each.</p>
+        </div>
+      </div>
+
+      <div class="articles">
+        {articles.map((a) => (
+          <a href={`/thinking/${a.slug}`} class="article-row">
+            <span class="when">{a.when}</span>
+            <span class="title">
+              {a.title}
+              <div class="dek">{a.dek}</div>
+            </span>
+            <span class="read">{a.read}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="s-head" style="margin-bottom: 1.5rem;">
+        <div class="left">
+          <span class="eyebrow">Whitepapers</span>
+          <h2 style="margin-top: 0.5rem;">Frameworks, on paper.</h2>
+        </div>
+        <div class="right">
+          <p>
+            Five working documents authored at Smaller Agency. The thinking
+            the consultancy was built on — challenger strategy and Gen Z
+            behavior, framed for founders who want to act on them rather
+            than admire them.
+          </p>
+        </div>
+      </div>
+
+      <div class="articles">
+        {whitepapers.map((w) => (
+          <a href={w.file} class="article-row download" target="_blank" rel="noopener">
+            <span class="when">
+              {w.when}
+              <span class="size">{w.size}</span>
+            </span>
+            <span class="title">
+              {w.title}
+              <div class="dek">{w.dek}</div>
+            </span>
+            <span class="read">Download ↓</span>
+          </a>
+        ))}
+      </div>
+
+      <p style="margin-top: clamp(2rem,4vw,3rem); max-width: 56ch; color: var(--mute); font-size: var(--t-sm);">
+        Authored at Smaller Agency, the brand &amp; content consultancy I
+        founded in 2019. Reproduced here with permission. If you would like
+        a working session built around one of these frameworks for your
+        team, <a href="/contact">get in touch</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

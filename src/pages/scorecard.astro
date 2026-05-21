@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CHALLENGER SCORECARD — 8 questions, scored 0–3 each, max 24.
+// Tier thresholds: 0–8 / 9–16 / 17–24.
+// Each option's `s` is the score awarded for that answer.
+// ─────────────────────────────────────────────────────────────────────────────
+const questions = [
+  {
+    q: "When your team disagrees on positioning, what usually wins the room?",
+    a: [
+      { t: "The version most stakeholders are comfortable with.", s: 0 },
+      { t: "Whatever the loudest senior leader prefers.", s: 1 },
+      { t: "Whichever option performs best in testing.", s: 2 },
+      { t: "The sharpest position, even when it alienates part of the room.", s: 3 },
+    ],
+  },
+  {
+    q: "Who is your brand for — really?",
+    a: [
+      { t: "Anyone in the category. We don't want to leave revenue on the table.", s: 0 },
+      { t: "A broad target audience defined by demographics.", s: 1 },
+      { t: "A specific segment we've prioritized over others.", s: 2 },
+      { t: "A specific worldview. We can describe who we're not for in one sentence.", s: 3 },
+    ],
+  },
+  {
+    q: "What does your packaging system do at the shelf?",
+    a: [
+      { t: "Honestly, we haven't audited the pack against retail in a while.", s: 0 },
+      { t: "Communicates a long list of features and benefits.", s: 1 },
+      { t: "Signals category and tier cleanly. The hierarchy is decided.", s: 2 },
+      { t: "Wins the three-second test and earns the look from across the aisle.", s: 3 },
+    ],
+  },
+  {
+    q: "How do you talk about your category leader?",
+    a: [
+      { t: "Carefully — we don't want to invite comparison.", s: 0 },
+      { t: "We avoid the topic in messaging.", s: 1 },
+      { t: "We position around what the leader can't easily change.", s: 2 },
+      { t: "We've built our identity in deliberate contrast to what they stand for.", s: 3 },
+    ],
+  },
+  {
+    q: "What does your demand engine actually do?",
+    a: [
+      { t: "Mostly paid acquisition. We optimize CPA and hope.", s: 0 },
+      { t: "Paid + some content. Channel mix is the strategy.", s: 1 },
+      { t: "Paid, owned, and earned work in sequence around launch moments.", s: 2 },
+      { t: "Demand is a system: package, retail, distribution, and content all reinforce one position.", s: 3 },
+    ],
+  },
+  {
+    q: "How often do you say no to opportunities that don't fit?",
+    a: [
+      { t: "Rarely. Most opportunities feel like they could work.", s: 0 },
+      { t: "Sometimes, when we're stretched.", s: 1 },
+      { t: "Often. We have a stated point of view on what's in and out.", s: 2 },
+      { t: "Constantly. Saying no is how we hold the brand's shape.", s: 3 },
+    ],
+  },
+  {
+    q: "If you launched a new SKU tomorrow, what would happen?",
+    a: [
+      { t: "We'd add it to the line. It would extend the assortment.", s: 0 },
+      { t: "We'd run paid against it and see what sticks.", s: 1 },
+      { t: "We'd plan a launch sequence with retail readiness and content.", s: 2 },
+      { t: "It would land inside a story we've been telling for years. It would belong on day one.", s: 3 },
+    ],
+  },
+  {
+    q: "What do customers actually say about your brand, unprompted?",
+    a: [
+      { t: "Mostly product-level feedback. Quality, taste, function.", s: 0 },
+      { t: "They like us. They'd recommend us.", s: 1 },
+      { t: "They use our language. They cite the brand by name.", s: 2 },
+      { t: "They reference our point of view, not just our product. We're a category they belong to.", s: 3 },
+    ],
+  },
+];
+
+const tiers = [
+  {
+    range: [0, 8],
+    name: "Consensus brand",
+    headline: "You're being agreed with, not chosen.",
+    body:
+      "The brand is operating without a fight in it. Most internal decisions are landing on the survivable answer rather than the sharp one — which is why customers find the product fine but don't have a reason to talk about it. This is the most common state of CPG brands sitting between mass and premium: not failing, but not pulling. The work from here is repositioning, not refreshing.",
+    recs: [
+      "Pick a fight worth picking. Name what your brand is deliberately not, and put it in writing.",
+      "Audit the package against retail. Stand twelve feet from a printed proof and time the three-second test honestly.",
+      "Cut the audience definition in half. The smallest credible segment that genuinely needs you will outperform the broad one that tolerates you.",
+      "Build a single distinctive ritual or signal customers can repeat without you in the room.",
+    ],
+  },
+  {
+    range: [9, 16],
+    name: "Emerging challenger",
+    headline: "You have a point of view. It hasn't fully landed yet.",
+    body:
+      "You've made some sharp calls — there's a position, a target, probably some packaging instinct — but the system isn't yet pulling its full weight. The most likely gap: positioning, package, and demand are running on parallel tracks rather than reinforcing each other. The brand reads as 'good' to customers but doesn't yet feel inevitable. Closing this gap is usually less work than founders expect; it's about commitment, not new ideas.",
+    recs: [
+      "Pressure-test the seam between brand and pack. Does the package say the same sharp thing the strategy deck says?",
+      "Identify the one belief your category leader can't say — and own it on the front of the package, not on slide 14.",
+      "Sequence one launch moment per quarter. Compounding visibility beats continuous noise.",
+      "Find your three real customers and have a real conversation. The pattern will tell you what to commit to.",
+    ],
+  },
+  {
+    range: [17, 24],
+    name: "Sharp challenger",
+    headline: "The position is real. Hold it.",
+    body:
+      "You have what most brands in your category don't: a working point of view, a system that reinforces it, and an honest sense of who you're not for. The risk now is drift — the slow softening that happens when growth introduces new stakeholders, new SKUs, and new opinions about the brand's shape. The hardest work in front of you isn't sharpening further; it's defending what's already sharp against well-meaning suggestions to round the edges.",
+    recs: [
+      "Write down the things the brand will never do. Circulate it. Use it the next time someone proposes one of them.",
+      "Audit the new SKUs. Each one should make the position more obvious, not more flexible.",
+      "Invest in the second layer — symbols, rituals, language — that lets the brand survive a founder transition.",
+      "Pick one new constraint per year to deepen the position. The work doesn't end; it concentrates.",
+    ],
+  },
+];
+
+const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORM_ID';
+---
+
+<BaseLayout
+  title="The Challenger Scorecard · Noah Barlow"
+  description="A 90-second diagnostic for founder-led brands. Score your company against the moves real challengers actually make."
+>
+  <article class="quiz shell">
+    <header class="quiz-head">
+      <p class="eyebrow">Diagnostic · Challenger Scorecard</p>
+      <h1>How challenger is your brand?</h1>
+      <p class="lede">
+        Eight questions. Ninety seconds. A working diagnostic for founder-led
+        brands — based on the challenger framework I've used with the
+        portfolios in <a href="/work">my work</a>.
+      </p>
+      <div class="quiz-meta">
+        <div><strong>8</strong> questions</div>
+        <div><strong>~90</strong> seconds</div>
+        <div><strong>Free</strong> · no signup to start</div>
+      </div>
+    </header>
+
+    <!-- Steps render via JS. Initial state shows intro CTA. -->
+    <div id="quiz-root">
+      <!-- Intro step -->
+      <div class="quiz-step active" data-step="intro">
+        <div class="quiz-options" style="border-top: 0;">
+          <button type="button" class="start-btn">
+            <span class="k">→</span>
+            <span>Start the diagnostic</span>
+            <span class="arr">↓</span>
+          </button>
+        </div>
+      </div>
+      <!-- Question + results steps injected here -->
+    </div>
+  </article>
+
+  <script
+    is:inline
+    define:vars={{
+      QUESTIONS: questions,
+      TIERS: tiers,
+      FORM_ENDPOINT,
+      DIAGNOSTIC_ID: 'challenger-scorecard',
+      EMAIL_SUBJECT: 'Challenger Scorecard — new lead',
+      THANKS_TITLE: "Thanks — that's in.",
+      THANKS_BODY:
+        "The Challenger Playbook is below. I'll personally follow up by email within 48 hours with a short note tailored to your result.",
+      THANKS_PRIMARY_HREF: '/docs/Smaller_ChallengerPlaybook_V9.pdf',
+      THANKS_PRIMARY_LABEL: 'Download the Playbook (PDF)',
+      OTHER_DIAGNOSTIC_HREF: '/packaging-audit',
+      OTHER_DIAGNOSTIC_LABEL: 'Try the Packaging Audit →',
+      GATE_EYEBROW: 'Want the full framework',
+      GATE_HEADLINE: 'Get the Challenger Playbook + a personal note from Noah.',
+      GATE_SUB:
+        "Send your email and I'll reply with the full 40-page playbook this scorecard is built on, plus a short note on what your result usually means in practice.",
+      GATE_SUBMIT_LABEL: 'Send the playbook',
+      RETAKE_LABEL: 'Retake the diagnostic',
+      OPTIONAL_FIELD_LABEL: 'Role (optional)',
+    }}
+  >
+    (function(){
+      const root = document.getElementById('quiz-root');
+      const total = QUESTIONS.length;
+      const state = { answers: new Array(total).fill(null), idx: -1 };
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+      function render() {
+        if (state.idx === -1) return;
+        if (state.idx >= total) return renderResults();
+        const q = QUESTIONS[state.idx];
+        const pct = Math.round(((state.idx) / total) * 100);
+        const options = q.a.map((opt, i) => `
+          <button type="button" data-score="${opt.s}" data-i="${i}">
+            <span class="k">${String.fromCharCode(65 + i)}</span>
+            <span>${esc(opt.t)}</span>
+            <span class="arr">&rarr;</span>
+          </button>
+        `).join('');
+        root.innerHTML = `
+          <div class="quiz-step active" data-step="${state.idx}">
+            <div class="quiz-progress">
+              <span>Question ${state.idx + 1} of ${total}</span>
+              <span class="bar" style="--p: ${pct}%"></span>
+            </div>
+            <h2 class="quiz-question">${esc(q.q)}</h2>
+            <div class="quiz-options">${options}</div>
+            <div class="quiz-nav">
+              ${state.idx > 0 ? '<button type="button" class="back-btn">&larr; Back</button>' : '<span></span>'}
+              <span>Choose one to continue</span>
+            </div>
+          </div>
+        `;
+        root.querySelectorAll('[data-score]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            state.answers[state.idx] = Number(btn.dataset.score);
+            state.idx++;
+            window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
+            render();
+          });
+        });
+        const back = root.querySelector('.back-btn');
+        if (back) back.addEventListener('click', () => { state.idx = Math.max(0, state.idx - 1); render(); });
+      }
+
+      function renderResults() {
+        const score = state.answers.reduce((a, b) => a + (b || 0), 0);
+        const tier = TIERS.find((t) => score >= t.range[0] && score <= t.range[1]) || TIERS[0];
+        const maxScore = total * 3;
+        const recs = tier.recs.map((r, i) => `
+          <li><span class="k">${String(i + 1).padStart(2, '0')}</span><span class="v">${esc(r)}</span></li>
+        `).join('');
+        root.innerHTML = `
+          <div class="quiz-step active" data-step="results">
+            <div class="result-card">
+              <span class="stamp">${esc(tier.name)}</span>
+              <div class="score"><span class="num">${score}</span><span class="of">/ ${maxScore}</span></div>
+              <h2>${esc(tier.headline)}</h2>
+              <p class="body">${esc(tier.body)}</p>
+              <div class="orn-row" aria-hidden="true"><span>&#10022;</span></div>
+              <p class="eyebrow" style="display:block; margin-top: 2.5rem;">Where to focus</p>
+              <ol class="result-recs">${recs}</ol>
+            </div>
+
+            <div class="gate" id="gate">
+              <p class="eyebrow">${esc(GATE_EYEBROW)}</p>
+              <h3>${esc(GATE_HEADLINE)}</h3>
+              <p class="sub">${esc(GATE_SUB)}</p>
+              <form action="${FORM_ENDPOINT}" method="POST" id="lead-form">
+                <input type="hidden" name="_subject" value="${esc(EMAIL_SUBJECT)}" />
+                <input type="hidden" name="diagnostic" value="${DIAGNOSTIC_ID}" />
+                <input type="hidden" name="score" value="${score}" />
+                <input type="hidden" name="tier" value="${esc(tier.name)}" />
+                <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" />
+                <button type="submit" class="btn hot">${esc(GATE_SUBMIT_LABEL)}</button>
+                <div class="row2">
+                  <input type="text" name="company" placeholder="Company (optional)" autocomplete="organization" />
+                  <input type="text" name="role" placeholder="${esc(OPTIONAL_FIELD_LABEL)}" autocomplete="organization-title" />
+                </div>
+                <p class="legal">No newsletter. No follow-up sequence. One human reply within 48 hours.</p>
+              </form>
+              <div class="thanks">
+                <h3>${esc(THANKS_TITLE)}</h3>
+                <p class="sub" style="display: block !important;">${esc(THANKS_BODY)}</p>
+                <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 1.25rem;">
+                  <a class="btn" href="${THANKS_PRIMARY_HREF}" target="_blank" rel="noopener">${esc(THANKS_PRIMARY_LABEL)}</a>
+                  <a class="btn ghost" href="/contact">Book a strategy call</a>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: clamp(2rem,4vw,3rem); display:flex; justify-content:space-between; gap: 1rem; flex-wrap: wrap;">
+              <button type="button" class="btn ghost" id="retake">${esc(RETAKE_LABEL)}</button>
+              <a class="btn ghost" href="${OTHER_DIAGNOSTIC_HREF}">${esc(OTHER_DIAGNOSTIC_LABEL)}</a>
+            </div>
+          </div>
+        `;
+        document.getElementById('retake').addEventListener('click', () => {
+          state.answers = new Array(total).fill(null);
+          state.idx = 0;
+          render();
+        });
+        const form = document.getElementById('lead-form');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const action = form.getAttribute('action');
+          if (action.includes('REPLACE_WITH_FORM_ID')) {
+            // Placeholder mode (Noah hasn't wired the Formspree endpoint yet).
+            document.getElementById('gate').classList.add('sent');
+            return;
+          }
+          try {
+            const res = await fetch(action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            });
+            if (res.ok) document.getElementById('gate').classList.add('sent');
+          } catch (err) {
+            document.getElementById('gate').classList.add('sent');
+          }
+        });
+      }
+
+      document.querySelector('.start-btn').addEventListener('click', () => {
+        state.idx = 0;
+        render();
+      });
+    })();
+  </script>
+</BaseLayout>

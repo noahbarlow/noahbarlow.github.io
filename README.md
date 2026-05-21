@@ -1,97 +1,103 @@
-# noahbarlow.github.io
+# noahbarlow.github.io — v2
 
-Personal site — editorial portfolio + resume for senior agency leadership roles.
+Personal consultancy site for **Noah Barlow**: brand, packaging, and growth
+leadership for founder-led challenger companies.
 
-Single-file static site. No build step. Deploys to GitHub Pages.
+Built with [Astro](https://astro.build/). Deployed to GitHub Pages via the
+workflow in [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml).
 
-**Visual:** electric lime on ink black. Custom cursor. Scroll-reactive ticker.
+## Stack
 
----
+- **Astro** (static output, no framework runtime)
+- **Vanilla CSS** with a small design-system file in `src/styles/global.css`
+- **Fraunces** (display serif) and **Inter** (body sans), via Google Fonts
+- No JS framework, no build-time client-side hydration
 
-## Deploy to GitHub Pages
-
-### 1. Create the GitHub repo
-
-Go to [github.com/new](https://github.com/new):
-
-- **Repository name:** `noahbarlow.github.io` (must match your GitHub username exactly)
-- **Visibility:** Public (required for free GitHub Pages)
-- **Initialize:** Leave everything unchecked
-
-### 2. Push everything
-
-Easiest path — use the GitHub web UI:
-
-1. On the empty repo page, click **uploading an existing file**
-2. Drag the contents of this folder in (`index.html`, `README.md`, `.nojekyll`, and the entire `img` folder)
-3. Commit message: `Initial site`
-4. Click **Commit changes**
-
-Or via terminal:
+## Develop locally
 
 ```bash
-git init
-git add .
-git commit -m "Initial site"
-git branch -M main
-git remote add origin https://github.com/noahbarlow/noahbarlow.github.io.git
-git push -u origin main
+npm install
+npm run dev
 ```
 
-### 3. Enable Pages
+Site runs at <http://localhost:4321>.
 
-1. Repo → **Settings** → **Pages**
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**
-3. Branch: `main`, folder: `/ (root)` → **Save**
-4. Wait ~60 seconds. Site goes live at **`https://noahbarlow.github.io`**
+## Build
 
-### 4. (Optional) Custom domain
+```bash
+npm run build
+```
 
-If you want it at `noahbarlow.com`:
+Output lands in `dist/`.
 
-1. In your domain registrar's DNS settings, add 4 A records for `@`:
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
-   And a CNAME for `www` pointing to `noahbarlow.github.io`.
-2. In the GitHub repo: **Settings → Pages → Custom domain** → enter `noahbarlow.com` → Save
-3. Tick **Enforce HTTPS** once the cert provisions (~10–60 minutes)
+## Deploy
 
----
+GitHub Pages, via Actions. First time only:
 
-## Editing the site
+1. Push to `main`.
+2. In repo **Settings → Pages**, set **Source: GitHub Actions**.
 
-One file. Plain HTML/CSS/JS. Open `index.html`.
+After that, every push to `main` builds and deploys automatically.
 
-**Common edits:**
-- **Lead paragraph** — search for `class="blurb"`
-- **The "Now Playing" section** (Reading, Building, Skeptical of, Looking for) — search for `class="now-list"`
-- **Stats** (20+, 7, 12+) — search for `class="stat"`
-- **Ticker phrases** — search for `id="ticker-track"`
-- **Roles** — search for `class="role"`
-- **Work tiles** — search for `class="work-tile`
-- **Press** — search for `class="press-list"`
+> User Pages note: this is a `username.github.io` repo, so the site
+> publishes at <https://noahbarlow.github.io>. No `base` path is needed in
+> `astro.config.mjs`.
 
-**Color system** — all colors are CSS variables at the top of the `<style>` block:
-- `--ink` (background)
-- `--lime` (primary accent — change this to swap the entire accent across the site)
-- `--hot` (secondary punch — used for the strike-through)
+## Structure
 
-**Replacing work images** — drop a new image into `img/work/` with the same filename, or update the `src` on the relevant `<img>` inside the matching `<a class="work-tile">` block.
+```
+src/
+├─ components/   Nav, Footer
+├─ layouts/      BaseLayout (shell, head, fonts, nav, footer)
+├─ pages/
+│  ├─ index.astro             Home
+│  ├─ about.astro
+│  ├─ advisory.astro
+│  ├─ contact.astro
+│  ├─ work/
+│  │  ├─ index.astro          All work index
+│  │  └─ <slug>.astro         Case study pages
+│  └─ thinking/
+│     ├─ index.astro          Essays index
+│     └─ <slug>.astro         Essay pages
+└─ styles/global.css
 
----
+public/
+├─ img/                       Tile + case-study imagery (preserved from v1)
+├─ docs/                      Whitepapers / scorecards
+└─ favicon.svg
 
-## Tech notes
+legacy/
+└─ index.v1.html              Archived v1 page (not deployed)
+```
 
-- No build step, no framework, no dependencies
-- Fonts: Fraunces (display, with WONK + SOFT axes), Space Grotesk (UI), JetBrains Mono (mono)
-- 15 portfolio images, ~1.7MB total (optimized JPEG)
-- Works without JavaScript (graceful fallback, content fully visible)
-- Mobile-first responsive
-- Respects `prefers-reduced-motion`
-- Custom cursor disabled on touch devices
+## Adding work or essays
 
-Built in Toronto.
+Each case study and essay is currently a single `.astro` file in
+`src/pages/work/` or `src/pages/thinking/`. To add new ones:
+
+1. Copy an existing file as a template.
+2. Update the front-matter `BaseLayout` props (title, description).
+3. Drop hero imagery into `public/img/work/` and reference it.
+4. Add a row to the relevant `index.astro` (and to home for "selected work").
+
+If the list grows past ~10 entries, graduate to Astro Content Collections
+(`src/content/work/`, `src/content/thinking/`) for typed front-matter and
+auto-routing.
+
+## Design tokens
+
+All design tokens live as CSS variables in `src/styles/global.css`:
+
+- Color: `--ink`, `--paper`, `--rule`, `--mute`
+- Type: `--font-display` (Fraunces), `--font-sans` (Inter)
+- Scale: `--t-xs` through `--t-5xl` (all `clamp()` for fluid sizing)
+- Layout: `--shell`, `--shell-narrow`, `--gutter`
+
+To rebrand colors or type, change the tokens in one place.
+
+## Notes
+
+- `.nojekyll` exists at repo root so GitHub Pages serves the build output
+  without Jekyll processing.
+- The v1 site lives at `legacy/index.v1.html` for reference.
