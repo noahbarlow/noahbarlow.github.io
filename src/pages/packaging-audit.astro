@@ -130,34 +130,60 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
   title="The Packaging Audit · Noah Barlow"
   description="A 90-second diagnostic for CPG founders. Score your packaging against the three-second test — announce category, signal tier, justify choice."
 >
-  <article class="quiz shell">
-    <header class="quiz-head">
-      <p class="eyebrow">Diagnostic · Packaging Audit</p>
-      <h1>Is your packaging winning the three-second test?</h1>
-      <p class="lede">
-        Eight questions. Ninety seconds. A retail-honest audit built around
-        the three jobs every package has to do at shelf — based on the
-        argument in <a href="/thinking/why-most-packaging-fails-in-3-seconds">this essay</a>.
-      </p>
-      <div class="quiz-meta">
+  <script is:inline>document.body.classList.add('dx-page');</script>
+
+  <div class="dx-bar">
+    <div class="mark"><a href="/">Noah Barlow.</a></div>
+    <div class="out"><a href="/">&larr; back to site</a></div>
+  </div>
+
+  <div class="dx-progress" id="dx-progress" style="--p: 0%"></div>
+
+  <div class="dx-shell">
+    <aside class="dx-cover" aria-hidden="true">
+      <span class="spark s1">&#10022;</span>
+      <span class="spark s2">&#10022;</span>
+      <span class="spark s3">&#10022;</span>
+      <span class="spark s4">&#10022;</span>
+      <span class="spark s5">&#10022;</span>
+      <svg class="flower f1" viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 8c-5 12-5 22 0 32 5-10 5-20 0-32zm32 42c-12-5-22-5-32 0 10 5 20 5 32 0zm-32 42c5-12 5-22 0-32-5 10-5 20 0 32zm-42-32c12 5 22 5 32 0-10-5-20-5-32 0zm10-30c5 8 12 14 22 17-3-10-9-17-22-17zm54 0c-13 0-19 7-22 17 10-3 17-9 22-17zm0 54c-5-8-12-14-22-17 3 10 9 17 22 17zm-54 0c13 0 19-7 22-17-10 3-17 9-22 17z"/>
+      </svg>
+      <h1>
+        THE<br />PACKAGING<br />AUD<span class="smiley"><span class="mouth"></span></span>T
+      </h1>
+      <p class="sub">(Three seconds. Three jobs. One score.)</p>
+      <div class="meta">
         <div><strong>8</strong> questions</div>
         <div><strong>~90</strong> seconds</div>
-        <div><strong>Free</strong> · no signup to start</div>
+        <div><strong>Free</strong> &middot; no signup</div>
       </div>
-    </header>
+    </aside>
 
-    <div id="quiz-root">
-      <div class="quiz-step active" data-step="intro">
-        <div class="quiz-options" style="border-top: 0;">
-          <button type="button" class="start-btn">
-            <span class="k">→</span>
+    <main class="dx-form" id="quiz-root">
+      <div class="quiz-step active intro" data-step="intro">
+        <div class="intro">
+          <p>
+            A retail-honest audit built around the three jobs every package
+            has to do at shelf &mdash; based on the argument in
+            <a href="/thinking/why-most-packaging-fails-in-3-seconds" style="color:var(--dx-accent);border-color:var(--dx-accent)">this essay</a>.
+          </p>
+          <p class="lede">
+            Eight short questions. No signup to start. Sharp result. If you
+            want a written read on your pack, drop your email after the
+            score.
+          </p>
+        </div>
+        <div style="margin-top: 1rem;">
+          <button type="button" class="pill start-btn">
             <span>Start the audit</span>
-            <span class="arr">↓</span>
+            <span aria-hidden="true">&rarr;</span>
           </button>
+          <span class="press-hint">press <kbd>Enter</kbd> &crarr;</span>
         </div>
       </div>
-    </div>
-  </article>
+    </main>
+  </div>
 
   <script
     is:inline
@@ -243,11 +269,15 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
         if (btns[map[key]]) btns[map[key]].click();
       });
 
+      const progressBar = document.getElementById('dx-progress');
+      const setProgress = (pct) => { if (progressBar) progressBar.style.setProperty('--p', pct + '%'); };
+
       function render() {
         if (state.idx === -1) return;
         if (state.idx >= total) return renderResults();
         const q = QUESTIONS[state.idx];
-        const pct = Math.round(((state.idx) / total) * 100);
+        const pct = Math.round(((state.idx + 1) / total) * 100);
+        setProgress(pct);
         const options = q.a.map((opt, i) => `
           <button type="button" data-score="${opt.s}" data-i="${i}">
             <span class="k">${String.fromCharCode(65 + i)}</span>
@@ -257,15 +287,11 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
         `).join('');
         root.innerHTML = `
           <div class="quiz-step active" data-step="${state.idx}">
-            <div class="quiz-progress">
-              <span>Question ${state.idx + 1} of ${total}</span>
-              <span class="bar" style="--p: ${pct}%"></span>
-            </div>
-            <h2 class="quiz-question">${esc(q.q)}</h2>
-            <div class="quiz-options">${options}</div>
-            <div class="quiz-nav">
-              ${state.idx > 0 ? '<button type="button" class="back-btn">&larr; Back</button>' : '<span></span>'}
-              <span class="kb-hint">Tap, or press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd></span>
+            <div class="dx-q-num"><span>${state.idx + 1}</span> <span class="arr">&rarr;</span></div>
+            <h2 class="dx-question">${esc(q.q)}</h2>
+            <div class="dx-options">${options}</div>
+            <div>
+              <span class="press-hint">press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> or <kbd>1</kbd>&ndash;<kbd>4</kbd>${state.idx > 0 ? ' &middot; <a href="#" class="back-btn" style="color:var(--dx-mute);border-bottom:1px solid var(--dx-mute)">&larr; back</a>' : ''}</span>
             </div>
           </div>
         `;
@@ -280,13 +306,13 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
             setTimeout(() => {
               state.idx++;
               if (wasIdx === 3 && state.idx < total) showToast(HALFWAY_TOAST);
-              window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
               render();
             }, 300);
           });
         });
         const back = root.querySelector('.back-btn');
-        if (back) back.addEventListener('click', () => {
+        if (back) back.addEventListener('click', (e) => {
+          e.preventDefault();
           if (state.locked) return;
           state.idx = Math.max(0, state.idx - 1);
           render();
@@ -341,12 +367,13 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
               </div>
             </div>
 
-            <div style="margin-top: clamp(2rem,4vw,3rem); display:flex; justify-content:space-between; gap: 1rem; flex-wrap: wrap;">
-              <button type="button" class="btn ghost" id="retake">${esc(RETAKE_LABEL)}</button>
-              <a class="btn ghost" href="${OTHER_DIAGNOSTIC_HREF}">${esc(OTHER_DIAGNOSTIC_LABEL)}</a>
+            <div class="dx-footer-actions">
+              <button type="button" id="retake">${esc(RETAKE_LABEL)}</button>
+              <a href="${OTHER_DIAGNOSTIC_HREF}">${esc(OTHER_DIAGNOSTIC_LABEL)}</a>
             </div>
           </div>
         `;
+        setProgress(100);
         // ── playful payoff ──
         animateCount(root.querySelector('.score .num'), 0, score, 1100);
         if (isTopTier) {
@@ -398,6 +425,13 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
       document.querySelector('.start-btn').addEventListener('click', () => {
         state.idx = 0;
         render();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (state.idx === -1 && e.key === 'Enter') {
+          e.preventDefault();
+          document.querySelector('.start-btn')?.click();
+        }
       });
     })();
   </script>

@@ -1210,6 +1210,427 @@ section.dark .tag.hot { background: var(--accent); border-color: var(--accent); 
 /* Nav dot uses the accent (subtle brand mark) */
 .nav-mark .dot { background: var(--accent); border: 1px solid var(--ink); }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   DIAGNOSTIC EXPERIENCE (.dx) — Modern Brand OS twin.
+   Full-bleed dark mode, Young Serif throughout, two-column cover/form
+   layout. Used on /scorecard and /packaging-audit pages only.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --dx-bg: #000000;
+  --dx-ink: #ffffff;
+  --dx-mute: rgba(255,255,255,0.55);
+  --dx-rule: rgba(255,255,255,0.18);
+  --dx-accent: #e1e326;
+  --font-serif-display: 'Young Serif', 'Cooper Black', serif;
+}
+
+body.dx-page {
+  background: var(--dx-bg);
+  color: var(--dx-ink);
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="%23e1e326" stroke="%23000" stroke-width="1.5"/><circle cx="11.5" cy="13.5" r="1.4" fill="%23000"/><circle cx="20.5" cy="13.5" r="1.4" fill="%23000"/><path d="M10.5 18.5 Q16 23 21.5 18.5" stroke="%23000" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>') 8 8, auto;
+}
+
+/* Hide the standard nav + footer when in diagnostic mode */
+body.dx-page .nav, body.dx-page .footer { display: none; }
+
+/* DX top bar — minimal, lime wordmark */
+.dx-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 5;
+  padding: clamp(1.25rem, 2.5vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  pointer-events: none;
+}
+.dx-bar .mark {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.4rem);
+  color: var(--dx-accent);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  pointer-events: auto;
+}
+.dx-bar .mark a { color: inherit; text-decoration: none; border: 0; }
+.dx-bar .out {
+  font-family: var(--font-serif-display);
+  font-size: 0.95rem;
+  color: var(--dx-mute);
+  pointer-events: auto;
+}
+.dx-bar .out a { color: var(--dx-mute); text-decoration: none; border: 0; }
+.dx-bar .out a:hover { color: var(--dx-ink); }
+
+/* DX shell — two columns. Cover left, form right. */
+.dx-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+@media (max-width: 900px) {
+  .dx-shell { grid-template-columns: 1fr; }
+  .dx-cover { padding: 8rem 1.5rem 4rem !important; min-height: auto !important; }
+  .dx-form { padding: 2rem 1.5rem 5rem !important; }
+}
+
+/* COVER PANEL — magazine-cover energy with sparkles */
+.dx-cover {
+  position: relative;
+  background: var(--dx-bg);
+  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid var(--dx-rule);
+}
+.dx-cover h1 {
+  font-family: var(--font-serif-display);
+  color: var(--dx-accent);
+  font-size: clamp(2.5rem, 1.8rem + 4.5vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  word-spacing: 0;
+  hyphens: none;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+.dx-cover h1 .smiley { white-space: nowrap; }
+.dx-cover h1 .smiley {
+  display: inline-block;
+  width: 0.78em; height: 0.78em;
+  background: var(--dx-accent);
+  border-radius: 50%;
+  position: relative;
+  margin: 0 0.02em -0.06em;
+  vertical-align: -0.06em;
+}
+.dx-cover h1 .smiley::before,
+.dx-cover h1 .smiley::after {
+  content: ''; position: absolute;
+  width: 0.12em; height: 0.12em;
+  background: var(--dx-bg);
+  border-radius: 50%;
+  top: 0.30em;
+}
+.dx-cover h1 .smiley::before { left: 0.20em; }
+.dx-cover h1 .smiley::after  { right: 0.20em; }
+.dx-cover h1 .mouth {
+  position: absolute;
+  left: 50%; top: 56%;
+  transform: translate(-50%, 0);
+  width: 0.32em; height: 0.18em;
+  border: 0.06em solid var(--dx-bg);
+  border-top: 0;
+  border-radius: 0 0 1em 1em;
+}
+.dx-cover .sub {
+  font-family: var(--font-serif-display);
+  color: var(--dx-accent);
+  font-size: clamp(1rem, 0.85rem + 0.5vw, 1.45rem);
+  line-height: 1.3;
+  margin-top: 1.6em;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+}
+.dx-cover .meta {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  font-family: var(--font-serif-display);
+  color: var(--dx-mute);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  display: flex; gap: clamp(1.25rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+.dx-cover .meta strong {
+  display: block;
+  color: var(--dx-ink);
+  font-weight: 400;
+  font-size: 1.4em;
+  margin-bottom: 0.15em;
+}
+
+/* SPARKLE ornaments on cover */
+.dx-cover .spark {
+  position: absolute;
+  color: var(--dx-ink);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.dx-cover .spark.s1 { top: 8%; right: 12%; font-size: 4rem; transform: rotate(8deg); opacity: 0.95; }
+.dx-cover .spark.s2 { top: 26%; right: 38%; font-size: 2.2rem; transform: rotate(-14deg); opacity: 0.85; }
+.dx-cover .spark.s3 { bottom: 14%; left: 6%; font-size: 5rem; transform: rotate(4deg); opacity: 0.9; }
+.dx-cover .spark.s4 { bottom: 30%; left: 28%; font-size: 1.8rem; transform: rotate(20deg); opacity: 0.7; }
+.dx-cover .spark.s5 { top: 50%; right: 8%; font-size: 2.5rem; transform: rotate(-8deg); opacity: 0.6; }
+.dx-cover .flower {
+  position: absolute;
+  width: 5rem; height: 5rem;
+  pointer-events: none;
+  z-index: 1;
+}
+.dx-cover .flower.f1 { top: -2rem; right: -1.5rem; transform: rotate(20deg); }
+.dx-cover .flower.f2 { bottom: -2rem; left: -2rem; transform: rotate(-30deg); }
+
+/* FORM PANEL — pure black, serif throughout */
+.dx-form {
+  background: var(--dx-bg);
+  padding: clamp(5rem, 10vh, 9rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+.dx-form * { font-family: var(--font-serif-display); }
+.dx-form .intro p {
+  font-family: var(--font-serif-display);
+  color: var(--dx-ink);
+  font-size: clamp(1.4rem, 1rem + 1vw, 2rem);
+  line-height: 1.3;
+  max-width: 36ch;
+  margin: 0 0 1.5em;
+}
+.dx-form .intro .lede {
+  color: var(--dx-mute);
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+  line-height: 1.4;
+  margin-top: 1.5em;
+}
+.dx-form .intro .meta-row {
+  margin-top: 2.5rem;
+  display: flex; gap: clamp(1rem, 3vw, 2rem); flex-wrap: wrap;
+  font-family: var(--font-serif-display);
+  color: var(--dx-mute);
+  font-size: 0.95rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--dx-rule);
+}
+
+/* Pill button — Modern Brand OS style */
+.dx-form .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--dx-accent);
+  color: var(--dx-bg);
+  border: 0;
+  border-radius: 200px;
+  padding: 0.65em 1.6em 0.7em;
+  font-family: var(--font-serif-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: transform 180ms var(--easing), background 180ms var(--easing);
+}
+.dx-form .pill:hover { transform: scale(1.04); background: #f6f854; }
+.dx-form .pill[disabled] { opacity: 0.6; cursor: not-allowed; }
+.dx-form .press-hint {
+  margin-left: 0.85rem;
+  font-family: var(--font-serif-display);
+  color: var(--dx-mute);
+  font-size: 0.95rem;
+}
+.dx-form .press-hint kbd {
+  font-family: var(--font-serif-display);
+  font-size: 0.95em;
+  padding: 0.05em 0.4em;
+  color: var(--dx-ink);
+  border: 1px solid var(--dx-mute);
+  border-radius: 4px;
+}
+
+/* DX QUESTION */
+.dx-q-num {
+  display: inline-flex; align-items: baseline; gap: 0.4em;
+  font-family: var(--font-serif-display);
+  color: var(--dx-accent);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.dx-q-num .arr { font-family: var(--font-serif-display); }
+.dx-question {
+  font-family: var(--font-serif-display);
+  color: var(--dx-ink);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.4rem);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  margin: 0 0 2rem;
+  max-width: 32ch;
+}
+
+/* DX OPTIONS — list with lime letter keys */
+.dx-options {
+  display: flex; flex-direction: column; gap: 0.55rem;
+  margin-bottom: 1.75rem;
+}
+.dx-options button {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--dx-rule);
+  border-radius: 6px;
+  padding: 0.95rem 1.1rem;
+  font-family: var(--font-serif-display);
+  font-size: 1.05rem;
+  color: var(--dx-ink);
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1.85rem 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  cursor: pointer;
+  transition: background 160ms var(--easing), border-color 160ms var(--easing), transform 160ms var(--easing);
+  line-height: 1.35;
+}
+.dx-options button .k {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.55rem; height: 1.55rem;
+  border: 1px solid var(--dx-mute);
+  border-radius: 5px;
+  color: var(--dx-ink);
+  font-size: 0.85rem;
+  font-family: var(--font-serif-display);
+}
+.dx-options button .arr {
+  color: var(--dx-mute);
+  opacity: 0;
+  transition: opacity 160ms var(--easing), transform 160ms var(--easing);
+}
+.dx-options button:hover {
+  background: rgba(225, 227, 38, 0.06);
+  border-color: var(--dx-accent);
+}
+.dx-options button:hover .k { border-color: var(--dx-accent); color: var(--dx-accent); }
+.dx-options button:hover .arr { opacity: 1; color: var(--dx-accent); transform: translateX(3px); }
+.dx-options button.picked {
+  background: var(--dx-accent);
+  color: var(--dx-bg);
+  border-color: var(--dx-accent);
+}
+.dx-options button.picked .k { background: var(--dx-bg); border-color: var(--dx-bg); color: var(--dx-accent); }
+.dx-options button.picked .arr { opacity: 1; color: var(--dx-bg); transform: translateX(8px); }
+
+/* DX progress — minimal top strip */
+.dx-progress {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  z-index: 4;
+}
+.dx-progress::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; height: 100%;
+  width: var(--p, 0%);
+  background: var(--dx-accent);
+  transition: width 320ms var(--easing);
+}
+
+/* DX results — keep stamp, slammed-in score, but on dark */
+.dx-form .stamp {
+  background: var(--dx-accent);
+  color: var(--dx-bg);
+  border: 1.5px solid var(--dx-accent);
+  box-shadow: 5px 5px 0 var(--dx-ink);
+}
+.dx-form .result-card .tier { color: var(--dx-accent); }
+.dx-form .result-card .score { color: var(--dx-ink); }
+.dx-form .result-card .score .num {
+  background-image: none;
+  color: var(--dx-accent);
+  padding: 0;
+}
+.dx-form .result-card .score .of { color: var(--dx-mute); }
+.dx-form .result-card h2 {
+  font-family: var(--font-serif-display);
+  color: var(--dx-ink);
+  font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.6rem);
+  line-height: 1.15;
+  max-width: 22ch;
+}
+.dx-form .result-card .body {
+  color: var(--dx-mute);
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.dx-form .result-recs li { border-color: var(--dx-rule); }
+.dx-form .result-recs .k { background: var(--dx-accent); color: var(--dx-bg); }
+.dx-form .result-recs .v { color: var(--dx-ink); }
+.dx-form .orn-row { color: var(--dx-accent); }
+.dx-form .orn-row::before, .dx-form .orn-row::after { background: var(--dx-rule); }
+.dx-form .eyebrow { color: var(--dx-accent); }
+
+/* DX gate — email capture inverted */
+.dx-form .gate {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--dx-rule);
+}
+.dx-form .gate h3 { color: var(--dx-ink); font-family: var(--font-serif-display); }
+.dx-form .gate .sub { color: var(--dx-mute); }
+.dx-form .gate input[type="email"],
+.dx-form .gate input[type="text"] {
+  background: rgba(0,0,0,0.6);
+  border-color: var(--dx-rule);
+  color: var(--dx-ink);
+  font-family: var(--font-serif-display);
+}
+.dx-form .gate input::placeholder { color: var(--dx-mute); }
+.dx-form .gate input:focus { outline-color: var(--dx-accent); border-color: var(--dx-accent); }
+.dx-form .gate .legal { color: var(--dx-mute); }
+.dx-form .gate .btn { background: var(--dx-accent); color: var(--dx-bg); border-color: var(--dx-accent); border-radius: 200px; padding: 0.8em 1.5em; font-family: var(--font-serif-display); font-size: 1.05rem; }
+.dx-form .gate .btn:hover { background: #f6f854; color: var(--dx-bg); }
+.dx-form .gate .btn.hot { background: var(--dx-accent); color: var(--dx-bg); }
+.dx-form .gate .thanks h3 { color: var(--dx-ink); }
+.dx-form .gate .thanks .btn { background: var(--dx-accent); color: var(--dx-bg); }
+.dx-form .gate .thanks .btn.ghost { background: transparent; color: var(--dx-ink); border-color: var(--dx-ink); }
+
+/* DX bottom CTAs (retake + try other) */
+.dx-form .dx-footer-actions {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--dx-rule);
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-family: var(--font-serif-display);
+}
+.dx-form .dx-footer-actions a, .dx-form .dx-footer-actions button {
+  background: transparent;
+  color: var(--dx-ink);
+  border: 1px solid var(--dx-mute);
+  padding: 0.55em 1.2em;
+  font-family: var(--font-serif-display);
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 200px;
+  text-decoration: none;
+  transition: border-color 160ms, color 160ms;
+}
+.dx-form .dx-footer-actions a:hover, .dx-form .dx-footer-actions button:hover {
+  border-color: var(--dx-accent);
+  color: var(--dx-accent);
+}
+
+/* DX toast — keep, but recolor for dark */
+body.dx-page .toast {
+  background: var(--dx-accent);
+  color: var(--dx-bg);
+  border-color: var(--dx-bg);
+  box-shadow: 6px 6px 0 var(--dx-ink);
+  font-family: var(--font-serif-display);
+}
+
+/* DX confetti — keep, but use the OS lime */
+body.dx-page .confetti i { background: var(--dx-accent); border-color: var(--dx-ink); }
+body.dx-page .confetti i:nth-child(2n) { background: var(--dx-ink); border-color: var(--dx-accent); }
+body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color: var(--dx-accent); }
+
 /* ---------- utility ---------- */
 .muted { color: var(--mute); }
 .center { text-align: center; }
