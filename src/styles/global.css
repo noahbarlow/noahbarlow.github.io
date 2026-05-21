@@ -1011,7 +1011,8 @@ section.dark .tag.hot { background: var(--accent); border-color: var(--accent); 
 .quiz-options button:hover .arr { color: var(--accent-shadow); }
 .quiz-options button:hover .k { color: var(--accent-shadow); }
 
-/* Stamp — tier badge on diagnostic results. Lime fill, ink type, all caps. */
+/* Stamp — tier badge on diagnostic results. Lime fill, ink type, all caps.
+   Slams in with a rotate-scale entry on result render. */
 .stamp {
   display: inline-block;
   background: var(--accent);
@@ -1026,6 +1027,129 @@ section.dark .tag.hot { background: var(--accent); border-color: var(--accent); 
   box-shadow: 4px 4px 0 var(--ink);
   transform: rotate(-1.5deg);
   margin-bottom: 1.5rem;
+  animation: stampSlam 560ms cubic-bezier(0.2, 1.4, 0.3, 1) both;
+}
+@keyframes stampSlam {
+  0%   { opacity: 0; transform: rotate(-14deg) scale(1.7); }
+  55%  { opacity: 1; transform: rotate(-1.5deg) scale(0.92); }
+  80%  { transform: rotate(-1.5deg) scale(1.04); }
+  100% { transform: rotate(-1.5deg) scale(1); }
+}
+
+/* ───── PLAYFUL DIAGNOSTIC INTERACTIONS ───── */
+
+/* Step entry animation */
+@keyframes quizStepIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.quiz-step.active { animation: quizStepIn 380ms var(--easing) both; }
+
+/* Option flash + arrow slide on pick — runs in the 280ms before advance */
+.quiz-options button.picked {
+  background: var(--accent);
+  color: var(--ink);
+  padding-left: 0.5rem;
+}
+.quiz-options button.picked .k,
+.quiz-options button.picked .arr { color: var(--ink); }
+.quiz-options button.picked .arr {
+  transform: translateX(12px);
+  transition: transform 240ms cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Progress bar — fill (existing ::after) + traveling sparkle (::before) */
+.quiz-progress .bar { position: relative; overflow: visible; }
+.quiz-progress .bar::before {
+  content: '\2726';
+  position: absolute;
+  top: 50%;
+  left: var(--p, 0%);
+  transform: translate(-50%, -50%);
+  color: var(--accent-shadow);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  transition: left 360ms var(--easing);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Confetti — only on top-tier results, earned not given */
+.confetti {
+  position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50;
+}
+.confetti i {
+  position: absolute;
+  width: 10px; height: 14px;
+  background: var(--accent);
+  border: 1.5px solid var(--ink);
+  animation: confettiFall 1800ms ease-in forwards;
+  opacity: 0;
+}
+.confetti i:nth-child(2n) { background: var(--ink); border-color: var(--accent); width: 6px; height: 6px; border-radius: 50%; }
+.confetti i:nth-child(3n) { background: var(--paper); border-color: var(--ink); transform-origin: center; }
+@keyframes confettiFall {
+  0%   { opacity: 0; transform: translateY(-15vh) rotate(0deg); }
+  8%   { opacity: 1; }
+  100% { opacity: 0; transform: translateY(115vh) rotate(720deg); }
+}
+
+/* Halfway toast — script italic message mid-quiz */
+.toast {
+  position: fixed;
+  left: 50%;
+  top: 6rem;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.85em 1.4em 0.95em;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  z-index: 100;
+  border: 1.5px solid var(--accent);
+  box-shadow: 6px 6px 0 var(--accent);
+  pointer-events: none;
+  animation: toastIn 320ms cubic-bezier(0.2, 1.2, 0.3, 1) both,
+             toastOut 320ms ease-in 1700ms forwards;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-16px) rotate(-2deg); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) rotate(-1.5deg); }
+}
+@keyframes toastOut {
+  to { opacity: 0; transform: translateX(-50%) translateY(-12px) rotate(-1.5deg); }
+}
+
+/* Keyboard hint under the question */
+.kb-hint {
+  font-size: var(--t-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 1rem;
+}
+.kb-hint kbd {
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  padding: 0.15em 0.45em;
+  margin: 0 0.1em;
+  border: 1px solid var(--mute);
+  border-bottom-width: 2px;
+  background: var(--paper-2);
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-step.active,
+  .stamp,
+  .confetti i,
+  .toast { animation: none; }
+  .quiz-options button.picked .arr { transform: none; transition: none; }
 }
 
 /* Result score — massive, with lime highlighter behind the number. */
