@@ -123,7 +123,7 @@ const tiers = [
   },
 ];
 
-const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORM_ID';
+const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
 ---
 
 <BaseLayout
@@ -287,22 +287,38 @@ const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORM_ID';
           render();
         });
         const form = document.getElementById('lead-form');
+        const showError = () => {
+          let err = document.getElementById('gate-err');
+          if (!err) {
+            err = document.createElement('p');
+            err.id = 'gate-err';
+            err.className = 'legal';
+            err.style.color = '#a31d10';
+            err.style.marginTop = '0.6rem';
+            form.appendChild(err);
+          }
+          err.innerHTML = "That didn't send. Email <a href=\"mailto:noah@smalleragency.com\">noah@smalleragency.com</a> directly and I'll respond personally.";
+        };
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
           const action = form.getAttribute('action');
-          if (action.includes('REPLACE_WITH_FORM_ID')) {
-            document.getElementById('gate').classList.add('sent');
-            return;
-          }
+          const submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
           try {
             const res = await fetch(action, {
               method: 'POST',
               body: new FormData(form),
               headers: { Accept: 'application/json' },
             });
-            if (res.ok) document.getElementById('gate').classList.add('sent');
+            if (res.ok) {
+              document.getElementById('gate').classList.add('sent');
+            } else {
+              showError();
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = GATE_SUBMIT_LABEL; }
+            }
           } catch (err) {
-            document.getElementById('gate').classList.add('sent');
+            showError();
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = GATE_SUBMIT_LABEL; }
           }
         });
       }
