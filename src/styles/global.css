@@ -422,7 +422,7 @@ section + section { border-top: var(--rule-w) solid var(--rule); }
 }
 .footer-inner {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
 }
@@ -444,7 +444,7 @@ section + section { border-top: var(--rule-w) solid var(--rule); }
 }
 @media (max-width: 760px) {
   .footer-inner { grid-template-columns: 1fr 1fr; }
-  .footer-inner > div:first-child { grid-column: span 2; }
+  .footer-inner > div:first-child { grid-column: 1 / -1; }
   .footer .legal { flex-direction: column; gap: 0.4rem; }
 }
 
@@ -1442,6 +1442,60 @@ body.dx-page .nav, body.dx-page .footer { display: none; }
   padding-top: 1.25rem;
   border-top: 1px solid var(--dx-rule);
 }
+
+/* Two-column "who / what" block inside diagnostic intros */
+.dx-form .intro .cols {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--dx-rule);
+}
+.dx-form .intro .cols .head {
+  display: block;
+  font-family: var(--font-serif-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dx-accent);
+  margin-bottom: 0.85em;
+}
+.dx-form .intro .cols ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dx-form .intro .cols li {
+  position: relative;
+  padding: 0 0 0.55em 1em;
+  color: var(--dx-ink);
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: var(--font-serif-display);
+}
+.dx-form .intro .cols li::before {
+  content: '\2192';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--dx-accent);
+}
+@media (max-width: 640px) {
+  .dx-form .intro .cols { grid-template-columns: 1fr; }
+}
+.dx-form .intro .stats {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  display: flex; gap: clamp(0.85rem, 2vw, 1.6rem); flex-wrap: wrap;
+  font-family: var(--font-serif-display);
+  color: var(--dx-mute);
+  font-size: 0.92rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dx-rule);
+  align-items: center;
+}
+.dx-form .intro .stats strong { color: var(--dx-ink); font-weight: 500; }
+.dx-form .intro .stats .sep { color: var(--dx-rule); }
 
 /* Pill button — Modern Brand OS style */
 .dx-form .pill {
