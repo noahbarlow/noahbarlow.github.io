@@ -1897,36 +1897,168 @@ body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color:
 .resume-note { font-size: var(--t-sm); color: var(--mute); margin-top: 1.25em; }
 .resume-cta { padding-top: clamp(2.5rem, 5vw, 4rem); }
 
-/* PRINT — Cmd+P → "Save as PDF" produces a clean version */
+/* PRINT — tuned for letter-size, 2-3 page result */
+@page { size: letter; margin: 0.5in 0.55in 0.5in 0.55in; }
 @media print {
   html, body { background: white; cursor: auto !important; }
   body * { cursor: auto !important; }
-  .nav, .footer, .no-print, .ticker, .skip { display: none !important; }
-  body { font-size: 10pt; line-height: 1.4; color: #111; }
+  .nav, .footer, .no-print, .ticker, .skip, .resume-cta { display: none !important; }
+  body { font-size: 9pt; line-height: 1.35; color: #111; }
+
+  /* Resume shell — kill page padding, tighten everything */
   .resume { padding-block: 0; }
-  .resume-head { padding-bottom: 1rem; }
-  .resume-headline h1 { font-size: 36pt; line-height: 1; margin-top: 0.2em; }
-  .resume-headline .lede { font-size: 11pt; max-width: 36ch; }
-  .resume-headline .lede em { background: none; padding: 0; }
-  .resume-section-head h2 em { background: none; padding: 0; }
-  .resume-stats { padding-block: 0.5rem; gap: 1.25rem; }
-  .resume-stats strong { font-size: 16pt; }
-  .resume-section { padding-block: 0.65rem; page-break-inside: avoid; }
+  .resume .shell { padding-left: 0; padding-right: 0; max-width: none; }
+
+  /* Header */
+  .resume-head {
+    padding-bottom: 0.5rem;
+    grid-template-columns: 2fr 1.1fr;
+    gap: 1.5rem;
+    page-break-inside: avoid;
+  }
+  .resume-headline h1 { font-size: 32pt; line-height: 0.95; margin-top: 0.1em; }
+  .resume-headline .eyebrow { font-size: 7pt; letter-spacing: 0.18em; }
+  .resume-headline .lede { font-size: 10pt; max-width: 38ch; margin-top: 0.6rem; line-height: 1.3; }
+  .resume-headline .lede em { background: none !important; padding: 0; font-style: italic; }
+
+  /* Aside */
+  .resume-aside { gap: 0.5rem; font-size: 8pt; }
+  .resume-aside .aside-head { font-size: 6.5pt; letter-spacing: 0.16em; margin-bottom: 0.2rem; }
+  .resume-aside p { margin: 0; line-height: 1.3; }
+  .resume-aside a { border-bottom: 0; color: #111; }
+
+  /* Stats — force single row of 5 */
+  .resume-stats {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    padding-block: 0.4rem !important;
+    gap: 0.5rem !important;
+  }
+  .resume-stats div { font-size: 7.5pt; }
+  .resume-stats strong { font-size: 14pt; margin-bottom: 0.05em; }
+
+  /* Section heads — tighter */
+  .resume-section { padding-block: 0.45rem !important; }
   .resume-section:last-of-type { border-bottom: 0; }
-  .resume-section-head { margin-bottom: 0.65rem; }
-  .resume-section-head h2 { font-size: 14pt; }
-  .resume-focus { grid-template-columns: repeat(3, 1fr); }
-  .resume-focus li { padding: 0.5rem 0.75rem; }
-  .resume-focus h3 { font-size: 10pt; }
-  .resume-focus p { font-size: 8.5pt; }
-  .resume-roles > li { padding-block: 0.5rem; page-break-inside: avoid; }
-  .resume-roles .when { font-size: 9pt; }
-  .resume-roles h3 { font-size: 11pt; }
-  .resume-roles .role-body p { font-size: 9pt; margin-bottom: 0.4em; }
-  .resume-roles .role-stats li { font-size: 8.5pt; }
-  .resume-list .name { font-size: 10pt; }
-  .resume-list .meta { font-size: 8.5pt; }
+  .resume-section-head { margin-bottom: 0.4rem !important; }
+  .resume-section-head .eyebrow { font-size: 6.5pt; letter-spacing: 0.18em; margin-bottom: 0.1em !important; }
+  .resume-section-head h2 { font-size: 13pt; line-height: 1.05; }
+  .resume-section-head h2 em { background: none !important; padding: 0; font-style: italic; }
+
+  /* Focus 3-col — tighter */
+  .resume-focus {
+    grid-template-columns: repeat(3, 1fr) !important;
+    border-top: 0.5pt solid #d8d2c2 !important;
+  }
+  .resume-focus li {
+    padding: 0.45rem 0.55rem !important;
+    grid-template-columns: 1.4rem 1fr !important;
+    gap: 0.35rem !important;
+    border-right: 0.5pt solid #d8d2c2 !important;
+  }
+  .resume-focus li:last-child { border-right: 0 !important; }
+  .resume-focus .n { font-size: 9pt; }
+  .resume-focus h3 { font-size: 8.5pt; margin: 0 0 0.25em !important; line-height: 1.1; }
+  .resume-focus p { font-size: 7.5pt; line-height: 1.3; }
+
+  /* Trajectory — pure block flow in print. Year as small eyebrow above
+     each role. No grid, no inline display tricks (those were causing
+     Chrome to yank role-stats out of their parent on page overflow). */
+  .resume-roles { display: block !important; }
+  .resume-roles > li {
+    display: block !important;
+    padding: 0.5rem 0 0.55rem !important;
+    /* Intentionally NOT using break-inside: avoid — that caused Chrome
+       to yank orphaned bullets to the bottom of the last page on overflow.
+       Better to let a long role split cleanly than to lose its bullets. */
+    border-top: 0.5pt solid #d8d2c2 !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+  }
+  /* Force the 6th role (2009 Launch) onto page 3 — cleaner than letting
+     it orphan its title at the bottom of page 2. */
+  .resume-roles > li:nth-child(6) {
+    break-before: page !important;
+    page-break-before: page !important;
+  }
+  .resume-roles > li:last-child { border-bottom: 0.5pt solid #d8d2c2 !important; }
+  .resume-roles .when {
+    display: block !important;
+    font-family: var(--font-sans);
+    font-size: 7.5pt !important;
+    font-weight: 500;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase;
+    color: #6a665d !important;
+    margin: 0 0 0.2em !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+  .resume-roles .role-body { display: block !important; }
+  .resume-roles h3 {
+    display: block !important;
+    font-family: var(--font-display);
+    font-size: 11pt !important;
+    line-height: 1.15 !important;
+    margin: 0 0 0.25em !important;
+  }
+  .resume-roles h3 .org { font-size: 0.82em; font-style: italic; color: #6a665d; font-weight: 400; }
+  .resume-roles .role-body p {
+    display: block !important;
+    font-size: 8.5pt !important;
+    margin: 0.2em 0 0.4em !important;
+    line-height: 1.4 !important;
+    max-width: 72ch !important;
+  }
+  .resume-roles .role-stats {
+    display: block !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0.2em 0 0 !important;
+    /* Glue bullets to their parent role — don't break before this list */
+    break-before: avoid !important;
+    page-break-before: avoid !important;
+  }
+  .resume-roles .role-body p {
+    /* Same: keep body paragraph from breaking away from the title above */
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+  .resume-roles .role-stats li {
+    display: block !important;
+    font-size: 7.5pt !important;
+    line-height: 1.4 !important;
+    padding: 0.05em 0 0.05em 1em !important;
+    position: relative !important;
+    color: #111 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .resume-roles .role-stats li::before {
+    content: '→' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0.1em !important;
+    color: #6a665d !important;
+  }
+
+  /* Lists (selected work, frameworks, press, education) */
+  .resume-list li {
+    padding: 0.3em 0 !important;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr) !important;
+    gap: 0.5rem !important;
+  }
+  .resume-list .name { font-size: 9pt; }
+  .resume-list .meta { font-size: 7.5pt; }
+  .resume-note { font-size: 7.5pt; margin-top: 0.5em; }
+
+  /* Page-break hints */
+  .resume-section { page-break-inside: avoid; }
+  .resume-head, .resume-stats { page-break-after: auto; }
+
   a { color: #111; text-decoration: none; border: 0 !important; }
+  /* Kill the lime highlighter slabs in print */
+  em, .lede em { background: none !important; }
 }
 
 /* ---------- diagnostics hub (/diagnostics) ---------- */
