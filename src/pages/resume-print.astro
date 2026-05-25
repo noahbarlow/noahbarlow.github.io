@@ -174,7 +174,6 @@ const roles = [
         display: grid;
         grid-template-columns: 1.55fr 1fr;
         gap: 0.45in;
-        height: 100%;
       }
       .p1-left { display: flex; flex-direction: column; }
       .p1-right { display: flex; flex-direction: column; align-items: stretch; }
@@ -242,20 +241,11 @@ const roles = [
       .aside-block p { margin: 0 0 0.04in; }
       .aside-block + .aside-block { margin-top: 0.18in; }
 
-      /* sparkles for cover */
-      .sparkle {
-        position: absolute;
-        color: var(--accent-shadow);
-        font-family: var(--font-display);
-        line-height: 1;
-        opacity: 0.85;
-      }
-      .sparkle.s1 { top: 0.35in; right: 0.6in; font-size: 22pt; transform: rotate(8deg); }
-      .sparkle.s2 { top: 1.4in; right: 0.4in; font-size: 14pt; transform: rotate(-12deg); }
+      /* (sparkles removed) */
 
       /* stats row */
       .stats {
-        margin-top: auto;
+        margin-top: 0.28in;
         padding-top: 0.18in;
         border-top: 0.5pt solid var(--rule);
         display: grid;
@@ -509,9 +499,6 @@ const roles = [
   <body>
     <!-- ─────────────── PAGE 1 — COVER ─────────────── -->
     <section class="page">
-      <span class="sparkle s1" aria-hidden="true">&#10022;</span>
-      <span class="sparkle s2" aria-hidden="true">&#10022;</span>
-
       <div class="p1-grid">
         <div class="p1-left">
           <p class="eyebrow resume-eye">Resume &middot; 2026</p>
@@ -528,15 +515,6 @@ const roles = [
             "The most useful thing a senior operator brings to a founder isn't another opinion. It's pattern recognition."
           </div>
           <p class="pull-attr">— On the work</p>
-          <div style="flex: 1;"></div>
-
-          <div class="stats">
-            <div class="stat"><strong>20+</strong><span>years operating</span></div>
-            <div class="stat"><strong>12+</strong><span>brands launched</span></div>
-            <div class="stat"><strong>300+</strong><span>packages shipped</span></div>
-            <div class="stat"><strong>$1B+</strong><span>portfolios advised</span></div>
-            <div class="stat"><strong>$8M+</strong><span>seed capital</span></div>
-          </div>
         </div>
 
         <div class="p1-right">
@@ -555,16 +533,20 @@ const roles = [
             <p><a href="https://www.linkedin.com/in/noahbarlow/">linkedin.com/in/noahbarlow</a></p>
             <p><a href="https://noahbarlow.github.io">noahbarlow.github.io</a></p>
           </div>
-          <div class="aside-block">
-            <p class="aside-head">Sectors</p>
-            <p>Beverage · Wellness · RTD · Cannabis · Food · Lifestyle</p>
-          </div>
         </div>
       </div>
 
-      <!-- "Three jobs" framework, full-width below the grid -->
-      <div style="grid-column: 1 / -1; margin-top: 0.2in;"></div>
-      <div class="runhead" style="margin-top: 0.25in;">
+      <!-- Stats strip — full width, below the hero grid -->
+      <div class="stats">
+        <div class="stat"><strong>20+</strong><span>years operating</span></div>
+        <div class="stat"><strong>12+</strong><span>brands launched</span></div>
+        <div class="stat"><strong>300+</strong><span>packages shipped</span></div>
+        <div class="stat"><strong>$1B+</strong><span>portfolios advised</span></div>
+        <div class="stat"><strong>$8M+</strong><span>seed capital</span></div>
+      </div>
+
+      <!-- "Three jobs" framework, full-width below stats -->
+      <div class="runhead" style="margin-top: 0.28in;">
         <span class="n">01</span><span class="l">What I'm hired for</span>
       </div>
       <div class="framework">
