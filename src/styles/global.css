@@ -1284,6 +1284,35 @@ body.dx-page .nav, body.dx-page .footer { display: none; }
   overflow: hidden;
   border-right: 1px solid var(--dx-rule);
 }
+
+/* Image-backed cover (used by /modern-brand-os) — chapter card fills
+   the left panel; the typography is already in the asset. Crossfade
+   between cards as questions advance. */
+.dx-cover.image {
+  padding: 0;
+}
+.dx-cover.image .stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 540px;
+  background: var(--dx-bg);
+}
+.dx-cover.image .stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 260ms var(--easing);
+}
+.dx-cover.image .stage img.active { opacity: 1; }
+@media (max-width: 900px) {
+  .dx-cover.image { padding: 0 !important; }
+  .dx-cover.image .stage { height: 60vh; min-height: 380px; }
+}
 .dx-cover h1 {
   font-family: var(--font-serif-display);
   color: var(--dx-accent);
