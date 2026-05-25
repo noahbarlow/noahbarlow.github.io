@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const diagnostics = [
+  {
+    n: '01',
+    slug: '/modern-brand-os',
+    name: 'The Modern Brand OS',
+    cat: 'Gen-Z Brand · 11 questions · 2 min',
+    img: '/img/genz-os/Smaller_GenZ_OS_TypeForm-01.jpg',
+    who:
+      'Founders and brand leads operating in mature categories where Gen-Z is reshaping the rules of attention, meaning, and loyalty.',
+    get:
+      'A score across the eleven principles of the Modern Brand OS, a tier read on what your brand is actually running, and the full OS deck plus a personal note from Noah.',
+    accent: '#d4ff1a',
+  },
+  {
+    n: '02',
+    slug: '/scorecard',
+    name: 'The Challenger Scorecard',
+    cat: 'Challenger Brand · 8 questions · 90s',
+    img: '/img/work/miller-lite.jpg',
+    who:
+      'Founder-led brands trying to behave bigger than they spend — in CPG, beverage, wellness, or any category with an obvious leader to dethrone.',
+    get:
+      'A score against the seven moves real challengers make, the tier your brand is operating at, and the Challenger Playbook PDF plus a personal note.',
+    accent: '#d4ff1a',
+  },
+  {
+    n: '03',
+    slug: '/packaging-audit',
+    name: 'The Packaging Audit',
+    cat: 'Retail Pack · 8 questions · 90s',
+    img: '/img/work/pilsner-urquell.jpg',
+    who:
+      'CPG founders and marketing leads whose package is the most under-optimized line item in the plan. Beverage, food, wellness, RTD.',
+    get:
+      'A score against the three jobs every package has to do at shelf, the failure mode your pack is in, and a written teardown reply from Noah within 48h.',
+    accent: '#d4ff1a',
+  },
+];
+---
+
+<BaseLayout
+  title="Diagnostics · Noah Barlow"
+  description="Three short tools that score your brand. Two minutes each. Get a personal read back from Noah, plus the framework the diagnostic is built on."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">Diagnostics</p>
+      <h1 style="margin-top:1.5rem; max-width: 14ch;">
+        Score your brand. <em>Get a real read.</em>
+      </h1>
+      <p class="hero-sub">
+        Three short tools, ninety seconds to two minutes each. Each one is an
+        interactive version of a framework I use with clients — score your
+        brand, get a personal note back, decide whether a conversation makes
+        sense.
+      </p>
+      <div class="hero-meta">
+        <div class="item"><strong>3</strong><span>diagnostics</span></div>
+        <div class="item"><strong>~5</strong><span>minutes for all three</span></div>
+        <div class="item"><strong>48h</strong><span>personal reply</span></div>
+        <div class="item"><strong>0</strong><span>newsletter spam</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTIC CARDS -->
+  <section style="padding-top: 0;">
+    <div class="shell">
+      <ul class="dx-hub" style="list-style:none; padding:0; margin:0;">
+        {diagnostics.map((d, i) => (
+          <li class="dx-hub-row">
+            <a href={d.slug} class="dx-hub-card">
+              <div class="dx-hub-frame">
+                <img src={d.img} alt="" loading="lazy" />
+              </div>
+              <div class="dx-hub-body">
+                <div class="runhead"><span class="n">{d.n}</span><span class="l">{d.cat}</span></div>
+                <h2>{d.name}</h2>
+                <div class="dx-hub-grid">
+                  <div>
+                    <p class="eyebrow" style="display:block; margin-bottom:0.4em;">Who it's for</p>
+                    <p style="color: var(--ink-2); max-width: 36ch;">{d.who}</p>
+                  </div>
+                  <div>
+                    <p class="eyebrow" style="display:block; margin-bottom:0.4em;">What you'll get</p>
+                    <p style="color: var(--ink-2); max-width: 36ch;">{d.get}</p>
+                  </div>
+                </div>
+                <div class="dx-hub-cta">
+                  <span class="btn hot">Start the diagnostic &rarr;</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW THEY WORK -->
+  <section>
+    <div class="shell">
+      <div class="s-head">
+        <div class="left">
+          <span class="eyebrow">How they work</span>
+          <h2>Quick. Useful. <em>No newsletter trap.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Each diagnostic is a multiple-choice tool that takes 90 seconds to
+            2 minutes. At the end you get an on-screen tier read with three or
+            four specific next moves, plus an optional email gate that
+            delivers the underlying framework PDF and a personal follow-up
+            from me within 48 hours.
+          </p>
+          <p style="margin-top: 1em; color: var(--mute); font-size: var(--t-sm);">
+            One human reply. No drip sequence. No newsletter signup. No
+            follow-up spam unless you reply asking for it.
+          </p>
+        </div>
+      </div>
+
+      <div class="framework">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Take it</h3>
+          <p>
+            Eight to eleven multiple-choice questions, one per screen. Keyboard
+            shortcuts to fly through it. No login, no signup. Free.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Get the read</h3>
+          <p>
+            On-screen tier with a written diagnosis and three to four specific
+            moves to focus on. Useful even if you do nothing else.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Want more?</h3>
+          <p>
+            Drop an email and I'll send the full framework deck plus a
+            personal note tailored to your result. Reply if you want to talk.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOT SURE WHICH -->
+  <section>
+    <div class="shell">
+      <div class="contact-card">
+        <div class="left">
+          <p class="eyebrow">Not sure which fits</p>
+          <h2 style="margin-top: 0.85rem;">Email me and I'll point you.</h2>
+        </div>
+        <div class="right">
+          <p>
+            One-line description of the brand and the decision you're trying
+            to make. I'll tell you which diagnostic is the sharpest read for
+            your situation — and whether a conversation is the better move
+            outright.
+          </p>
+          <div class="actions">
+            <a href="mailto:noah@smalleragency.com?subject=Which%20diagnostic%20fits%20me%3F" class="btn hot">Email Noah</a>
+            <a href="/contact" class="btn ghost">Book a call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

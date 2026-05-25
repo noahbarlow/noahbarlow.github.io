@@ -1660,6 +1660,65 @@ body.dx-page .confetti i { background: var(--dx-accent); border-color: var(--dx-
 body.dx-page .confetti i:nth-child(2n) { background: var(--dx-ink); border-color: var(--dx-accent); }
 body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color: var(--dx-accent); }
 
+/* ---------- diagnostics hub (/diagnostics) ---------- */
+.dx-hub { display: grid; gap: clamp(2rem, 4vw, 4rem); }
+.dx-hub-row { padding: 0; }
+.dx-hub-card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  align-items: stretch;
+  text-decoration: none;
+  border-bottom: 0;
+  color: inherit;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  border-top: var(--rule-w) solid var(--rule);
+  transition: background 200ms var(--easing);
+}
+.dx-hub-row:last-child .dx-hub-card { border-bottom: var(--rule-w) solid var(--rule); }
+.dx-hub-card:hover { opacity: 1; }
+.dx-hub-card:hover .dx-hub-frame img { transform: scale(1.02); }
+.dx-hub-card:hover .btn.hot { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+
+.dx-hub-frame {
+  aspect-ratio: 4 / 3;
+  background: var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+.dx-hub-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--easing);
+}
+
+.dx-hub-body { display: flex; flex-direction: column; justify-content: center; }
+.dx-hub-body .runhead { margin-bottom: 0.85em; }
+.dx-hub-body h2 {
+  font-size: var(--t-3xl);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  max-width: 14ch;
+}
+.dx-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: var(--rule-w) solid var(--rule);
+}
+.dx-hub-grid p { font-size: var(--t-sm); line-height: 1.5; margin: 0; }
+.dx-hub-cta { margin-top: 1.5rem; }
+
+@media (max-width: 760px) {
+  .dx-hub-card { grid-template-columns: 1fr; }
+  .dx-hub-grid { grid-template-columns: 1fr; }
+  .dx-hub-frame { aspect-ratio: 16 / 10; }
+}
+
 /* ---------- utility ---------- */
 .muted { color: var(--mute); }
 .center { text-align: center; }
