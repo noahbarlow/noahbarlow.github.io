@@ -1,0 +1,689 @@
+---
+// PDF-only resume template. Designed at US Letter (8.5"×11") with the
+// full v2 visual identity intact (cream paper, lime accents, Fraunces
+// serif with WONK/SOFT italic, portrait, sparkles). Rendered via Chrome
+// headless to /docs/Noah_Barlow_Resume.pdf. NOT linked from nav — used
+// only as a PDF source.
+
+const roles = [
+  {
+    when: '2017 — Now',
+    title: 'Founder & Senior Operator',
+    org: 'Smaller Agency / Independent Advisory',
+    body:
+      "Founded Smaller Agency. Now operating as a senior strategic advisor for founder-led challenger brands — brand strategy, packaging systems, and growth leadership delivered as a partner rather than an agency. Selective engagements, senior involvement, no production overhead.",
+    stats: [
+      '12+ brands launched in the Canadian market',
+      '300+ packages designed and shipped to retail',
+      '$8M+ in seed capital supported via IR + launch leadership',
+    ],
+  },
+  {
+    when: '2019 — 2021',
+    title: 'Chief Marketing Officer',
+    org: 'Doseology Sciences',
+    body:
+      "Founding CMO of a functional mushroom wellness brand. Built the brand platform, IR deck, website, CRM, packaging, and DTC engine from day one. Owned brand mission, vision, and all customer-facing touchpoints alongside the founder team.",
+    stats: [
+      '$4M+ in funding supported through IR + pitch communications',
+      '8 product lines developed (tinctures, powders, supplements)',
+      'Social audience grown to 10K in year one',
+    ],
+  },
+  {
+    when: '2015 — 2019',
+    title: 'VP Marketing',
+    org: 'GreenSpace Brands (TSXV)',
+    body:
+      "Owned brand and marketing across a publicly-traded CPG portfolio of better-for-you food, beverage, and wellness brands distributed nationally across grocery and specialty retail.",
+    stats: [
+      'Responsible for $36M+ in annual brand revenue across 8 CPG brands',
+      '6 direct reports across brand, creative, and growth',
+      '8 new products with 26 variants launched in year one',
+    ],
+  },
+  {
+    when: '2013 — 2015',
+    title: 'Director, Brand & Programming',
+    org: 'Me&Lewis Ideas',
+    body:
+      "Led the SABMiller Canada portfolio — Miller Lite, MGD, Grolsch, Pilsner Urquell, Peroni. Directed the Canadian launch of Miller Lite, building the light-beer category in Canada from a standing start.",
+    stats: [
+      'Grew Toronto office revenue 300% in year one',
+      'Doubled local client roster without adding overhead',
+    ],
+  },
+  {
+    when: '2011 — 2013',
+    title: 'Director, Development & Strategy',
+    org: 'Blueband Digital',
+    body:
+      "Built early-stage digital agency capabilities for CPG and lifestyle brands. Direct client wins included Weetabix, TD, Telus, PlayStation, and Virgin Gaming.",
+    stats: ['$1M+ in net new billings in year one'],
+  },
+  {
+    when: '2009 — 2011',
+    title: 'National Manager, Client Development',
+    org: 'Launch (acquired by Mosaic, 2012)',
+    body:
+      "Built the national client portfolio for an experiential and retail-activation agency. Direct wins: LEGO, Canadian Tire, Carlsberg, PlayStation, Apple, Levi's, Clif Bar.",
+    stats: ['$10M+ in net new billings across the portfolio'],
+  },
+  {
+    when: '2004 — 2008',
+    title: 'Account Executive',
+    org: 'Segal Communications',
+    body:
+      "Consulting and public relations agency. The years that taught me the agency business from the inside.",
+    stats: [],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Noah Barlow — Resume</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <style>
+      /* ─── tokens (matched to v2 site) ─── */
+      :root {
+        --ink: #0a0a0a;
+        --ink-2: #1a1a1a;
+        --paper: #f5f1e8;
+        --paper-2: #ede8dc;
+        --rule: #d8d2c2;
+        --mute: #6a665d;
+        --mute-2: #8a857a;
+        --accent: #d4ff1a;
+        --accent-shadow: #b8e000;
+        --font-display: 'Fraunces', Georgia, serif;
+        --font-sans: 'Inter', -apple-system, sans-serif;
+      }
+
+      /* ─── page dimensions (US Letter, no browser margins) ─── */
+      @page {
+        size: letter;
+        margin: 0;
+      }
+      @media print {
+        html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 10pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        width: 8.5in;
+        height: 11in;
+        padding: 0.5in 0.55in;
+        background: var(--paper);
+        position: relative;
+        page-break-after: always;
+        overflow: hidden;
+      }
+      .page:last-child { page-break-after: auto; }
+
+      /* ─── typography ─── */
+      h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      em {
+        font-style: italic;
+        font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+      }
+      .hl em, em.hl {
+        background-image: linear-gradient(transparent 0 58%, var(--accent) 58% 92%, transparent 92% 100%);
+        background-repeat: no-repeat;
+        background-position: 0 0.05em;
+        padding: 0 0.08em 0.04em;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+      .eyebrow {
+        font-family: var(--font-sans);
+        font-size: 7.5pt;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+      a { color: var(--ink); text-decoration: none; border-bottom: 0.5pt solid var(--rule); }
+
+      /* ─── PAGE 1: COVER ─── */
+      .p1-grid {
+        display: grid;
+        grid-template-columns: 1.55fr 1fr;
+        gap: 0.45in;
+        height: 100%;
+      }
+      .p1-left { display: flex; flex-direction: column; }
+      .p1-right { display: flex; flex-direction: column; align-items: stretch; }
+
+      .resume-eye { margin-bottom: 0.35in; }
+      .h1-mark {
+        font-size: 64pt;
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+      }
+      .h1-mark .dot { color: var(--accent); }
+      .lede {
+        margin-top: 0.18in;
+        font-size: 13.5pt;
+        line-height: 1.3;
+        color: var(--ink-2);
+        max-width: 24em;
+      }
+
+      .tags { margin-top: 0.22in; display: flex; gap: 0.08in; flex-wrap: wrap; }
+      .tag {
+        display: inline-block;
+        padding: 0.06in 0.14in;
+        font-family: var(--font-sans);
+        font-size: 7pt;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        border: 0.5pt solid var(--ink);
+        color: var(--ink);
+        background: transparent;
+      }
+      .tag.hot { background: var(--accent); border-color: var(--ink); }
+
+      /* portrait */
+      .portrait-wrap {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        background: var(--ink);
+        overflow: hidden;
+      }
+      .portrait-wrap img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.05);
+        display: block;
+      }
+      .portrait-wrap::after {
+        content: '';
+        position: absolute; inset: 0;
+        border: 6pt solid var(--accent);
+        pointer-events: none;
+      }
+
+      .aside-block { margin-top: 0.22in; font-size: 9pt; line-height: 1.45; }
+      .aside-block .aside-head {
+        font-family: var(--font-sans);
+        font-size: 7pt;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mute);
+        margin-bottom: 0.04in;
+      }
+      .aside-block p { margin: 0 0 0.04in; }
+      .aside-block + .aside-block { margin-top: 0.18in; }
+
+      /* sparkles for cover */
+      .sparkle {
+        position: absolute;
+        color: var(--accent-shadow);
+        font-family: var(--font-display);
+        line-height: 1;
+        opacity: 0.85;
+      }
+      .sparkle.s1 { top: 0.35in; right: 0.6in; font-size: 22pt; transform: rotate(8deg); }
+      .sparkle.s2 { top: 1.4in; right: 0.4in; font-size: 14pt; transform: rotate(-12deg); }
+
+      /* stats row */
+      .stats {
+        margin-top: auto;
+        padding-top: 0.18in;
+        border-top: 0.5pt solid var(--rule);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.16in;
+      }
+      .stats .stat strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 22pt;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.04in;
+      }
+      .stats .stat span {
+        font-size: 7.5pt;
+        color: var(--mute);
+        letter-spacing: 0.04em;
+      }
+
+      /* framework — three jobs */
+      .framework {
+        margin-top: 0.32in;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 0.5pt solid var(--rule);
+        border-bottom: 0.5pt solid var(--rule);
+      }
+      .framework .step {
+        padding: 0.18in 0.18in 0.18in 0;
+        border-right: 0.5pt solid var(--rule);
+      }
+      .framework .step:last-child { border-right: 0; padding-right: 0; }
+      .framework .step:not(:first-child) { padding-left: 0.18in; }
+      .framework .num {
+        font-family: var(--font-display);
+        font-size: 13pt;
+        color: var(--ink);
+        background: var(--accent);
+        display: inline-block;
+        padding: 0.02in 0.1in;
+        margin-bottom: 0.12in;
+        letter-spacing: -0.01em;
+      }
+      .framework h3 {
+        font-size: 12pt;
+        margin-bottom: 0.08in;
+        max-width: 14em;
+      }
+      .framework p {
+        font-size: 8.5pt;
+        color: var(--ink-2);
+        line-height: 1.45;
+      }
+
+      .runhead {
+        display: flex;
+        align-items: baseline;
+        gap: 0.6em;
+        margin-bottom: 0.16in;
+      }
+      .runhead .n {
+        font-family: var(--font-display);
+        font-size: 10pt;
+        color: var(--ink);
+        background: var(--accent);
+        padding: 0.02in 0.1in;
+        letter-spacing: -0.01em;
+      }
+      .runhead .l {
+        font-family: var(--font-sans);
+        font-size: 7.5pt;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+
+      .pull {
+        margin-top: 0.24in;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+        font-size: 14pt;
+        line-height: 1.2;
+        max-width: 22em;
+        color: var(--ink);
+      }
+      .pull-attr {
+        margin-top: 0.1in;
+        font-family: var(--font-sans);
+        font-size: 7pt;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+
+      /* ─── PAGE 2: TRAJECTORY ─── */
+      .traj-head {
+        font-size: 38pt;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.25in;
+      }
+      .traj-head .hl {
+        background-image: linear-gradient(transparent 0 58%, var(--accent) 58% 92%, transparent 92% 100%);
+        background-repeat: no-repeat;
+        padding: 0 0.08em 0.04em;
+      }
+
+      .role-list { display: grid; gap: 0; }
+      .role-list .role {
+        padding: 0.13in 0;
+        border-top: 0.5pt solid var(--rule);
+        display: grid;
+        grid-template-columns: 0.95in 1fr;
+        gap: 0.22in;
+        align-items: start;
+      }
+      .role-list .role:last-child { border-bottom: 0.5pt solid var(--rule); }
+      .role .when {
+        font-family: var(--font-display);
+        font-size: 9pt;
+        color: var(--mute);
+        letter-spacing: 0;
+        padding-top: 0.02in;
+        line-height: 1.2;
+      }
+      .role h3 {
+        font-family: var(--font-display);
+        font-size: 12pt;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.04in;
+      }
+      .role h3 .org {
+        font-style: italic;
+        font-size: 0.82em;
+        color: var(--mute);
+      }
+      .role p {
+        font-size: 9pt;
+        color: var(--ink-2);
+        line-height: 1.45;
+        margin-bottom: 0.08in;
+        max-width: 36em;
+      }
+      .role ul.stats-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .role ul.stats-bullets li {
+        font-size: 8.5pt;
+        line-height: 1.4;
+        padding-left: 1em;
+        position: relative;
+        color: var(--ink);
+      }
+      .role ul.stats-bullets li::before {
+        content: '→';
+        position: absolute; left: 0; top: 0;
+        color: var(--accent-shadow);
+      }
+
+      /* Tighten the "trajectory continued" section on page 3 */
+      .panel .role-list .role { padding: 0.08in 0; }
+      .panel .role-list .role p { margin-bottom: 0.05in; }
+
+      /* ─── PAGE 3: WORK + FRAMEWORKS + PRESS + EDUCATION ─── */
+      .panel {
+        margin-bottom: 0.18in;
+      }
+      .panel-head {
+        font-size: 18pt;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.1in;
+      }
+      .panel-head .hl {
+        background-image: linear-gradient(transparent 0 58%, var(--accent) 58% 92%, transparent 92% 100%);
+        background-repeat: no-repeat;
+        padding: 0 0.08em 0.04em;
+      }
+
+      .panel ul.entries {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .panel ul.entries li {
+        padding: 0.06in 0;
+        border-top: 0.5pt solid var(--rule);
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 0.3in;
+        align-items: baseline;
+      }
+      .panel ul.entries li:last-child { border-bottom: 0.5pt solid var(--rule); }
+      .panel ul.entries .name {
+        font-family: var(--font-display);
+        font-size: 10.5pt;
+        color: var(--ink);
+      }
+      .panel ul.entries .meta {
+        font-size: 8pt;
+        color: var(--mute);
+        text-align: right;
+      }
+      .panel-note {
+        margin-top: 0.08in;
+        font-size: 8pt;
+        color: var(--mute);
+        font-style: italic;
+      }
+
+      .closer {
+        margin-top: auto;
+        padding: 0.14in 0.2in;
+        background: var(--ink);
+        color: var(--paper);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0.25in;
+        align-items: center;
+      }
+      .closer h3 {
+        color: var(--paper);
+        font-size: 12pt;
+        line-height: 1.15;
+        max-width: 24em;
+      }
+      .closer h3 em {
+        font-style: italic;
+        font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+        color: var(--ink);
+        background: var(--accent);
+        padding: 0.02em 0.16em;
+      }
+      .closer .closer-meta {
+        font-family: var(--font-sans);
+        font-size: 8.5pt;
+        color: var(--accent);
+        letter-spacing: 0.04em;
+        text-align: right;
+        line-height: 1.4;
+      }
+      .closer .closer-meta strong { display: block; color: var(--paper); font-weight: 500; font-size: 10pt; margin-bottom: 0.02in; }
+    </style>
+  </head>
+  <body>
+    <!-- ─────────────── PAGE 1 — COVER ─────────────── -->
+    <section class="page">
+      <span class="sparkle s1" aria-hidden="true">&#10022;</span>
+      <span class="sparkle s2" aria-hidden="true">&#10022;</span>
+
+      <div class="p1-grid">
+        <div class="p1-left">
+          <p class="eyebrow resume-eye">Resume &middot; 2026</p>
+          <h1 class="h1-mark">Noah Barlow<span class="dot">.</span></h1>
+          <p class="lede hl">
+            Brand, packaging, and growth leadership for founder-led
+            challenger companies. <em>Twenty years operating.</em>
+          </p>
+          <div class="tags">
+            <span class="tag hot">Selectively available</span>
+            <span class="tag">Toronto &middot; 2026</span>
+          </div>
+          <div class="pull">
+            "The most useful thing a senior operator brings to a founder isn't another opinion. It's pattern recognition."
+          </div>
+          <p class="pull-attr">— On the work</p>
+          <div style="flex: 1;"></div>
+
+          <div class="stats">
+            <div class="stat"><strong>20+</strong><span>years operating</span></div>
+            <div class="stat"><strong>12+</strong><span>brands launched</span></div>
+            <div class="stat"><strong>300+</strong><span>packages shipped</span></div>
+            <div class="stat"><strong>$1B+</strong><span>portfolios advised</span></div>
+            <div class="stat"><strong>$8M+</strong><span>seed capital</span></div>
+          </div>
+        </div>
+
+        <div class="p1-right">
+          <div class="portrait-wrap">
+            <img src="/img/p1-author.jpg" alt="" />
+          </div>
+
+          <div class="aside-block">
+            <p class="aside-head">Currently</p>
+            <p>Senior advisor, selectively available</p>
+            <p>Toronto · remote across North America</p>
+          </div>
+          <div class="aside-block">
+            <p class="aside-head">Direct</p>
+            <p><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></p>
+            <p><a href="https://www.linkedin.com/in/noahbarlow/">linkedin.com/in/noahbarlow</a></p>
+            <p><a href="https://noahbarlow.github.io">noahbarlow.github.io</a></p>
+          </div>
+          <div class="aside-block">
+            <p class="aside-head">Sectors</p>
+            <p>Beverage · Wellness · RTD · Cannabis · Food · Lifestyle</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- "Three jobs" framework, full-width below the grid -->
+      <div style="grid-column: 1 / -1; margin-top: 0.2in;"></div>
+      <div class="runhead" style="margin-top: 0.25in;">
+        <span class="n">01</span><span class="l">What I'm hired for</span>
+      </div>
+      <div class="framework">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Brand strategy and positioning</h3>
+          <p>Sharp positioning. Clear point of view. Less deck, more shipping. I translate ambiguous business problems into brand platforms a team can run with.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Packaging systems and retail psychology</h3>
+          <p>The package is the brand's most-touched media buy. I design pack systems that win the three-second test and earn the shelf before the price tag does.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Fractional brand &amp; growth leadership</h3>
+          <p>Embedded strategic partner for founder-led companies. Senior involvement, limited engagements, close enough to the P&amp;L to be useful to it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── PAGE 2 — TRAJECTORY (first 5 roles) ─────────────── -->
+    <section class="page">
+      <div class="runhead">
+        <span class="n">02</span><span class="l">Trajectory</span>
+      </div>
+      <h2 class="traj-head">Two decades, <span class="hl"><em>one through-line</em></span>: build the thing.</h2>
+
+      <div class="role-list">
+        {roles.slice(0, 5).map((r) => (
+          <div class="role">
+            <div class="when">{r.when}</div>
+            <div>
+              <h3>{r.title}<span class="org"> &middot; {r.org}</span></h3>
+              <p>{r.body}</p>
+              {r.stats.length > 0 && (
+                <ul class="stats-bullets">
+                  {r.stats.map((s) => <li>{s}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─────────────── PAGE 3 — TRAJECTORY (cont.) + WORK / FRAMEWORKS / ED ─────────────── -->
+    <section class="page" style="display: flex; flex-direction: column;">
+      <!-- Trajectory continued: earlier roles, compact list style -->
+      <div class="panel" style="margin-bottom: 0.22in;">
+        <div class="runhead">
+          <span class="n">02</span><span class="l">Trajectory, continued</span>
+        </div>
+        <div class="role-list">
+          {roles.slice(5).map((r) => (
+            <div class="role">
+              <div class="when">{r.when}</div>
+              <div>
+                <h3>{r.title}<span class="org"> &middot; {r.org}</span></h3>
+                <p>{r.body}</p>
+                {r.stats.length > 0 && (
+                  <ul class="stats-bullets">
+                    {r.stats.map((s) => <li>{s}</li>)}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="runhead">
+          <span class="n">03</span><span class="l">Selected Work</span>
+        </div>
+        <h2 class="panel-head"><span class="hl"><em>Brands shipped,</em></span> repositioned, launched.</h2>
+        <ul class="entries">
+          <li><span class="name">Miller Lite</span><span class="meta">Beer · Canadian Launch · SABMiller</span></li>
+          <li><span class="name">Pilsner Urquell</span><span class="meta">Beer · Premium Positioning · SABMiller</span></li>
+          <li><span class="name">Kit Kat Chocolatory</span><span class="meta">Confectionary · Retail · Nestlé</span></li>
+          <li><span class="name">Carlsberg Portfolio</span><span class="meta">Beer · Brand Strategy · Carlsberg Group</span></li>
+          <li><span class="name">MGD</span><span class="meta">Beer · Heritage Strategy · SABMiller</span></li>
+        </ul>
+        <p class="panel-note">Full case studies at noahbarlow.github.io/work</p>
+      </div>
+
+      <div class="panel">
+        <div class="runhead">
+          <span class="n">04</span><span class="l">Published Frameworks</span>
+        </div>
+        <h2 class="panel-head">The thinking <span class="hl"><em>on paper.</em></span></h2>
+        <ul class="entries">
+          <li><span class="name">The Challenger Playbook</span><span class="meta">Whitepaper · 40pp · Smaller Agency</span></li>
+          <li><span class="name">The Modern Brand OS</span><span class="meta">Whitepaper · Smaller Agency</span></li>
+          <li><span class="name">Beer for Gen Z</span><span class="meta">Category whitepaper · Smaller Agency</span></li>
+          <li><span class="name">Gen Z Operating System</span><span class="meta">Whitepaper · Smaller Agency</span></li>
+          <li><span class="name">The Challenger Scorecard</span><span class="meta">Diagnostic companion · Smaller Agency</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="runhead">
+          <span class="n">05</span><span class="l">In Print &amp; Education</span>
+        </div>
+        <ul class="entries">
+          <li><span class="name">Communication Arts</span><span class="meta">Feature · 2020</span></li>
+          <li><span class="name">Strategy Magazine</span><span class="meta">Smaller Agency launch · 2019</span></li>
+          <li><span class="name">Globe &amp; Mail · BlogTO · Driving.ca</span><span class="meta">RCLUB launch coverage · 2019</span></li>
+          <li><span class="name">York University, Toronto</span><span class="meta">BA, Political Science &amp; Communications · 1999–2003</span></li>
+        </ul>
+      </div>
+
+      <div class="closer">
+        <h3>If the brief is sharp, <em>the next move is a conversation.</em></h3>
+        <div class="closer-meta">
+          <strong>noah@smalleragency.com</strong>
+          noahbarlow.github.io
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
