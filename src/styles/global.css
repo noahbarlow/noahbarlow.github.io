@@ -1714,6 +1714,221 @@ body.dx-page .confetti i { background: var(--dx-accent); border-color: var(--dx-
 body.dx-page .confetti i:nth-child(2n) { background: var(--dx-ink); border-color: var(--dx-accent); }
 body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color: var(--dx-accent); }
 
+/* ---------- resume (/resume) ----------
+   Editorial print + screen styles. Cmd+P → "Save as PDF" produces a
+   clean printable that drops nav/footer/CTAs. */
+.resume { padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 4rem); }
+.resume-head {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: var(--rule-w) solid var(--rule);
+}
+.resume-headline h1 {
+  font-size: clamp(3rem, 1.5rem + 6vw, 6.5rem);
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  margin: 0.45em 0 0;
+}
+.resume-headline .lede {
+  font-size: var(--t-xl);
+  color: var(--ink-2);
+  margin-top: 1.5rem;
+  max-width: 32ch;
+  line-height: 1.35;
+}
+.resume-headline .lede em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+  background-image: linear-gradient(transparent 0 60%, var(--accent) 60% 92%, transparent 92% 100%);
+  background-repeat: no-repeat;
+  background-position: 0 0.08em;
+  padding: 0 0.06em 0.02em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.resume-aside {
+  display: grid;
+  gap: 1.5rem;
+  font-size: var(--t-sm);
+}
+.resume-aside .aside-head {
+  font-family: var(--font-sans);
+  font-size: var(--t-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+.resume-aside p { margin: 0 0 0.25em; line-height: 1.45; }
+.resume-aside a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+@media (max-width: 760px) {
+  .resume-head { grid-template-columns: 1fr; align-items: start; }
+}
+
+.resume-stats {
+  display: flex;
+  gap: clamp(1.25rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+  padding-block: clamp(1.5rem, 3vw, 2rem);
+  border-bottom: var(--rule-w) solid var(--rule);
+}
+.resume-stats div { font-size: var(--t-sm); }
+.resume-stats strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-2xl);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.25em;
+  letter-spacing: -0.01em;
+}
+.resume-stats span { color: var(--mute); }
+
+.resume-section { padding-block: clamp(2.5rem, 5vw, 4rem); border-bottom: var(--rule-w) solid var(--rule); }
+.resume-section:last-of-type { border-bottom: 0; }
+.resume-section-head { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.resume-section-head .eyebrow { display: block; margin-bottom: 0.6em; }
+.resume-section-head h2 { font-size: var(--t-2xl); line-height: 1.1; }
+.resume-section-head h2 em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+  background-image: linear-gradient(transparent 0 60%, var(--accent) 60% 92%, transparent 92% 100%);
+  background-repeat: no-repeat;
+  background-position: 0 0.08em;
+  padding: 0 0.06em 0.02em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.resume-focus {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: var(--rule-w) solid var(--rule);
+}
+.resume-focus li {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-right: var(--rule-w) solid var(--rule);
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+.resume-focus li:last-child { border-right: 0; }
+.resume-focus .n { font-family: var(--font-display); color: var(--mute); font-size: var(--t-lg); line-height: 1; }
+.resume-focus h3 { font-size: var(--t-lg); margin: 0 0 0.5em; line-height: 1.15; }
+.resume-focus p { font-size: var(--t-sm); color: var(--ink-2); margin: 0; line-height: 1.5; }
+@media (max-width: 880px) {
+  .resume-focus { grid-template-columns: 1fr; }
+  .resume-focus li { border-right: 0; border-bottom: var(--rule-w) solid var(--rule); }
+  .resume-focus li:last-child { border-bottom: 0; }
+}
+
+.resume-roles { list-style: none; padding: 0; margin: 0; }
+.resume-roles > li {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-top: var(--rule-w) solid var(--rule);
+  align-items: start;
+}
+.resume-roles > li:last-child { border-bottom: var(--rule-w) solid var(--rule); }
+.resume-roles .when {
+  font-family: var(--font-display);
+  font-size: var(--t-md);
+  color: var(--mute);
+  letter-spacing: -0.01em;
+  padding-top: 0.15em;
+}
+.resume-roles h3 { font-family: var(--font-display); font-size: var(--t-xl); margin: 0 0 0.4em; line-height: 1.15; }
+.resume-roles h3 .org { color: var(--mute); font-style: italic; font-weight: 400; font-size: 0.85em; }
+.resume-roles .role-body p { color: var(--ink-2); margin: 0 0 0.85em; line-height: 1.5; max-width: 64ch; }
+.resume-roles .role-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0;
+  display: grid;
+  gap: 0.3em;
+}
+.resume-roles .role-stats li {
+  position: relative;
+  padding-left: 1.1em;
+  font-size: var(--t-sm);
+  color: var(--ink);
+}
+.resume-roles .role-stats li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--mute);
+}
+@media (max-width: 720px) {
+  .resume-roles > li { grid-template-columns: 1fr; }
+  .resume-roles .when { font-size: var(--t-sm); }
+}
+
+.resume-list { list-style: none; padding: 0; margin: 0; }
+.resume-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.85em 0;
+  border-top: var(--rule-w) solid var(--rule);
+  align-items: baseline;
+}
+.resume-list li:last-child { border-bottom: var(--rule-w) solid var(--rule); }
+.resume-list .name { font-family: var(--font-display); font-size: var(--t-lg); color: var(--ink); }
+.resume-list .meta { font-size: var(--t-sm); color: var(--mute); text-align: right; }
+.resume-list a { border-bottom: 0; }
+.resume-list a:hover .name { opacity: 0.65; }
+@media (max-width: 640px) {
+  .resume-list li { grid-template-columns: 1fr; }
+  .resume-list .meta { text-align: left; }
+}
+
+.resume-note { font-size: var(--t-sm); color: var(--mute); margin-top: 1.25em; }
+.resume-cta { padding-top: clamp(2.5rem, 5vw, 4rem); }
+
+/* PRINT — Cmd+P → "Save as PDF" produces a clean version */
+@media print {
+  html, body { background: white; cursor: auto !important; }
+  body * { cursor: auto !important; }
+  .nav, .footer, .no-print, .ticker, .skip { display: none !important; }
+  body { font-size: 10pt; line-height: 1.4; color: #111; }
+  .resume { padding-block: 0; }
+  .resume-head { padding-bottom: 1rem; }
+  .resume-headline h1 { font-size: 36pt; line-height: 1; margin-top: 0.2em; }
+  .resume-headline .lede { font-size: 11pt; max-width: 36ch; }
+  .resume-headline .lede em { background: none; padding: 0; }
+  .resume-section-head h2 em { background: none; padding: 0; }
+  .resume-stats { padding-block: 0.5rem; gap: 1.25rem; }
+  .resume-stats strong { font-size: 16pt; }
+  .resume-section { padding-block: 0.65rem; page-break-inside: avoid; }
+  .resume-section:last-of-type { border-bottom: 0; }
+  .resume-section-head { margin-bottom: 0.65rem; }
+  .resume-section-head h2 { font-size: 14pt; }
+  .resume-focus { grid-template-columns: repeat(3, 1fr); }
+  .resume-focus li { padding: 0.5rem 0.75rem; }
+  .resume-focus h3 { font-size: 10pt; }
+  .resume-focus p { font-size: 8.5pt; }
+  .resume-roles > li { padding-block: 0.5rem; page-break-inside: avoid; }
+  .resume-roles .when { font-size: 9pt; }
+  .resume-roles h3 { font-size: 11pt; }
+  .resume-roles .role-body p { font-size: 9pt; margin-bottom: 0.4em; }
+  .resume-roles .role-stats li { font-size: 8.5pt; }
+  .resume-list .name { font-size: 10pt; }
+  .resume-list .meta { font-size: 8.5pt; }
+  a { color: #111; text-decoration: none; border: 0 !important; }
+}
+
 /* ---------- diagnostics hub (/diagnostics) ---------- */
 .dx-hub { display: grid; gap: clamp(2rem, 4vw, 4rem); }
 .dx-hub-row { padding: 0; }

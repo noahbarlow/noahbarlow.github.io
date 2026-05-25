@@ -1,0 +1,300 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const roles = [
+  {
+    when: '2017 — Now',
+    title: 'Founder & Senior Operator',
+    org: 'Smaller Agency / Independent Advisory',
+    body:
+      "Founded Smaller Agency. Now operating as a senior strategic advisor for founder-led challenger brands — brand strategy, packaging systems, and growth leadership delivered as a partner rather than an agency. Selective engagements, senior involvement, no production overhead.",
+    stats: [
+      '12+ brands launched in the Canadian market',
+      '300+ packages designed and shipped to retail',
+      '$8M+ in seed capital supported via IR + launch leadership',
+    ],
+  },
+  {
+    when: '2019 — 2021',
+    title: 'Chief Marketing Officer',
+    org: 'Doseology Sciences',
+    body:
+      "Founding CMO of a functional mushroom wellness brand. Built the brand platform, IR deck, website, CRM, packaging, and DTC engine from day one. Owned brand mission, vision, and all customer-facing touchpoints alongside the founder team.",
+    stats: [
+      '$4M+ in funding supported through IR + pitch communications',
+      '8 product lines developed (tinctures, powders, supplements)',
+      'Social audience grown to 10K in year one',
+    ],
+  },
+  {
+    when: '2015 — 2019',
+    title: 'VP Marketing',
+    org: 'GreenSpace Brands (TSXV)',
+    body:
+      "Owned brand and marketing across a publicly-traded CPG portfolio of better-for-you food, beverage, and wellness brands distributed nationally across grocery and specialty retail. Led innovation, packaging, partnerships, and integrated marketing across paid, owned, earned, CRM, influencer, and shopper.",
+    stats: [
+      'Responsible for $36M+ in annual brand revenue across 8 CPG brands',
+      '6 direct reports across brand, creative, and growth',
+      '8 new products with 26 variants launched in year one; 2 master-brand relaunches',
+    ],
+  },
+  {
+    when: '2013 — 2015',
+    title: 'Director, Brand & Programming',
+    org: 'Me&Lewis Ideas',
+    body:
+      "Led the SABMiller Canada portfolio — Miller Lite, MGD, Grolsch, Pilsner Urquell, Peroni. Directed the Canadian launch of Miller Lite, building the light-beer category in the most competitive segment in Canada from a standing start.",
+    stats: [
+      'Grew Toronto office revenue 300% in year one',
+      'Doubled local client roster without adding overhead',
+      'Led strategic, creative, and client work across SABMiller Canada',
+    ],
+  },
+  {
+    when: '2011 — 2013',
+    title: 'Director, Development & Strategy',
+    org: 'Blueband Digital',
+    body:
+      "Built early-stage digital agency capabilities for CPG and lifestyle brands when most clients still treated digital as a tactic. Direct client wins included Weetabix, TD, Telus, PlayStation, and Virgin Gaming.",
+    stats: ['$1M+ in net new billings in year one'],
+  },
+  {
+    when: '2009 — 2011',
+    title: 'National Manager, Client Development',
+    org: 'Launch (acquired by Mosaic, 2012)',
+    body:
+      "Built the client portfolio for a national experiential and retail-activation agency. Strategic territory expansion, multimillion-dollar account growth.",
+    stats: [
+      '$10M+ in net new client billings — LEGO, Canadian Tire, Beam Global, Carlsberg, PlayStation Canada, Apple, Levi\'s, Mark\'s, Clif Bar',
+    ],
+  },
+  {
+    when: '2004 — 2008',
+    title: 'Account Executive',
+    org: 'Segal Communications',
+    body:
+      "Consulting and public relations agency. The years that taught me the agency business from the inside — proposals, programs, budgets, and what a client actually pays for.",
+    stats: [],
+  },
+];
+
+const focus = [
+  {
+    n: '01',
+    title: 'Brand strategy and positioning',
+    body:
+      "Sharp positioning. Clear point of view. Less deck, more shipping. I translate ambiguous business problems into brand platforms a team can run with — fast.",
+  },
+  {
+    n: '02',
+    title: 'Packaging systems and retail psychology',
+    body:
+      "The package is the brand's most-touched media buy. I design pack systems that win the three-second test, signal the right tier, and earn the shelf before the price tag does.",
+  },
+  {
+    n: '03',
+    title: 'Fractional brand & growth leadership',
+    body:
+      "Embedded strategic partner for founder-led companies. Senior involvement, limited engagements, close enough to the P&L to be useful to it.",
+  },
+];
+
+const selectedWork = [
+  { name: 'Miller Lite', cat: 'Beer · Canadian Launch · SABMiller', href: '/work/miller-lite-canada' },
+  { name: 'Pilsner Urquell', cat: 'Beer · Premium Positioning · SABMiller', href: '/work/pilsner-urquell-canada' },
+  { name: 'Kit Kat Chocolatory', cat: 'Confectionary · Retail · Nestlé', href: '/work/kit-kat-chocolatory' },
+  { name: 'Carlsberg Portfolio', cat: 'Beer · Brand Strategy · Carlsberg Group', href: '/work/carlsberg-portfolio' },
+  { name: 'MGD', cat: 'Beer · Heritage Strategy · SABMiller', href: '/work/mgd-portfolio' },
+];
+
+const publishedFrameworks = [
+  { name: 'The Challenger Playbook', meta: 'Whitepaper · 40pp · Smaller Agency' },
+  { name: 'The Modern Brand OS', meta: 'Whitepaper · Smaller Agency' },
+  { name: 'Beer for Gen Z', meta: 'Category whitepaper · Smaller Agency' },
+  { name: 'Gen Z Operating System', meta: 'Whitepaper · Smaller Agency' },
+  { name: 'The Challenger Scorecard', meta: 'Diagnostic companion · Smaller Agency' },
+];
+
+const press = [
+  { name: 'Communication Arts', meta: 'Feature · 2020' },
+  { name: 'Strategy Magazine', meta: 'Smaller Agency launch · 2019' },
+  { name: 'Strategy Online', meta: 'Smaller Agency × Grolsch · 2019' },
+  { name: 'Globe & Mail', meta: 'RCLUB feature · 2019' },
+  { name: 'BlogTO, Driving.ca', meta: 'RCLUB launch coverage · 2019' },
+];
+---
+
+<BaseLayout
+  title="Resume · Noah Barlow"
+  description="Twenty years building brand, packaging, and growth systems for founder-led challenger companies. Senior operator, advisor, and brand strategist."
+>
+  <article class="resume">
+    <!-- Header -->
+    <header class="resume-head shell">
+      <div class="resume-headline">
+        <p class="eyebrow">Resume · 2026</p>
+        <h1>Noah Barlow.</h1>
+        <p class="lede">
+          Brand, packaging, and growth leadership for founder-led
+          challenger companies. <em>Twenty years operating.</em>
+        </p>
+      </div>
+      <aside class="resume-aside">
+        <div>
+          <p class="aside-head">Currently</p>
+          <p>Senior advisor &middot; selectively available</p>
+          <p>Toronto &middot; remote across North America</p>
+        </div>
+        <div>
+          <p class="aside-head">Direct</p>
+          <p><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></p>
+          <p><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">linkedin.com/in/noahbarlow</a></p>
+          <p><a href="/">noahbarlow.github.io</a></p>
+        </div>
+        <div class="no-print">
+          <p class="aside-head">PDF</p>
+          <p style="font-size: var(--t-xs); color: var(--mute);">Cmd+P &rarr; "Save as PDF" prints a clean one-page version.</p>
+        </div>
+      </aside>
+    </header>
+
+    <!-- Stats strip -->
+    <section class="resume-stats shell">
+      <div><strong>20+</strong><span>years operating</span></div>
+      <div><strong>12+</strong><span>brands launched</span></div>
+      <div><strong>300+</strong><span>packages shipped</span></div>
+      <div><strong>$1B+</strong><span>portfolios advised</span></div>
+      <div><strong>$8M+</strong><span>seed capital supported</span></div>
+    </section>
+
+    <!-- What I'm hired for -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">What I'm hired for</p>
+        <h2>Three jobs. One operator.</h2>
+      </div>
+      <ol class="resume-focus">
+        {focus.map((f) => (
+          <li>
+            <span class="n">{f.n}</span>
+            <div>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Trajectory -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">Trajectory</p>
+        <h2>Two decades, <em>one through-line</em>: build the thing.</h2>
+      </div>
+      <ol class="resume-roles">
+        {roles.map((r) => (
+          <li>
+            <div class="when">{r.when}</div>
+            <div class="role-body">
+              <h3>{r.title}<span class="org"> &middot; {r.org}</span></h3>
+              <p>{r.body}</p>
+              {r.stats.length > 0 && (
+                <ul class="role-stats">
+                  {r.stats.map((s) => <li>{s}</li>)}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Selected work -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Brands shipped, repositioned, launched.</h2>
+      </div>
+      <ul class="resume-list">
+        {selectedWork.map((w) => (
+          <li>
+            <a href={w.href} class="bare">
+              <span class="name">{w.name}</span>
+              <span class="meta">{w.cat}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="resume-note">
+        Full case studies at <a href="/work">noahbarlow.github.io/work</a>.
+      </p>
+    </section>
+
+    <!-- Published frameworks -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">Published frameworks</p>
+        <h2>The thinking on paper.</h2>
+      </div>
+      <ul class="resume-list">
+        {publishedFrameworks.map((p) => (
+          <li>
+            <span class="name">{p.name}</span>
+            <span class="meta">{p.meta}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Press -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">In print</p>
+        <h2>Press &amp; features.</h2>
+      </div>
+      <ul class="resume-list">
+        {press.map((p) => (
+          <li>
+            <span class="name">{p.name}</span>
+            <span class="meta">{p.meta}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="resume-section shell">
+      <div class="resume-section-head">
+        <p class="eyebrow">Education</p>
+        <h2>Foundation.</h2>
+      </div>
+      <ul class="resume-list">
+        <li>
+          <span class="name">York University, Toronto</span>
+          <span class="meta">BA, Political Science & Communications &middot; 1999&ndash;2003</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="resume-cta shell no-print">
+      <div class="contact-card">
+        <div class="left">
+          <p class="eyebrow">Work together</p>
+          <h2 style="margin-top: 0.85rem;">If the brief is sharp, <em>the next move is a conversation.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Selective engagements, senior involvement, no production
+            overhead. Start with a thirty-minute call.
+          </p>
+          <div class="actions">
+            <a href="/contact" class="btn hot">Book a strategy call</a>
+            <a href="/diagnostics" class="btn ghost">Try a diagnostic</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
