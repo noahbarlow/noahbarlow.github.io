@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
 ---
 
 <BaseLayout
   title="Contact · Noah Barlow"
-  description="Book a strategy call or send a brief. Selective engagements for founder-led brands. Brand, packaging, and growth leadership."
+  description="Book a strategy call. Selective engagements for founder-led brands. Brand, packaging, and growth leadership."
 >
+  <script is:inline>document.body.setAttribute('data-page', 'contact');</script>
+
   <section class="hero">
     <div class="shell">
       <p class="eyebrow">Contact</p>
@@ -13,43 +17,96 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Bring the brief.<br /><em>I'll bring the framing.</em>
       </h1>
       <p class="hero-sub">
-        Selective engagements only. The fastest way to find out whether
-        there's a fit is a thirty-minute call. If you prefer email, that
-        works too.
+        Selective engagements only. Fill out the form and I'll personally
+        reply within 48 hours with a read on whether there's a fit.
       </p>
     </div>
   </section>
 
+  <!-- FORM -->
   <section style="padding-top: 0;">
     <div class="shell">
-      <div class="advisory">
+      <div class="contact-grid">
+        <!-- Left: Form -->
         <div>
-          <p class="eyebrow">Direct</p>
-          <h2 style="margin-top: 1rem; font-size: var(--t-2xl);">noah@smalleragency.com</h2>
-          <p style="margin-top: 1.25rem; color: var(--ink-2); max-width: 38ch;">
-            Send the brief in your own words. The shorter, the better — I'd
-            rather read three sentences with a real problem than three
-            pages of context.
-          </p>
-          <div style="margin-top: 1.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap;">
-            <a href="mailto:noah@smalleragency.com?subject=Strategy%20call%20%E2%80%94%20intro" class="btn hot">Email Noah</a>
-            <a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Start a conversation</p>
+          <h2 style="font-size: var(--t-2xl); max-width: 18ch; margin-bottom: 1.5rem;">A few fields. <em>Then a real reply.</em></h2>
+
+          <form action={FORM_ENDPOINT} method="POST" id="contact-form" class="contact-form">
+            <input type="hidden" name="_subject" value="Contact form — new lead" />
+            <input type="hidden" name="source" value="contact-page" />
+
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@company.com" required />
+            </div>
+
+            <div class="field">
+              <label for="cf-company">Company</label>
+              <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="What you're building" required />
+            </div>
+
+            <div class="field">
+              <label for="cf-budget">Budget range</label>
+              <select id="cf-budget" name="budget" required>
+                <option value="">Select a range</option>
+                <option value="Under $10k">Under $10k &middot; one-off / discovery</option>
+                <option value="$10k–$25k">$10k&ndash;$25k &middot; project</option>
+                <option value="$25k–$50k">$25k&ndash;$50k &middot; engagement</option>
+                <option value="$50k+">$50k+ &middot; retainer or larger</option>
+                <option value="Not sure yet">Not sure yet &middot; exploring</option>
+              </select>
+            </div>
+
+            <div class="field-actions">
+              <button type="submit" class="btn hot" id="cf-submit">Send brief &rarr;</button>
+              <span class="legal">One human reply within 48h. No newsletter, no follow-up sequence.</span>
+            </div>
+          </form>
+
+          <div class="contact-thanks" id="contact-thanks">
+            <h3>Thanks &mdash; that's in.</h3>
+            <p>
+              I'll personally reply within 48 hours with a read on whether
+              there's a fit. If we're a match, the next move is a thirty-minute
+              call to discuss the actual problem.
+            </p>
           </div>
         </div>
 
+        <!-- Right: Alt contact + what happens next -->
         <div>
-          <p class="eyebrow">What helps</p>
-          <ul class="bullets" style="margin-top: 1rem;">
-            <li><span class="k">01</span><span class="v">Company name and one-line description</span></li>
-            <li><span class="k">02</span><span class="v">Stage, channel mix, and rough scale</span></li>
-            <li><span class="k">03</span><span class="v">The specific decision you're trying to make</span></li>
-            <li><span class="k">04</span><span class="v">Timing — is this a now problem or a next-quarter problem</span></li>
-          </ul>
+          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Or skip the form</p>
+          <p style="font-family: var(--font-display); font-size: var(--t-xl); line-height: 1.25; max-width: 24ch; margin-bottom: 1.25rem;">
+            <a href="mailto:noah@smalleragency.com?subject=Strategy%20call%20%E2%80%94%20intro" style="border-bottom: 2px solid var(--accent);">noah@smalleragency.com</a>
+          </p>
+          <p style="color: var(--ink-2); max-width: 36ch; font-size: var(--t-sm); margin-bottom: 1.75rem;">
+            Send the brief in your own words. The shorter, the better &mdash;
+            I'd rather read three sentences with a real problem than three
+            pages of context.
+          </p>
+
+          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Also</p>
+          <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
+            <a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+          </p>
+          <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
+            <a href="/diagnostics">Take a diagnostic instead &rarr;</a>
+          </p>
+          <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
+            <a href="/resume">View resume / CV &rarr;</a>
+          </p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- WHAT HAPPENS NEXT -->
   <section>
     <div class="shell">
       <div class="s-head">
@@ -61,7 +118,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p>
             No drawn-out discovery calls. No pitch decks. The first
             conversation is thirty minutes, focused on the actual problem,
-            and ends with a clear next step — either a scoped engagement
+            and ends with a clear next step &mdash; either a scoped engagement
             proposal or a referral to someone better-fit.
           </p>
         </div>
@@ -76,7 +133,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="step">
           <div class="num">02</div>
           <h3>Scope</h3>
-          <p>A short written proposal. One page. Outcomes, sequencing, and time commitment — nothing decorative.</p>
+          <p>A short written proposal. One page. Outcomes, sequencing, and time commitment &mdash; nothing decorative.</p>
         </div>
         <div class="step">
           <div class="num">03</div>
@@ -92,8 +149,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="eyebrow">Based in Toronto</p>
       <h2 style="margin-top: 1rem;">Working with founders across North America.</h2>
       <p style="margin-top: 1.25rem; color: var(--mute);">
-        Selectively available · 2026
+        Selectively available &middot; 2026
       </p>
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const thanks = document.getElementById('contact-thanks');
+      const submitBtn = document.getElementById('cf-submit');
+      if (!form) return;
+
+      const showError = (msg) => {
+        let err = document.getElementById('cf-err');
+        if (!err) {
+          err = document.createElement('p');
+          err.id = 'cf-err';
+          err.className = 'legal';
+          err.style.color = '#a31d10';
+          err.style.marginTop = '0.6rem';
+          form.appendChild(err);
+        }
+        err.innerHTML = msg || "That didn't send. Email <a href=\"mailto:noah@smalleragency.com\">noah@smalleragency.com</a> directly and I'll respond personally.";
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            thanks.style.display = 'block';
+            window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
+          } else {
+            showError();
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send brief →'; }
+          }
+        } catch (err) {
+          showError();
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send brief →'; }
+        }
+      });
+    })();
+  </script>
 </BaseLayout>

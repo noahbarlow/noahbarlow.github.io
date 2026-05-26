@@ -50,5 +50,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <Nav />
     <main id="main"><slot /></main>
     <Footer />
+
+    <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. -->
+    <aside class="mobile-cta" aria-label="Quick contact">
+      <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a>
+    </aside>
   </body>
 </html>
