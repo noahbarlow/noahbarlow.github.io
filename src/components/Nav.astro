@@ -12,13 +12,17 @@ const items = [
   { href: '/thinking', label: 'Thinking' },
   { href: '/about', label: 'About' },
 ];
+
+const allItems = [...items, { href: '/contact', label: 'Contact' }];
 ---
 
 <header class="nav">
   <div class="shell nav-inner">
     <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home">
-      <span class="dot"></span>Noah Barlow
+      <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span>
     </a>
+
+    <!-- Desktop nav (≥761px) -->
     <nav class="nav-menu" aria-label="Primary">
       {items.map((item, i) => (
         <>
@@ -31,5 +35,86 @@ const items = [
       ))}
       <a href="/contact" class="contact-cta" aria-current={isActive('/contact') ? 'page' : undefined}>Contact</a>
     </nav>
+
+    <!-- Mobile hamburger (≤760px) -->
+    <button
+      type="button"
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      id="nav-toggle"
+    >
+      <span class="nav-toggle-bars" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu overlay (hidden by default) -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <ul class="mobile-menu-list">
+      {allItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            <span class="label">{item.label}</span>
+            <span class="arr" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mobile-menu-cta">
+      <a href="/contact" class="btn hot">Book a strategy call &rarr;</a>
+      <p class="legal">
+        <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script>
