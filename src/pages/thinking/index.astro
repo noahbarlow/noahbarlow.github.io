@@ -25,6 +25,52 @@ const articles = [
   },
 ];
 
+// Selected LinkedIn posts (curated for substance, skipping reposts).
+// Embed URLs follow the LinkedIn /embed/feed/update/urn:li:activity:.../ pattern.
+const linkedinPosts = [
+  {
+    activity: '7423031190997159936',
+    when: 'Nov 2025',
+    title: "Beer doesn't have a relevance problem. It has an onboarding problem.",
+  },
+  {
+    activity: '7429627256735449088',
+    when: 'Nov 2025',
+    title: 'French Cross Part 2 — rebuilding wine packaging for selection, not beauty.',
+    type: 'Video',
+  },
+  {
+    activity: '7407134356042919939',
+    when: 'Oct 2025',
+    title: '2026 is going to eat us alive without an Operating System.',
+  },
+  {
+    activity: '7403823696492019713',
+    when: 'Oct 2025',
+    title: "Big agencies don't waste time by accident. They're built that way.",
+  },
+  {
+    activity: '7402011417324888064',
+    when: 'Oct 2025',
+    title: 'The Omnicom layoffs are about a boomer-era operating system.',
+  },
+  {
+    activity: '7401293763375194112',
+    when: 'Oct 2025',
+    title: 'On MGD: kept the logo, rewrote the story.',
+  },
+  {
+    activity: '7399452018786103296',
+    when: 'Oct 2025',
+    title: "Clients don't choose small agencies for price. They're tired of being managed instead of helped.",
+  },
+  {
+    activity: '7398827685529047041',
+    when: 'Oct 2025',
+    title: 'Stop operating on vibes — build a system.',
+  },
+];
+
 const whitepapers = [
   {
     file: '/docs/Smaller_ChallengerPlaybook_V9.pdf',
@@ -80,9 +126,10 @@ const whitepapers = [
         Field notes from the<br /><em>operator's seat.</em>
       </h1>
       <p class="hero-sub">
-        Two short diagnostics. A handful of essays. Five whitepapers. The
-        thinking the consultancy is built on — pick a tool to use, an
-        argument to read, or a framework to download.
+        Three short diagnostics. A live feed from LinkedIn. A handful of
+        essays. Five whitepapers. The thinking the consultancy is built on
+        &mdash; pick a tool to use, an argument to read, or a framework to
+        download.
       </p>
     </div>
   </section>
@@ -128,6 +175,46 @@ const whitepapers = [
           </div>
           <span class="go">Start →</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD NOTES — LinkedIn embeds -->
+  <section>
+    <div class="shell">
+      <div class="s-head" style="margin-bottom: 1.5rem;">
+        <div class="left">
+          <span class="eyebrow">Field notes</span>
+          <h2 style="margin-top: 0.5rem;">Recent thinking, <em>from the feed.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Working notes from LinkedIn &mdash; packaging case studies, agency
+            takes, Gen Z reads, brand OS thinking. Updated continuously; this
+            is the short-form before it becomes essays.
+          </p>
+          <p style="margin-top: 1em;">
+            <a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">Follow on LinkedIn &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="linkedin-grid">
+        {linkedinPosts.map((p) => (
+          <figure class="linkedin-embed">
+            <iframe
+              src={`https://www.linkedin.com/embed/feed/update/urn:li:activity:${p.activity}/`}
+              title={p.title}
+              loading="lazy"
+              allowfullscreen
+              frameborder="0"
+            ></iframe>
+            <figcaption>
+              <span class="when">{p.when}{p.type ? ` · ${p.type}` : ''}</span>
+              <span class="title">{p.title}</span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
