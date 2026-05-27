@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Each variant defined once. Default = resting cursor, Hover = on interactive elements.
+// Hotspot coordinates (the "click point") matter — wrong hotspot = laggy/awkward feel.
+const VARIANTS = [
+  {
+    id: 'a',
+    name: 'Lime dot',
+    blurb: 'Minimal. Echoes the wordmark dot. Reads as: I don\'t waste motion.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/><circle cx="10" cy="10" r="2.5" fill="%230a0a0a"/></svg>`,
+    defaultHotspot: '8 8',
+    hoverHotspot: '10 10',
+  },
+  {
+    id: 'b',
+    name: 'Editor\'s caret',
+    blurb: 'Proofreader\'s insert mark. Quietly editorial. References the work itself.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M3 14 L10 5 L17 14" stroke="%230a0a0a" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18 L12 5 L21 18" stroke="%23d4ff1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="5" r="2" fill="%23d4ff1a"/></svg>`,
+    defaultHotspot: '10 5',
+    hoverHotspot: '12 5',
+  },
+  {
+    id: 'c',
+    name: 'Highlighter swipe',
+    blurb: 'Lime stripe — the same mark that lives behind every italic on the site. The cursor IS the highlighter.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" viewBox="0 0 24 12"><rect x="1" y="4" width="22" height="4" fill="%23d4ff1a"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="14" viewBox="0 0 28 14"><rect x="1" y="3" width="26" height="8" fill="%23d4ff1a"/></svg>`,
+    defaultHotspot: '2 6',
+    hoverHotspot: '2 7',
+  },
+  {
+    id: 'd',
+    name: 'Crosshair',
+    blurb: 'Lime + in a circle. Surgical. Maps to "Score your brand. Get a real read."',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="%23d4ff1a" stroke-width="1.6"/><path d="M10 5 L10 15 M5 10 L15 10" stroke="%23d4ff1a" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/><path d="M12 7 L12 17 M7 12 L17 12" stroke="%230a0a0a" stroke-width="2" stroke-linecap="round"/></svg>`,
+    defaultHotspot: '10 10',
+    hoverHotspot: '12 12',
+  },
+];
+
+const css = VARIANTS.map((v) => `
+  body.cursor-lab .lab-zone[data-variant="${v.id}"],
+  body.cursor-lab .lab-zone[data-variant="${v.id}"] * {
+    cursor: url('data:image/svg+xml;utf8,${v.defaultSvg}') ${v.defaultHotspot}, auto !important;
+  }
+  body.cursor-lab .lab-zone[data-variant="${v.id}"] a:hover,
+  body.cursor-lab .lab-zone[data-variant="${v.id}"] button:hover,
+  body.cursor-lab .lab-zone[data-variant="${v.id}"] .btn:hover {
+    cursor: url('data:image/svg+xml;utf8,${v.hoverSvg}') ${v.hoverHotspot}, pointer !important;
+  }
+`).join('\n');
+---
+
+<BaseLayout
+  title="Cursor lab · Noah Barlow"
+  description="Four cursor options. Mouse into each zone, feel which one fits, pick one."
+>
+  <style is:inline set:html={css}></style>
+
+  <script is:inline>
+    document.body.classList.add('cursor-lab');
+  </script>
+
+  <section style="padding-top: 2rem; padding-bottom: 0;">
+    <div class="shell">
+      <p class="eyebrow">Cursor lab</p>
+      <h1 style="margin-top: 1.25rem; max-width: 18ch;">
+        Four cursors. <em>Pick the one that fits.</em>
+      </h1>
+      <p style="color: var(--ink-2); max-width: 52ch; margin-top: 1.5rem;">
+        Move your mouse into each zone below to feel that cursor. Hover over the
+        button to see the interactive state. Reply with the letter of the one
+        you want shipped site-wide.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top: 1.5rem;">
+    <div class="shell">
+      <div class="lab-grid">
+        {VARIANTS.map((v) => (
+          <div class="lab-zone" data-variant={v.id}>
+            <div class="lab-zone-inner">
+              <div class="runhead">
+                <span class="n">{v.id.toUpperCase()}</span>
+                <span class="l">{v.name}</span>
+              </div>
+              <h2 style="font-size: var(--t-2xl); max-width: 14ch; margin-top: 1rem;">
+                {v.name}
+              </h2>
+              <p style="color: var(--ink-2); margin-top: 1rem; max-width: 36ch;">
+                {v.blurb}
+              </p>
+              <p style="color: var(--ink-2); margin-top: 1.5rem; max-width: 38ch; font-size: var(--t-sm);">
+                Mouse anywhere in this zone to feel the resting cursor. Hover
+                the button to feel the interactive state.
+              </p>
+              <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="#" class="btn hot" onclick="event.preventDefault()">Hover me &rarr;</a>
+                <a href="#" onclick="event.preventDefault()" style="display:inline-flex; align-items:center; padding: 0.6rem 0;">Or a plain link &rarr;</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="contact-card">
+        <div class="left">
+          <p class="eyebrow">Reply with</p>
+          <h2 style="margin-top: 0.85rem;">A, B, C, or D.</h2>
+        </div>
+        <div class="right">
+          <p>
+            Or "none of the above" — and tell me what feels off. A cursor is
+            a small detail, but it's one of the few elements every visitor
+            touches on every page. Worth getting right.
+          </p>
+          <p style="margin-top: 1em; color: var(--mute); font-size: var(--t-sm);">
+            This page is a temporary preview. It'll be removed once you pick.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style is:inline>
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 760px) {
+      .lab-grid { grid-template-columns: 1fr; }
+    }
+    .lab-zone {
+      background: #fff;
+      border: 1px solid rgba(10,10,10,0.12);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      min-height: 360px;
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+    .lab-zone:hover {
+      border-color: var(--accent);
+      background: #fefefe;
+    }
+    .lab-zone-inner { display: flex; flex-direction: column; height: 100%; }
+  </style>
+</BaseLayout>
