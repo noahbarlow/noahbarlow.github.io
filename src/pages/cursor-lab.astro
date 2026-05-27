@@ -3,42 +3,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Each variant defined once. Default = resting cursor, Hover = on interactive elements.
 // Hotspot coordinates (the "click point") matter — wrong hotspot = laggy/awkward feel.
+// v2 — bolder, bigger, more obvious. All cursors 32-44px so they read at a glance.
+// Hotspot coordinates (the "click point") matter — wrong hotspot = laggy/awkward feel.
 const VARIANTS = [
   {
-    id: 'a',
-    name: 'Lime dot',
-    blurb: 'Minimal. Echoes the wordmark dot. Reads as: I don\'t waste motion.',
-    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1"/></svg>`,
-    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/><circle cx="10" cy="10" r="2.5" fill="%230a0a0a"/></svg>`,
-    defaultHotspot: '8 8',
-    hoverHotspot: '10 10',
+    id: 'e',
+    name: 'Lime period',
+    blurb: 'A confident solid dot at smiley-scale (no apologetic shrinking). End-of-sentence energy. The "period." mark.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="2"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="2"/><circle cx="19" cy="19" r="5" fill="%230a0a0a"/></svg>`,
+    defaultHotspot: '16 16',
+    hoverHotspot: '19 19',
   },
   {
-    id: 'b',
-    name: 'Editor\'s caret',
-    blurb: 'Proofreader\'s insert mark. Quietly editorial. References the work itself.',
-    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M3 14 L10 5 L17 14" stroke="%230a0a0a" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18 L12 5 L21 18" stroke="%23d4ff1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="5" r="2" fill="%23d4ff1a"/></svg>`,
-    defaultHotspot: '10 5',
-    hoverHotspot: '12 5',
+    id: 'f',
+    name: 'Chunky highlighter',
+    blurb: 'A proper marker shape with an angled chisel tip — not a thin stripe. The cursor IS the highlighter that already lives behind every italic.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="16" viewBox="0 0 44 16"><path d="M2 3 L36 3 L42 8 L36 13 L2 13 Z" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="20" viewBox="0 0 50 20"><path d="M2 2 L40 2 L48 10 L40 18 L2 18 Z" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.5"/></svg>`,
+    defaultHotspot: '4 8',
+    hoverHotspot: '4 10',
   },
   {
-    id: 'c',
-    name: 'Highlighter swipe',
-    blurb: 'Lime stripe — the same mark that lives behind every italic on the site. The cursor IS the highlighter.',
-    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="12" viewBox="0 0 24 12"><rect x="1" y="4" width="22" height="4" fill="%23d4ff1a"/></svg>`,
-    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="14" viewBox="0 0 28 14"><rect x="1" y="3" width="26" height="8" fill="%23d4ff1a"/></svg>`,
-    defaultHotspot: '2 6',
-    hoverHotspot: '2 7',
+    id: 'g',
+    name: 'Lime check',
+    blurb: 'A thick hand-drawn check stroke. Editorial approval at scale. "Yes — this part."',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M5 17 L13 25 L27 7" stroke="%23d4ff1a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 17 L13 25 L27 7" stroke="%230a0a0a" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="16" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.5"/><path d="M9 20 L17 28 L29 10" stroke="%230a0a0a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`,
+    defaultHotspot: '13 25',
+    hoverHotspot: '17 28',
   },
   {
-    id: 'd',
-    name: 'Crosshair',
-    blurb: 'Lime + in a circle. Surgical. Maps to "Score your brand. Get a real read."',
-    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="%23d4ff1a" stroke-width="1.6"/><path d="M10 5 L10 15 M5 10 L15 10" stroke="%23d4ff1a" stroke-width="1.6" stroke-linecap="round"/></svg>`,
-    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/><path d="M12 7 L12 17 M7 12 L17 12" stroke="%230a0a0a" stroke-width="2" stroke-linecap="round"/></svg>`,
-    defaultHotspot: '10 10',
-    hoverHotspot: '12 12',
+    id: 'h',
+    name: 'Marker arrow',
+    blurb: 'A bold lime arrow drawn like a director\'s wayfinding mark. Familiar cursor shape, distinctly his.',
+    defaultSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M6 6 L14 6 M6 6 L6 14 M6 6 L26 26" stroke="%23d4ff1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 6 L14 6 M6 6 L6 14 M6 6 L26 26" stroke="%230a0a0a" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/></svg>`,
+    hoverSvg: `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><path d="M6 6 L16 6 M6 6 L6 16 M6 6 L32 32" stroke="%23d4ff1a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="6" cy="6" r="3" fill="%230a0a0a"/></svg>`,
+    defaultHotspot: '6 6',
+    hoverHotspot: '6 6',
   },
 ];
 
@@ -69,12 +71,15 @@ const css = VARIANTS.map((v) => `
     <div class="shell">
       <p class="eyebrow">Cursor lab</p>
       <h1 style="margin-top: 1.25rem; max-width: 18ch;">
-        Four cursors. <em>Pick the one that fits.</em>
+        Four cursors. <em>Louder this time.</em>
       </h1>
       <p style="color: var(--ink-2); max-width: 52ch; margin-top: 1.5rem;">
-        Move your mouse into each zone below to feel that cursor. Hover over the
-        button to see the interactive state. Reply with the letter of the one
-        you want shipped site-wide.
+        Round two — bigger marks, more presence. Each cursor is at smiley-scale
+        (32&ndash;44px) so it actually announces itself on the page. Mouse into
+        a zone, hover the button, pick the one that fits.
+      </p>
+      <p style="color: var(--mute); max-width: 52ch; margin-top: 0.5rem; font-size: var(--t-sm);">
+        Still off? Reply with what feels wrong and I'll keep pushing.
       </p>
     </div>
   </section>
@@ -115,7 +120,7 @@ const css = VARIANTS.map((v) => `
       <div class="contact-card">
         <div class="left">
           <p class="eyebrow">Reply with</p>
-          <h2 style="margin-top: 0.85rem;">A, B, C, or D.</h2>
+          <h2 style="margin-top: 0.85rem;">E, F, G, or H.</h2>
         </div>
         <div class="right">
           <p>
