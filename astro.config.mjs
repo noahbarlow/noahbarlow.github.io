@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// User GitHub Pages site (noahbarlow.github.io) deploys at the apex.
+// Custom domain noahbarlow.work served via GitHub Pages (public/CNAME pins it).
 // No `base` needed; if you ever move to a project page, set `base: '/repo-name'`.
 export default defineConfig({
-  site: 'https://noahbarlow.github.io',
+  site: 'https://noahbarlow.work',
   trailingSlash: 'never',
   build: {
     format: 'directory',
