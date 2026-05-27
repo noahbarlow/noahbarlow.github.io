@@ -439,6 +439,9 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
               headers: { Accept: 'application/json' },
             });
             if (res.ok) {
+              if (typeof window.trackLead === 'function') {
+                window.trackLead(DIAGNOSTIC_ID, { score: state.score, tier: tier.name });
+              }
               document.getElementById('gate').classList.add('sent');
             } else {
               showError();

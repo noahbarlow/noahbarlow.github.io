@@ -1,0 +1,100 @@
+---
+/**
+ * Analytics + advertising pixels.
+ *
+ * One component to load all four: GA4, Google Ads, LinkedIn Insight, Meta Pixel.
+ * Plus a single global helper `window.trackLead(form, details)` that every form
+ * success handler calls to fire a conversion to all four platforms at once.
+ *
+ * Replace the IDs below once each account is created. Until then they stay as
+ * empty strings and the corresponding script block is a no-op (won't 404 or
+ * leak placeholder IDs).
+ *
+ * IDs to fill in:
+ *   GA4_MEASUREMENT_ID    e.g. 'G-XXXXXXXXXX'         (Analytics → Admin → Data Streams)
+ *   GOOGLE_ADS_ID         e.g. 'AW-1234567890'        (Ads → Tools → Conversions → Tag Setup)
+ *   GOOGLE_ADS_LABEL      e.g. 'AbC-D_efGhIjK12'      (the conversion action's send_to suffix)
+ *   LINKEDIN_PARTNER_ID   e.g. '1234567'              (Campaign Manager → Account Assets → Insight Tag)
+ *   META_PIXEL_ID         e.g. '123456789012345'      (Meta Events Manager → Data Sources → Pixel)
+ */
+const GA4_MEASUREMENT_ID  = '';
+const GOOGLE_ADS_ID       = '';
+const GOOGLE_ADS_LABEL    = '';
+const LINKEDIN_PARTNER_ID = '';
+const META_PIXEL_ID       = '';
+---
+
+{GA4_MEASUREMENT_ID && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}></script>
+    <script is:inline define:vars={{ GA4_MEASUREMENT_ID, GOOGLE_ADS_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA4_MEASUREMENT_ID, { send_page_view: true });
+      if (GOOGLE_ADS_ID) {
+        gtag('config', GOOGLE_ADS_ID);
+      }
+    </script>
+  </>
+)}
+
+{LINKEDIN_PARTNER_ID && (
+  <script is:inline define:vars={{ LINKEDIN_PARTNER_ID }}>
+    {`_linkedin_partner_id = "${LINKEDIN_PARTNER_ID}";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(l) {
+      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])}; window.lintrk.q=[]}
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript"; b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);`}
+  </script>
+)}
+
+{META_PIXEL_ID && (
+  <script is:inline define:vars={{ META_PIXEL_ID }}>
+    {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '${META_PIXEL_ID}');
+    fbq('track', 'PageView');`}
+  </script>
+)}
+
+<!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+-->
+<script is:inline define:vars={{ GOOGLE_ADS_ID, GOOGLE_ADS_LABEL, LINKEDIN_PARTNER_ID, META_PIXEL_ID }}>
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+</script>

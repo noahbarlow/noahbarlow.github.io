@@ -184,6 +184,11 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
             headers: { Accept: 'application/json' },
           });
           if (res.ok) {
+            // Fire conversion to GA4 + Google Ads + LinkedIn + Meta
+            if (typeof window.trackLead === 'function') {
+              const budget = form.querySelector('[name="budget"]')?.value || '';
+              window.trackLead('contact-page', { budget });
+            }
             form.style.display = 'none';
             thanks.style.display = 'block';
             window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
