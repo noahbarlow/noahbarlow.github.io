@@ -6,7 +6,7 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
 
 <BaseLayout
   title="Contact · Noah Barlow"
-  description="Book a strategy call. Selective engagements for founder-led brands. Brand, packaging, and growth leadership."
+  description="Send a brief. Senior brand, packaging, and growth leadership for founder-led companies."
 >
   <script is:inline>document.body.setAttribute('data-page', 'contact');</script>
 
@@ -17,8 +17,9 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
         Bring the brief.<br /><em>I'll bring the framing.</em>
       </h1>
       <p class="hero-sub">
-        Selective engagements only. Fill out the form and I'll personally
-        reply within 48 hours with a read on whether there's a fit.
+        Selective engagements only. Send the brief below &mdash; or just
+        email me directly. Either way, I'll personally reply within 48 hours
+        with a read on whether there's a fit.
       </p>
     </div>
   </section>
@@ -27,14 +28,23 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
   <section style="padding-top: 0;">
     <div class="shell">
       <div class="contact-grid">
-        <!-- Left: Form -->
+        <!-- Left: Brief form -->
         <div>
-          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Start a conversation</p>
-          <h2 style="font-size: var(--t-2xl); max-width: 18ch; margin-bottom: 1.5rem;">A few fields. <em>Then a real reply.</em></h2>
+          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">The brief</p>
+          <h2 style="font-size: var(--t-2xl); max-width: 22ch; margin-bottom: 1.25rem;">
+            A few honest answers. <em>Then a real reply.</em>
+          </h2>
+          <p style="color: var(--ink-2); max-width: 56ch; margin-bottom: 2rem;">
+            Answer what you have answers to. Leave the rest blank. The honest
+            version of each answer is more useful to me than the polished
+            version. Takes most founders 10&ndash;15 minutes.
+          </p>
 
           <form action={FORM_ENDPOINT} method="POST" id="contact-form" class="contact-form">
-            <input type="hidden" name="_subject" value="Contact form — new lead" />
-            <input type="hidden" name="source" value="contact-page" />
+            <input type="hidden" name="_subject" value="Brief — new lead" />
+            <input type="hidden" name="source" value="brief" />
+
+            <p class="field-group-label">Basics</p>
 
             <div class="field">
               <label for="cf-name">Name</label>
@@ -47,12 +57,38 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
             </div>
 
             <div class="field">
-              <label for="cf-company">Company</label>
+              <label for="cf-company">Brand or company</label>
               <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="What you're building" required />
             </div>
 
+            <p class="field-group-label">The work</p>
+
             <div class="field">
-              <label for="cf-budget">Budget range</label>
+              <label for="cf-where">Where you are now</label>
+              <textarea id="cf-where" name="where" rows="4" placeholder="2–3 sentences. Stage, momentum, what's working, what isn't." required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="cf-move">What you're trying to move</label>
+              <textarea id="cf-move" name="move" rows="3" placeholder="In 6–12 months, what changes if this works?" required></textarea>
+            </div>
+
+            <div class="field">
+              <fieldset>
+                <legend style="font-family: var(--font-sans); font-size: var(--t-sm); font-weight: 600; color: var(--ink); letter-spacing: 0.02em; margin-bottom: 0.4em;">
+                  What kind of help do you think this is?
+                </legend>
+                <div class="field-checks">
+                  <label><input type="checkbox" name="help[]" value="Brand strategy" /> Brand strategy</label>
+                  <label><input type="checkbox" name="help[]" value="Packaging system" /> Packaging system</label>
+                  <label><input type="checkbox" name="help[]" value="Growth leadership" /> Growth leadership</label>
+                  <label><input type="checkbox" name="help[]" value="Not sure yet" /> Not sure yet</label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="field">
+              <label for="cf-budget">Budget shape</label>
               <select id="cf-budget" name="budget" required>
                 <option value="">Select a range</option>
                 <option value="Under $10k">Under $10k &middot; one-off / discovery</option>
@@ -63,8 +99,24 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
               </select>
             </div>
 
-            <div class="field-actions">
-              <button type="submit" class="btn hot" id="cf-submit">Send brief &rarr;</button>
+            <p class="field-group-label">Optional &middot; the most useful answers I get</p>
+
+            <div class="field">
+              <label for="cf-tried">What you've already tried</label>
+              <textarea id="cf-tried" name="tried" rows="3" placeholder="What did you try, and why didn't it land?"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="cf-take">The take you'd defend</label>
+              <textarea id="cf-take" name="take" rows="3" placeholder="Is there something you believe about your category, audience, or brand that the room doesn't agree with?"></textarea>
+              <p class="field-help">
+                This is the question that tells me most about whether we'll
+                work well together. Skip it if you'd rather get into it on a call.
+              </p>
+            </div>
+
+            <div class="field-actions" style="margin-top: 1.5rem;">
+              <button type="submit" class="btn hot" id="cf-submit">Send the brief &rarr;</button>
               <span class="legal">One human reply within 48h. No newsletter, no follow-up sequence.</span>
             </div>
           </form>
@@ -79,17 +131,19 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
           </div>
         </div>
 
-        <!-- Right: Alt contact + what happens next -->
+        <!-- Right: Just email me callout + alt paths -->
         <div>
-          <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Or skip the form</p>
-          <p style="font-family: var(--font-display); font-size: var(--t-xl); line-height: 1.25; max-width: 24ch; margin-bottom: 1.25rem;">
-            <a href="mailto:noah@smalleragency.com?subject=Strategy%20call%20%E2%80%94%20intro" style="border-bottom: 2px solid var(--accent);">noah@smalleragency.com</a>
-          </p>
-          <p style="color: var(--ink-2); max-width: 36ch; font-size: var(--t-sm); margin-bottom: 1.75rem;">
-            Send the brief in your own words. The shorter, the better &mdash;
-            I'd rather read three sentences with a real problem than three
-            pages of context.
-          </p>
+          <div class="contact-email-callout">
+            <p class="eyebrow" style="display:block;">Don't want to fill it out?</p>
+            <p class="big">Just email me.</p>
+            <p style="margin: 0;">
+              <a href="mailto:noah@smalleragency.com?subject=Brief%20%E2%80%94%20direct" class="addr">noah@smalleragency.com</a>
+            </p>
+            <p>
+              Three honest sentences beat thirty form fields. The shortest
+              version of your actual problem is the one most useful to me.
+            </p>
+          </div>
 
           <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Also</p>
           <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
@@ -97,9 +151,6 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
           </p>
           <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
             <a href="/diagnostics">Take a diagnostic instead &rarr;</a>
-          </p>
-          <p style="font-size: var(--t-sm); margin-bottom: 0.4em;">
-            <a href="/resume">View resume / CV &rarr;</a>
           </p>
         </div>
       </div>
@@ -187,18 +238,18 @@ const FORM_ENDPOINT = 'https://formspree.io/f/xkoerznn';
             // Fire conversion to GA4 + Google Ads + LinkedIn + Meta
             if (typeof window.trackLead === 'function') {
               const budget = form.querySelector('[name="budget"]')?.value || '';
-              window.trackLead('contact-page', { budget });
+              window.trackLead('brief', { budget });
             }
             form.style.display = 'none';
             thanks.style.display = 'block';
             window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
           } else {
             showError();
-            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send brief →'; }
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send the brief →'; }
           }
         } catch (err) {
           showError();
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send brief →'; }
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send the brief →'; }
         }
       });
     })();

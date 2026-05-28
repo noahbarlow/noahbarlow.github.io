@@ -2230,6 +2230,7 @@ body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color:
 }
 .contact-form input[type="text"],
 .contact-form input[type="email"],
+.contact-form textarea,
 .contact-form select {
   appearance: none;
   font-family: var(--font-sans);
@@ -2241,6 +2242,83 @@ body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color:
   border-radius: 0;
   width: 100%;
 }
+.contact-form textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+  line-height: 1.5;
+}
+.contact-form .field fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.contact-form .field-checks {
+  display: grid;
+  gap: 0.55em;
+  margin-top: 0.4em;
+}
+.contact-form .field-checks label {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-sans);
+  font-size: var(--t-md);
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--ink);
+}
+.contact-form .field-checks input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.contact-form .field-help {
+  font-size: var(--t-xs);
+  color: var(--mute);
+  margin-top: 0.45em;
+  line-height: 1.5;
+}
+.contact-form .field-group-label {
+  display: block;
+  font-size: var(--t-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--mute);
+  margin: 2.25rem 0 1rem;
+  border-top: var(--rule-w) solid var(--rule);
+  padding-top: 1.25rem;
+}
+.contact-form .field-group-label:first-of-type {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+.contact-email-callout {
+  background: var(--paper-2);
+  border-left: 4px solid var(--accent);
+  padding: 1.5rem 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+.contact-email-callout .big {
+  font-family: var(--font-display);
+  font-size: var(--t-xl);
+  line-height: 1.15;
+  margin: 0.4em 0 1em;
+}
+.contact-email-callout a.addr {
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 2px;
+}
+.contact-email-callout p:last-child {
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+  margin: 1em 0 0;
+}
 .contact-form select {
   background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%);
   background-position: calc(100% - 1.05em) calc(50% - 3px), calc(100% - 0.75em) calc(50% - 3px);
@@ -2249,6 +2327,7 @@ body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color:
   padding-right: 2.5em;
 }
 .contact-form input:focus,
+.contact-form textarea:focus,
 .contact-form select:focus {
   outline: 2px solid var(--accent);
   outline-offset: 0;
