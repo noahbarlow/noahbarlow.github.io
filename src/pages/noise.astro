@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Five colors of noise. The `slope` is a tiny inline polyline showing the
+// spectral tilt (dB/octave) — flat for white, falling for pink/brown, rising
+// for blue/violet. Ink on paper; flips to ink-on-lime when a card is playing.
+const TYPES = [
+  { key: 'white',  n: '01', name: 'White',  spec: '0 dB/oct',  desc: 'Equal energy at every frequency. Bright, full, even.',  slope: '2,14 46,14' },
+  { key: 'pink',   n: '02', name: 'Pink',   spec: '−3 dB/oct', desc: 'Falls with frequency. Softer and more natural.',       slope: '2,5 46,23' },
+  { key: 'brown',  n: '03', name: 'Brown',  spec: '−6 dB/oct', desc: 'Deep and rumbling — like steady rain or distant surf.', slope: '2,2 46,26' },
+  { key: 'blue',   n: '04', name: 'Blue',   spec: '+3 dB/oct', desc: 'Rises with frequency. Crisp, airy, hissy.',            slope: '2,23 46,5' },
+  { key: 'violet', n: '05', name: 'Violet', spec: '+6 dB/oct', desc: 'Steepest high end. Sharp and very bright.',            slope: '2,26 46,2' },
+];
+---
+
+<BaseLayout
+  title="Noise — five colors for focus | Noah Barlow"
+  description="A small focus tool: white, pink, brown, blue, and violet noise, generated live in your browser. No files, no tracking, works offline."
+>
+  <section>
+    <div class="shell">
+      <div class="runhead">
+        <span class="n">✦</span>
+        <span class="l">Focus tool</span>
+      </div>
+
+      <div class="noise-head">
+        <h1>Five colors of <em>noise.</em></h1>
+        <p class="lede">
+          Pick a color and find your focus. Generated live in your browser —
+          no files, no tracking, works offline.
+        </p>
+      </div>
+
+      <div class="noise-grid" id="grid">
+        {TYPES.map((t) => (
+          <button class="noise-card" data-key={t.key} type="button" aria-pressed="false">
+            <div class="nc-top">
+              <span class="nc-num">{t.n}</span>
+              <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none">
+                <line x1="2" y1="27" x2="46" y2="27" class="axis" />
+                <polyline points={t.slope} />
+              </svg>
+            </div>
+            <div class="nc-name">{t.name}</div>
+            <div class="nc-desc">{t.desc}</div>
+            <div class="nc-foot">
+              <span class="nc-spec">{t.spec}</span>
+              <span class="nc-state">Tap to play</span>
+            </div>
+          </button>
+        ))}
+
+        <!-- 6th cell completes the 3×2 grid: the control panel. -->
+        <div class="noise-card is-control">
+          <div class="nc-num quiet">Vol</div>
+          <input type="range" id="vol" min="0" max="1" step="0.01" value="0.5"
+                 aria-label="Volume" />
+          <p class="kb-hint">
+            <kbd>1</kbd>–<kbd>5</kbd> pick · <kbd>Space</kbd> stop
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Grid of five noise types + one control cell, 3×2.
+       1px rules via the gap-as-rule trick (rule-colored background bleeds
+       through the gaps). Square corners, editorial restraint. */
+    .noise-head { max-width: 38ch; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+    .noise-head h1 { font-size: var(--t-4xl); line-height: 1; }
+    .noise-head .lede { margin-top: 1.25em; }
+
+    .noise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--rule-w);
+      background: var(--rule);
+      border: var(--rule-w) solid var(--rule);
+    }
+    @media (max-width: 760px) { .noise-grid { grid-template-columns: 1fr; } }
+
+    .noise-card {
+      background: var(--paper);
+      text-align: left;
+      color: var(--ink);
+      padding: clamp(1.5rem, 2.5vw, 2.25rem);
+      min-height: 13.5rem;
+      display: flex;
+      flex-direction: column;
+      border: 0;
+      border-radius: 0;
+      font: inherit;
+      transition: background 160ms var(--easing);
+    }
+    button.noise-card { cursor: inherit; }
+    button.noise-card:hover { background: var(--paper-2); }
+
+    .nc-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+    .nc-num {
+      font-family: var(--font-display);
+      font-size: var(--t-lg);
+      font-variation-settings: 'SOFT' 0, 'opsz' 144;
+      color: var(--mute);
+      line-height: 1;
+    }
+    .nc-slope { width: 48px; height: 28px; flex-shrink: 0; }
+    .nc-slope polyline { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+    .nc-slope .axis { stroke: var(--rule); stroke-width: 1; }
+
+    .nc-name {
+      font-family: var(--font-display);
+      font-size: var(--t-2xl);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.35rem;
+    }
+    .nc-desc {
+      font-size: var(--t-sm);
+      color: var(--mute);
+      line-height: 1.45;
+      max-width: 30ch;
+    }
+    .nc-foot {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nc-spec {
+      font-family: var(--font-display);
+      font-size: var(--t-sm);
+      font-variation-settings: 'SOFT' 0;
+      color: var(--mute);
+    }
+    .nc-state {
+      font-size: var(--t-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    /* Playing — the lime move, used with conviction. */
+    .noise-card.playing { background: var(--accent); }
+    button.noise-card.playing:hover { background: var(--accent); }
+    .noise-card.playing .nc-num,
+    .noise-card.playing .nc-desc,
+    .noise-card.playing .nc-spec { color: var(--ink); }
+    .noise-card.playing .nc-slope polyline { stroke: var(--ink); }
+    .noise-card.playing .nc-slope .axis { stroke: rgba(10,10,10,0.3); }
+    .noise-card.playing .nc-state {
+      color: var(--ink);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45em;
+    }
+    .noise-card.playing .nc-state::before {
+      content: '';
+      width: 0.5em; height: 0.5em;
+      background: var(--ink);
+      border-radius: 50%;
+      animation: noisePulse 1.4s var(--easing) infinite;
+    }
+    @keyframes noisePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+    /* Control cell */
+    .noise-card.is-control { justify-content: center; gap: 1.1rem; }
+    .noise-card.is-control .nc-num.quiet {
+      font-size: var(--t-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+    }
+    .noise-card.is-control input[type="range"] {
+      width: 100%;
+      accent-color: var(--ink);
+      height: 2px;
+    }
+    .noise-card.is-control .kb-hint { margin: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .noise-card.playing .nc-state::before { animation: none; }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const TYPES = ['white', 'pink', 'brown', 'blue', 'violet'];
+      const BUF_SECONDS = 4;
+      let ctx = null, master = null, current = null;
+      const cards = {};
+      const volEl = document.getElementById('vol');
+
+      function ensureCtx() {
+        if (!ctx) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)();
+          master = ctx.createGain();
+          master.gain.value = parseFloat(volEl.value);
+          master.connect(ctx.destination);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+      }
+
+      function makeNoiseBuffer(type) {
+        const len = ctx.sampleRate * BUF_SECONDS;
+        const buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+        const out = buffer.getChannelData(0);
+        const white = new Float32Array(len);
+        for (let i = 0; i < len; i++) white[i] = Math.random() * 2 - 1;
+
+        if (type === 'white') {
+          out.set(white);
+        } else if (type === 'pink') {
+          let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
+          for (let i = 0; i < len; i++) {
+            const w = white[i];
+            b0 = 0.99886*b0 + w*0.0555179;
+            b1 = 0.99332*b1 + w*0.0750759;
+            b2 = 0.96900*b2 + w*0.1538520;
+            b3 = 0.86650*b3 + w*0.3104856;
+            b4 = 0.55000*b4 + w*0.5329522;
+            b5 = -0.7616*b5 - w*0.0168980;
+            out[i] = (b0+b1+b2+b3+b4+b5+b6 + w*0.5362) * 0.11;
+            b6 = w * 0.115926;
+          }
+        } else if (type === 'brown') {
+          let last = 0;
+          for (let i = 0; i < len; i++) {
+            last = (last + 0.02 * white[i]) / 1.02;
+            out[i] = last * 3.5;
+          }
+        } else if (type === 'blue') {
+          let prev = 0;
+          for (let i = 0; i < len; i++) { out[i] = (white[i] - prev) * 0.5; prev = white[i]; }
+        } else if (type === 'violet') {
+          let prev = 0, prev2 = 0;
+          for (let i = 0; i < len; i++) { out[i] = (white[i] - 2*prev + prev2) * 0.3; prev2 = prev; prev = white[i]; }
+        }
+
+        let peak = 0;
+        for (let i = 0; i < len; i++) { const a = Math.abs(out[i]); if (a > peak) peak = a; }
+        if (peak > 0) { const g = 0.9 / peak; for (let i = 0; i < len; i++) out[i] *= g; }
+        return buffer;
+      }
+
+      function refreshLabels() {
+        TYPES.forEach((k) => {
+          const playing = current && current.key === k;
+          cards[k].classList.toggle('playing', !!playing);
+          cards[k].setAttribute('aria-pressed', String(!!playing));
+          cards[k].querySelector('.nc-state').textContent = playing ? 'Playing' : 'Tap to play';
+        });
+      }
+
+      function stop() {
+        if (current) {
+          try { current.gain.gain.setTargetAtTime(0, ctx.currentTime, 0.04); } catch (e) {}
+          const node = current.node;
+          setTimeout(() => { try { node.stop(); } catch (e) {} }, 120);
+          current = null;
+        }
+        refreshLabels();
+      }
+
+      function play(key) {
+        ensureCtx();
+        const node = ctx.createBufferSource();
+        node.buffer = makeNoiseBuffer(key);
+        node.loop = true;
+        const gain = ctx.createGain();
+        gain.gain.value = 0;
+        node.connect(gain).connect(master);
+        node.start();
+        gain.gain.setTargetAtTime(1, ctx.currentTime, 0.06);
+        current = { key, node, gain };
+        refreshLabels();
+      }
+
+      function toggle(key) {
+        const wasPlaying = current && current.key === key;
+        stop();
+        if (!wasPlaying) play(key);
+      }
+
+      TYPES.forEach((k) => {
+        const el = document.querySelector('.noise-card[data-key="' + k + '"]');
+        cards[k] = el;
+        el.addEventListener('click', () => toggle(k));
+      });
+
+      volEl.addEventListener('input', () => {
+        if (master) master.gain.setTargetAtTime(parseFloat(volEl.value), ctx.currentTime, 0.02);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') { e.preventDefault(); stop(); return; }
+        const i = parseInt(e.key, 10);
+        if (i >= 1 && i <= TYPES.length) toggle(TYPES[i - 1]);
+      });
+    })();
+  </script>
+</BaseLayout>
