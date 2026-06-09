@@ -3,13 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Five colors of noise. The `slope` is a tiny inline polyline showing the
 // spectral tilt (dB/octave) — flat for white, falling for pink/brown, rising
-// for blue/violet. Ink on paper; flips to ink-on-lime when a card is playing.
+// for blue/violet. Each glyph is color-coded to its noise color (`c`); white
+// gets an ink outline (`outline`) so it reads on the cream paper.
 const TYPES = [
-  { key: 'white',  n: '01', name: 'White',  spec: '0 dB/oct',  desc: 'Equal energy at every frequency. Bright, full, even.',  slope: '2,14 46,14' },
-  { key: 'pink',   n: '02', name: 'Pink',   spec: '−3 dB/oct', desc: 'Falls with frequency. Softer and more natural.',       slope: '2,5 46,23' },
-  { key: 'brown',  n: '03', name: 'Brown',  spec: '−6 dB/oct', desc: 'Deep and rumbling — like steady rain or distant surf.', slope: '2,2 46,26' },
-  { key: 'blue',   n: '04', name: 'Blue',   spec: '+3 dB/oct', desc: 'Rises with frequency. Crisp, airy, hissy.',            slope: '2,23 46,5' },
-  { key: 'violet', n: '05', name: 'Violet', spec: '+6 dB/oct', desc: 'Steepest high end. Sharp and very bright.',            slope: '2,26 46,2' },
+  { key: 'white',  n: '01', name: 'White',  spec: '0 dB/oct',  desc: 'Equal energy at every frequency. Bright, full, even.',  slope: '2,14 46,14', c: '#ffffff', outline: true },
+  { key: 'pink',   n: '02', name: 'Pink',   spec: '−3 dB/oct', desc: 'Falls with frequency. Softer and more natural.',       slope: '2,5 46,23',  c: '#e487a6' },
+  { key: 'brown',  n: '03', name: 'Brown',  spec: '−6 dB/oct', desc: 'Deep and rumbling — like steady rain or distant surf.', slope: '2,2 46,26',  c: '#9a6438' },
+  { key: 'blue',   n: '04', name: 'Blue',   spec: '+3 dB/oct', desc: 'Rises with frequency. Crisp, airy, hissy.',            slope: '2,23 46,5',  c: '#4f86c6' },
+  { key: 'violet', n: '05', name: 'Violet', spec: '+6 dB/oct', desc: 'Steepest high end. Sharp and very bright.',            slope: '2,26 46,2',  c: '#8163c9' },
 ];
 ---
 
@@ -37,9 +38,10 @@ const TYPES = [
           <button class="noise-card" data-key={t.key} type="button" aria-pressed="false">
             <div class="nc-top">
               <span class="nc-num">{t.n}</span>
-              <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none">
+              <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style={`--c:${t.c}`}>
                 <line x1="2" y1="27" x2="46" y2="27" class="axis" />
-                <polyline points={t.slope} />
+                {t.outline && <polyline points={t.slope} class="halo" />}
+                <polyline points={t.slope} class="line" />
               </svg>
             </div>
             <div class="nc-name">{t.name}</div>
@@ -112,7 +114,9 @@ const TYPES = [
       line-height: 1;
     }
     .nc-slope { width: 48px; height: 28px; flex-shrink: 0; }
-    .nc-slope polyline { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+    .nc-slope polyline { stroke-linecap: round; stroke-linejoin: round; }
+    .nc-slope .line { stroke: var(--c, var(--ink)); stroke-width: 2.5; }
+    .nc-slope .halo { stroke: var(--ink); stroke-width: 4; }
     .nc-slope .axis { stroke: var(--rule); stroke-width: 1; }
 
     .nc-name {
@@ -155,7 +159,8 @@ const TYPES = [
     .noise-card.playing .nc-num,
     .noise-card.playing .nc-desc,
     .noise-card.playing .nc-spec { color: var(--ink); }
-    .noise-card.playing .nc-slope polyline { stroke: var(--ink); }
+    /* Keep each glyph its own color on the lime playing card (the halo keeps
+       white legible against lime too). */
     .noise-card.playing .nc-slope .axis { stroke: rgba(10,10,10,0.3); }
     .noise-card.playing .nc-state {
       color: var(--ink);
