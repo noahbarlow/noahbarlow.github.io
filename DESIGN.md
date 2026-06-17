@@ -13,7 +13,7 @@ A portable reference for **noahbarlow.work**. Paste this (or the raw URL at the 
 - **Positioning:** Senior brand, packaging, and growth operator for founder-led challenger brands (CPG, beverage, RTD, cannabis, food, wellness). Not an agency; not a fractional CMO platform. A partner-level operator who works in the seam between strategy and execution.
 - **Voice:** Editorial, direct, opinionated, lived-in. Think a NYTimes magazine column or a sharp Substack essay — not a TED talk, not a McKinsey deck, not a LinkedIn post.
 - **Palette:** Cream paper, near-black ink, electric lime accent. That's it.
-- **Typography:** Fraunces (display serif, italic carries the highlighter) + Inter (sans body) + Young Serif (occasional alt display).
+- **Typography:** Instrument Serif (display serif, italic carries the highlighter) + Instrument Sans (sans body) + Young Serif (occasional alt display).
 - **Format:** Magazine-style sections. Generous whitespace. Large display type. Eyebrows + numbered runheads. No carousels, no gradients, no decorative motion.
 - **Signature move:** A lime "highlighter" stripe behind every italicized phrase.
 
@@ -113,13 +113,13 @@ The interactive diagnostics (`/scorecard`, `/packaging-audit`, `/modern-brand-os
 ### Families
 
 ```css
---font-display:       'Fraunces', 'Times New Roman', Georgia, serif;
---font-sans:          'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+--font-display:       'Instrument Serif', 'Times New Roman', Georgia, serif;
+--font-sans:          'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
 --font-serif-display: 'Young Serif', 'Cooper Black', serif;
 ```
 
-- **Fraunces** — display serif. Variable font with `opsz`, `WONK`, and `SOFT` axes. Used for every H1, H2, callout headline, and big quote. The **italic** is the most important variant — it carries the lime highlighter and is the most recognizable typographic move on the site.
-- **Inter** — sans body. Everything that isn't display, eyebrow, or large quote.
+- **Instrument Serif** — display serif. Italic-only (no other style/weight variants by design). Used for every H1, H2, callout headline, and big quote. The **italic** is the most important variant — it carries the lime highlighter and is the most recognizable typographic move on the site. Always rendered with `letter-spacing: 0.012em` to give the italic room to breathe.
+- **Instrument Sans** — sans body. More humanist character than Inter; reads warmer at body size. Used for everything that isn't display, eyebrow, or large quote.
 - **Young Serif** — occasional alternative display for decorative moments.
 
 ### Google Fonts loader
@@ -127,7 +127,7 @@ The interactive diagnostics (`/scorecard`, `/packaging-audit`, `/modern-brand-os
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&family=Young+Serif&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap" />
 ```
 
 ### Scale (fluid clamp)
@@ -247,7 +247,7 @@ Text wordmark, not an image. Lime dot + name on one line. Never break to two lin
 - **Generator:** Astro 4 (static)
 - **Deploy:** Manual build → force-push `dist/` to `gh-pages` branch (the user's OAuth lacks `workflow` scope, so no GitHub Actions)
 - **Domain:** `noahbarlow.work` via Cloudflare DNS — four A records on `@` pointing to GitHub Pages IPs (`185.199.108-111.153`) + CNAME `www` → `noahbarlow.github.io`. DNS-only (grey cloud), not proxied.
-- **Fonts:** Google Fonts (Fraunces + Inter + Young Serif)
+- **Fonts:** Google Fonts (Instrument Serif + Instrument Sans + Young Serif)
 - **Lead capture:** Single Formspree endpoint, distinguished by `source` and `diagnostic` hidden fields per form. All leads land in `noah@smalleragency.com`.
 - **Analytics:** GA4 + Google Ads + LinkedIn + Meta scaffolding installed in `src/components/Analytics.astro` — IDs configured per account once they're created.
 - **Cursor:** Custom SVG smiley face (lime fill, ink eyes + smile, ink ring) on default; inverted (ink fill, lime details) on `:hover`.
