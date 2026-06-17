@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "astro-dev",
-      "runtimeExecutable": "/tmp/node-v20.18.1-darwin-arm64/bin/npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "4321"],
-      "port": 4321
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8771", "-d", "dist"],
+      "port": 8771,
+      "autoPort": true
     }
   ]
 }
