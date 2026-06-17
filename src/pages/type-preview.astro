@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Temporary preview page. Renders real brand layouts with Instrument Serif +
+// Instrument Sans (override the global --font-display / --font-sans tokens
+// for this page only). Remove once a typography decision is shipped.
+---
+
+<BaseLayout
+  title="Type preview · Instrument Serif"
+  description="Preview of the Noah Barlow brand in Instrument Serif + Instrument Sans before sitewide commit."
+>
+  <script is:inline>document.body.setAttribute('data-page', 'type-preview');</script>
+
+  <!-- Load the candidate typefaces in addition to whatever BaseLayout already loaded. -->
+  <link slot="head" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" />
+
+  <style is:inline>
+    /* Scope the typeface swap to ONLY this preview page. The rest of the site is unchanged. */
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+    body[data-page="type-preview"] {
+      --font-display: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+      --font-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+    /* Slightly retune the lime highlighter for Instrument Serif's lower x-height. */
+    body[data-page="type-preview"] em {
+      background-image: linear-gradient(transparent 0 56%, var(--accent) 56% 92%, transparent 92% 100%);
+    }
+    /* Small inline switcher at the top so you can A/B the two body sans options. */
+    body[data-page="type-preview"].sans-inter-tight {
+      --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .tp-switch {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.85rem 1rem;
+      text-align: center;
+      font-size: var(--t-sm);
+      color: var(--mute);
+    }
+    .tp-switch button {
+      font-family: inherit;
+      background: transparent;
+      border: 1px solid var(--ink);
+      padding: 0.4em 0.85em;
+      margin: 0 0.25rem;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: var(--t-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tp-switch button.active {
+      background: var(--ink);
+      color: var(--accent);
+    }
+  </style>
+
+  <!-- A/B switcher between the two body sans options -->
+  <div class="tp-switch">
+    <span>Body sans:</span>
+    <button id="tp-instrument" class="active">Instrument Sans</button>
+    <button id="tp-inter">Inter Tight</button>
+    <span style="margin-left: 1rem; color: var(--mute-2);">Refresh hard (cmd-shift-r) if the fonts look stale.</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="shell">
+      <p class="eyebrow">Senior brand &amp; growth operator</p>
+      <h1 style="margin-top: 1.5rem; max-width: 18ch;">
+        Brand strategy. Packaging systems.<br /><em>Demand that compounds.</em>
+      </h1>
+      <p class="hero-sub">
+        Twenty years across beverage, RTD, cannabis, food, and lifestyle.
+        Senior involvement for founder-led companies that need a partner in
+        the room &mdash; not another agency on the roster.
+      </p>
+      <div class="hero-meta">
+        <div class="item"><strong>20+</strong><span>years operating</span></div>
+        <div class="item"><strong>30+</strong><span>brands launched</span></div>
+        <div class="item"><strong>300+</strong><span>packages shipped</span></div>
+        <div class="item"><strong>$1B+</strong><span>portfolios advised</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I SOLVE -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">01</span><span class="l">What I solve</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Brands stall when strategy, package, and demand <em>drift apart.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            Most founder-led companies don't fail at execution &mdash; they fail
+            between functions. The brand team writes one thing, packaging
+            interprets another, retail sells whatever's left. I work end to end
+            so the original argument survives the trip from deck to shelf.
+          </p>
+          <p style="margin-top:1.2em;">
+            Engagements typically start with a sharp diagnostic and resolve
+            into one of three modes: brand strategy, packaging system, or
+            embedded growth leadership.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK CALLOUT -->
+  <section class="dark">
+    <div class="shell">
+      <div class="callout">
+        <span class="mark">&ldquo;</span>
+        <p class="q">
+          Packaging is the most under&#8209;leveraged growth lever a founder
+          owns. It's <em>media</em> you've already paid for.
+        </p>
+        <p class="attr">&mdash; Noah Barlow, on shelf economics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section>
+    <div class="shell">
+      <div class="runhead"><span class="n">02</span><span class="l">The framework</span></div>
+      <div class="s-head">
+        <div class="left">
+          <h2>Brand &rarr; Package &rarr; <em>Demand.</em></h2>
+        </div>
+        <div class="right">
+          <p>
+            The order isn't decorative. Spend on packaging to fix a brand
+            problem and you'll just amplify confusion. Spend on demand to fix
+            a packaging problem and every dollar will lose at shelf. Brand
+            sets the bet. Package carries it. Demand pulls it through. In
+            that order.
+          </p>
+        </div>
+      </div>
+
+      <div class="framework">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Brand</h3>
+          <p>
+            Positioning, point of view, and the strategic narrative that lets
+            a founder say no to the wrong opportunities. Sharp enough to be
+            useful inside the building, durable enough to survive a category
+            shift.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Package</h3>
+          <p>
+            The package is the brand's most-touched media buy. We design the
+            system: hierarchy, semiotics, retail psychology, structural
+            cues &mdash; built to win the three-second test before it tests
+            anything else.
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Demand</h3>
+          <p>
+            What moves a SKU off-shelf and a brand into culture: distribution
+            strategy, GTM sequencing, retail readiness, and the demand
+            generation engine that turns trial into preference.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CARD -->
+  <section>
+    <div class="shell">
+      <div class="contact-card">
+        <div class="left">
+          <p class="eyebrow">Currently</p>
+          <h2 style="margin-top: 0.85rem;">Based in Toronto. Selectively available.</h2>
+        </div>
+        <div class="right">
+          <p>
+            Working with a small number of founder-led brands across North
+            America. If you're considering bringing on senior brand or
+            growth leadership, let's have a conversation.
+          </p>
+          <div class="actions">
+            <a href="/contact" class="btn hot">Book a call</a>
+            <a href="/advisory" class="btn ghost">See engagement model</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="text-align: center; padding-bottom: 4rem;">
+    <div class="shell shell-narrow">
+      <p class="eyebrow">Type preview</p>
+      <h2 style="margin-top: 1rem;">Instrument Serif + Instrument Sans.</h2>
+      <p style="margin-top: 1.25rem; color: var(--mute); max-width: 48ch; margin-left: auto; margin-right: auto;">
+        This page only. Switch the body sans at the top to compare. The
+        rest of the site still runs on Fraunces + Inter until you commit.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const body = document.body;
+      const btnInstrument = document.getElementById('tp-instrument');
+      const btnInter = document.getElementById('tp-inter');
+      if (!btnInstrument || !btnInter) return;
+      btnInstrument.addEventListener('click', () => {
+        body.classList.remove('sans-inter-tight');
+        btnInstrument.classList.add('active');
+        btnInter.classList.remove('active');
+      });
+      btnInter.addEventListener('click', () => {
+        body.classList.add('sans-inter-tight');
+        btnInter.classList.add('active');
+        btnInstrument.classList.remove('active');
+        // Lazy-load Inter Tight on first click
+        if (!document.getElementById('tp-inter-tight-font')) {
+          const l = document.createElement('link');
+          l.id = 'tp-inter-tight-font';
+          l.rel = 'stylesheet';
+          l.href = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap';
+          document.head.appendChild(l);
+        }
+      });
+    })();
+  </script>
+</BaseLayout>
