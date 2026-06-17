@@ -13,7 +13,7 @@ A portable reference for **noahbarlow.work**. Paste this (or the raw URL at the 
 - **Positioning:** Senior brand, packaging, and growth operator for founder-led challenger brands (CPG, beverage, RTD, cannabis, food, wellness). Not an agency; not a fractional CMO platform. A partner-level operator who works in the seam between strategy and execution.
 - **Voice:** Editorial, direct, opinionated, lived-in. Think a NYTimes magazine column or a sharp Substack essay — not a TED talk, not a McKinsey deck, not a LinkedIn post.
 - **Palette:** Cream paper, near-black ink, electric lime accent. That's it.
-- **Typography:** Instrument Serif (display serif, italic carries the highlighter) + Instrument Sans (sans body) + Young Serif (occasional alt display).
+- **Typography (locked):** Instrument Serif (display, italic carries the highlighter) + Instrument Sans (body). Both free, OFL, on Google Fonts. Italic always gets +12 letter-spacing. **No substitutions** on any artifact — web, deck, proposal, or print.
 - **Format:** Magazine-style sections. Generous whitespace. Large display type. Eyebrows + numbered runheads. No carousels, no gradients, no decorative motion.
 - **Signature move:** A lime "highlighter" stripe behind every italicized phrase.
 
@@ -108,9 +108,81 @@ The interactive diagnostics (`/scorecard`, `/packaging-audit`, `/modern-brand-os
 
 ---
 
-## Typography
+## Typography (locked)
 
-### Families
+This typography is the **official brand standard**. It applies to every artifact that carries the Noah Barlow name:
+
+- The website (noahbarlow.work)
+- Proposals, engagement letters, scopes of work
+- Pitch decks, capability decks, working-session decks
+- Brand readouts, audits, written diagnostics
+- One-pagers, case studies, leave-behinds
+- Email signatures and templates
+- Slides for talks, panels, and guest appearances
+- Social posts, story templates, profile graphics
+
+**No substitutions.** If a tool doesn't have the fonts, install them or don't make the artifact in that tool.
+
+### The fonts
+
+| Role | Family | Source |
+|------|--------|--------|
+| Display (all headlines, big quotes, slide titles) | **Instrument Serif** | https://fonts.google.com/specimen/Instrument+Serif |
+| Body (paragraphs, bullets, captions, slide body copy) | **Instrument Sans** | https://fonts.google.com/specimen/Instrument+Sans |
+| Diagnostic alt display (the dark interactive pages only) | Young Serif | https://fonts.google.com/specimen/Young+Serif |
+
+Both Instrument fonts are free, **OFL-licensed**, no commercial restriction. Designed by Instrument studio as a system — pair behavior is intentional.
+
+### The rules (apply everywhere, web and off-web)
+
+1. **Display = Instrument Serif.** Headlines, big quotes, callouts, hero copy, slide titles, deck section dividers, masthead.
+2. **Body = Instrument Sans.** Paragraphs, bullets, captions, legal, slide body copy.
+3. **Italics always get +12 tracking** (`letter-spacing: 0.012em` in CSS, +12 in Figma/Adobe). Instrument Serif's italic is tight by default; this is non-negotiable for legibility.
+4. **The lime highlighter is the italic's only valid decoration.** No underline, no color swap, no boldface. Just the lime stripe behind the italic word.
+5. **Light text on lime = banned.** When an italic appears on a dark background, the text becomes ink (`#0a0a0a`) so it reads *on* the lime stripe instead of fighting it. Light-on-lime is unreadable.
+6. **Use italics for the word you most want read.** The lime is doing emphasis work — don't burn it on filler. One italicized phrase per paragraph, max.
+7. **Sentence case for everything except eyebrows.** No Title Case headlines. Eyebrows use `letter-spacing: 0.14em; text-transform: uppercase` and live above headlines.
+
+### Install once, use everywhere
+
+**Mac (the master install — gives you the fonts in every app):**
+1. Go to https://fonts.google.com/specimen/Instrument+Serif → **Get font → Download all**
+2. Go to https://fonts.google.com/specimen/Instrument+Sans → **Get font → Download all**
+3. Unzip both. Open each `.ttf` in **Font Book**, click **Install Font**.
+4. Restart any open apps.
+
+**Figma:**
+- Desktop app reads system-installed fonts automatically (do the Mac install above)
+- For Figma web: install the [Figma Font Helper](https://www.figma.com/downloads/) agent
+- In the layer's text properties, set tracking to **+12** on italic text
+
+**Google Docs / Slides:**
+- In any doc, font dropdown → **More fonts** → search "Instrument Serif" → click to add → **OK**
+- Same for "Instrument Sans"
+- Both now show in the regular font picker
+
+**Adobe (InDesign / Illustrator / Photoshop):**
+- Not yet in Adobe Fonts. Use the Mac system install — all Adobe apps read system fonts.
+- In Character panel, set **Tracking** to **+12** on any italic text
+
+**Microsoft 365 (Word, PowerPoint, Outlook):**
+- Mac install picks them up automatically
+- Windows: download `.ttf` files, right-click → **Install**
+- When sharing files, **embed the fonts** (File → Options → Save → "Embed fonts in the file") so recipients don't see a fallback
+
+**Keynote / Pages / Numbers:**
+- Mac install picks them up automatically
+- When sharing, choose **File → Advanced → Reduce File Size**, and tick "Always include preview" so the typography is preserved in the rendered preview
+
+**Email signatures (Gmail / Outlook / Apple Mail):**
+- Most email clients ignore custom fonts unless rendered as an image
+- Best approach: keep signature in **Instrument Sans** with a system fallback: `font-family: 'Instrument Sans', Helvetica, Arial, sans-serif`
+- For the wordmark / "● Noah Barlow" line, use **Instrument Serif** with the same fallback chain
+- If you want the lime highlighter on italic in signatures, render that line as an image (PNG/SVG) and embed
+
+### Web (canonical CSS)
+
+CSS variables in `src/styles/global.css`:
 
 ```css
 --font-display:       'Instrument Serif', 'Times New Roman', Georgia, serif;
@@ -118,54 +190,74 @@ The interactive diagnostics (`/scorecard`, `/packaging-audit`, `/modern-brand-os
 --font-serif-display: 'Young Serif', 'Cooper Black', serif;
 ```
 
-- **Instrument Serif** — display serif. Italic-only (no other style/weight variants by design). Used for every H1, H2, callout headline, and big quote. The **italic** is the most important variant — it carries the lime highlighter and is the most recognizable typographic move on the site. Always rendered with `letter-spacing: 0.012em` to give the italic room to breathe.
-- **Instrument Sans** — sans body. More humanist character than Inter; reads warmer at body size. Used for everything that isn't display, eyebrow, or large quote.
-- **Young Serif** — occasional alternative display for decorative moments.
-
-### Google Fonts loader
+Google Fonts loader (one line, in `BaseLayout.astro`):
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap" />
 ```
 
-### Scale (fluid clamp)
+### Type scale (fluid clamp — web)
 
-| Token | Range |
-|-------|-------|
-| `--t-xs`  | 0.75 → 0.85rem |
-| `--t-sm`  | 0.875 → 1rem |
-| `--t-md`  | 1 → 1.125rem |
-| `--t-lg`  | 1.125 → 1.25rem |
-| `--t-xl`  | 1.375 → 1.75rem |
-| `--t-2xl` | 1.75 → 2.5rem |
-| `--t-3xl` | 2.25 → 3.75rem |
-| `--t-4xl` | 2.75 → 5.5rem |
-| `--t-5xl` | 3.5 → 7.5rem |
-| `--t-6xl` | 4.5 → 10rem |
+| Token | Range | Use |
+|-------|-------|-----|
+| `--t-xs`  | 0.75 → 0.85rem  | Eyebrow, legal |
+| `--t-sm`  | 0.875 → 1rem    | Small body, captions |
+| `--t-md`  | 1 → 1.125rem    | Default body |
+| `--t-lg`  | 1.125 → 1.25rem | Lede |
+| `--t-xl`  | 1.375 → 1.75rem | Subhead, H4 |
+| `--t-2xl` | 1.75 → 2.5rem   | H3 |
+| `--t-3xl` | 2.25 → 3.75rem  | H2 |
+| `--t-4xl` | 2.75 → 5.5rem   | H1 (standard) |
+| `--t-5xl` | 3.5 → 7.5rem    | H1 (hero / display) |
+| `--t-6xl` | 4.5 → 10rem     | Editorial extra-display |
 
-Defaults: H1 = `--t-4xl` or `--t-5xl`. H2 = `--t-2xl` or `--t-3xl`. Body = `--t-md`. Eyebrow / legal = `--t-xs` or `--t-sm`.
+**Deck/proposal equivalents** (use as a starting point, scale to slide size):
+
+| Role | Point size (slides) | Point size (proposals/docs) |
+|-----|--------------------|------------------------------|
+| Hero / cover headline | 56–80pt | 32–44pt |
+| Section divider | 40–56pt | 28–36pt |
+| Slide title / H2 | 28–36pt | 20–28pt |
+| Subhead / H3 | 20–24pt | 16–20pt |
+| Body | 14–18pt | 11–13pt |
+| Eyebrow / caption | 10–12pt | 9–10pt |
 
 ### The italic highlighter — signature move
 
-Every `<em>` in running prose gets a horizontal lime stripe behind it (two-thirds down the x-height, like an actual highlighter pass).
+The most recognizable typographic mark on every artifact. A horizontal lime stripe (color `#d4ff1a`) sits behind italicized phrases at display sizes, like an actual highlighter pass.
+
+**Web (CSS for display headlines):**
 
 ```css
-em {
+h1 em, h2 em, h3 em, .hero h1 em, .display em {
   font-style: italic;
+  letter-spacing: 0.012em;
   background-image: linear-gradient(
-    transparent 0 58%,
-    var(--accent) 58% 92%,
+    transparent 0 56%,
+    var(--accent) 56% 92%,
     transparent 92% 100%
   );
-  background-size: 100% 100%;
   background-repeat: no-repeat;
-  padding: 0 0.05em;
+  background-position: 0 0.08em;
+  padding: 0 0.1em 0.02em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 ```
 
-**Rule:** when generating copy with an italicized phrase, that phrase should be the one you'd most want the reader to *actually read*. The lime is doing emphasis work — don't burn it on filler.
+**Off-web (Figma / Adobe / PowerPoint):**
+
+1. Italicize the word(s) and set tracking to **+12**.
+2. Behind the italic text, draw a **rectangle** filled with `#d4ff1a`.
+3. Size the rectangle to cover the **lower ~36% of the cap height** (visually: the rectangle should sit from roughly the x-line down to just below the baseline).
+4. The italic text stays its normal color (ink `#0a0a0a` on cream; ink `#0a0a0a` on dark backgrounds too — see Rule 5).
+5. Group the text + rectangle so they move together.
+
+**Rule again:** italicize the word you most want read. The lime is doing emphasis work — don't burn it on filler.
+
+### What changed when we locked this
+
+The previous standard was Fraunces + Inter. It was swapped to Instrument Serif + Instrument Sans because Fraunces + Inter had become the unmistakable AI-generated-portfolio pairing in 2025–26, undercutting the senior positioning. Instrument's italic is sharper, more bookish, and pairs with a body sans that has more humanist warmth than Inter — both push the system toward genuinely editorial rather than templated-editorial. The decision is locked unless brand direction itself changes.
 
 ---
 
