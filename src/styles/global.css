@@ -2258,6 +2258,8 @@ body.dx-page .confetti i:nth-child(3n) { background: var(--dx-bg); border-color:
   font-family: var(--font-sans);
   font-size: var(--t-md);
   font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
   cursor: pointer;
   color: var(--ink);
 }
