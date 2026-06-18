@@ -41,14 +41,6 @@ const stages = [
   exists: fs.existsSync(path.join(photoDir, s.file)),
 }));
 
-// Highlight clip — short video reel. Drop a web-ready MP4 at the exact path
-// to replace the placeholder. (Original .mov copied to that path too as a
-// fallback for browsers that handle QuickTime.)
-const clipMp4Path = path.join(photoDir, 'noah-speaking-clip.mp4');
-const clipMovPath = path.join(photoDir, 'noah-speaking-clip.mov');
-const hasClip = fs.existsSync(clipMp4Path) || fs.existsSync(clipMovPath);
-const clipMp4Exists = fs.existsSync(clipMp4Path);
-const clipMovExists = fs.existsSync(clipMovPath);
 
 // Four talks. Each is a real argument, not a topic. Titles echo existing site
 // content (essays + diagnostics) so the speaking work compounds with the rest
@@ -319,32 +311,6 @@ const formats = [
     </div>
   </section>
 
-  {hasClip && (
-    <!-- HIGHLIGHT CLIP — short video reel -->
-    <section style="padding-top: 0;">
-      <div class="shell">
-        <div class="clip-wrap">
-          <video
-            class="clip"
-            playsinline
-            muted
-            loop
-            autoplay
-            preload="metadata"
-            aria-label="Noah Barlow speaking — short reel"
-          >
-            {clipMp4Exists && <source src="/img/speaking/noah-speaking-clip.mp4" type="video/mp4" />}
-            {clipMovExists && <source src="/img/speaking/noah-speaking-clip.mov" type="video/quicktime" />}
-          </video>
-          <p class="clip-caption">
-            <span class="eyebrow" style="display:block; margin-bottom: 0.4em;">Short reel</span>
-            A minute of the actual delivery &mdash; pace, posture, the way an
-            argument lands in a real room.
-          </p>
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- BOOKING -->
   <section>
