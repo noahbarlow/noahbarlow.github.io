@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Miller Lite — Canadian Launch · Noah Barlow</title><meta name="description" content="Directed the Canadian launch of Miller Lite for SABMiller — positioning, packaging, and category strategy in a market that didn't yet exist."><link rel="canonical" href="https://noahbarlow.work/work/miller-lite-canada"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Miller Lite — Canadian Launch · Noah Barlow"><meta property="og:description" content="Directed the Canadian launch of Miller Lite for SABMiller — positioning, packaging, and category strategy in a market that didn't yet exist."><meta property="og:url" content="https://noahbarlow.work/work/miller-lite-canada"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work" aria-current="page">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work" aria-current="page"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <article class="case shell"> <header class="case-head"> <span class="eyebrow">Case study · 2014 – 2018</span> <h1>Building a light-beer category that didn't exist yet.</h1> </header> <div class="case-meta"> <div class="item"><span class="label">Client</span>SABMiller Canada</div> <div class="item"><span class="label">Sector</span>Beer · Mass premium</div> <div class="item"><span class="label">Role</span>Lead strategist · Brand &amp; launch</div> <div class="item"><span class="label">Output</span>Positioning · Pack system · GTM</div> </div> <div class="hero-img"> <img src="/img/work/miller-lite.jpg" alt="Miller Lite — Canadian launch creative"> </div> <div class="case-blocks"> <div class="case-block"> <div class="label">Problem</div> <h3>Canada didn't have a credible light beer.</h3> <p>
+Domestic light SKUs were positioned as low-calorie compromises, not
+          as a category in their own right. Miller Lite was a 50-year-old
+          American icon entering a market that had been taught to read "light"
+          as a deficiency.
+</p> </div> <div class="case-block"> <div class="label">Insight</div> <h3>Light is a posture, not a calorie count.</h3> <p>
+The American Miller Lite story — "The Original Lite" — wasn't about
+          fewer calories. It was about confidence: a beer for people who
+          didn't need to perform masculinity. Canada had never been offered
+          that posture.
+</p> </div> <div class="case-block"> <div class="label">Strategy</div> <h3>Anchor on heritage. Build a category, not a product.</h3> <p>
+We positioned Miller Lite as the founder of the category — the
+          original — and built the entire launch around credibility, taste
+          credentials, and unambiguous design. We refused the &ldquo;low-cal&rdquo;
+          conversation entirely.
+</p> </div> <div class="case-block"> <div class="label">Execution</div> <h3>Packaging system, retail playbook, demand sequencing.</h3> <p>
+A pack system built for the cooler door: blue-and-gold confidence,
+          oversized wordmark, "Original Lite" lockup as a category signal.
+          National retail playbook, on-premise sequencing, founder-led
+          launch press, and a paid plan engineered for trial-to-repeat.
+</p> </div> <div class="case-block"> <div class="label">Outcome</div> <h3>From zero to a recognized national brand.</h3> <p>
+Miller Lite became one of SABMiller Canada's fastest-growing SKUs
+          inside eighteen months, opened the light-beer conversation in
+          Canada, and seeded a portfolio approach the broader business
+          rebuilt around.
+</p> </div> </div> <div style="margin-top: clamp(3rem,5vw,5rem); padding-top: clamp(2rem,3vw,2.5rem); border-top: var(--rule-w) solid var(--rule); max-width: var(--shell-narrow); margin-left: auto; margin-right: auto;"> <p class="eyebrow" style="display:block;">Building a category, or competing in one?</p> <p style="font-family: var(--font-display); font-size: var(--t-xl); line-height: 1.3; color: var(--ink); max-width: 32ch; margin-top: 0.85em;">
+Score your brand against the seven moves real challengers actually make.
+</p> <div style="margin-top: 1.25rem; display: flex; gap: 0.85rem; flex-wrap: wrap;"> <a href="/scorecard" class="btn hot">Take the Challenger Scorecard &rarr;</a> <a href="/diagnostics" class="btn ghost">See all diagnostics</a> </div> </div> <div style="margin-top: clamp(2.5rem,4vw,3.5rem); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;"> <a href="/work" class="btn ghost">&larr; All work</a> <a href="/contact" class="btn">Work together</a> </div> </article> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

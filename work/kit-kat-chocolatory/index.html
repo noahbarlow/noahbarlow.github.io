@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kit Kat Chocolatory — Retail Experience · Noah Barlow</title><meta name="description" content="Strategy and creative direction for Nestlé's first North American Kit Kat Chocolatory — turning a mass-confection brand into a destination retail experience."><link rel="canonical" href="https://noahbarlow.work/work/kit-kat-chocolatory"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Kit Kat Chocolatory — Retail Experience · Noah Barlow"><meta property="og:description" content="Strategy and creative direction for Nestlé's first North American Kit Kat Chocolatory — turning a mass-confection brand into a destination retail experience."><meta property="og:url" content="https://noahbarlow.work/work/kit-kat-chocolatory"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work" aria-current="page">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work" aria-current="page"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <article class="case shell"> <header class="case-head"> <span class="eyebrow">Case study · Nestlé Canada</span> <h1>Turning a $1 candy bar into a destination.</h1> </header> <div class="case-meta"> <div class="item"><span class="label">Client</span>Nestlé Canada</div> <div class="item"><span class="label">Sector</span>Confectionary · Retail</div> <div class="item"><span class="label">Role</span>Strategic lead · Brand &amp; experience</div> <div class="item"><span class="label">Output</span>Brand · Retail concept · Launch</div> </div> <div class="hero-img"> <img src="/img/work/kit-kat.jpg" alt="Kit Kat Chocolatory retail concept"> </div> <div class="case-blocks"> <div class="case-block"> <div class="label">Problem</div> <h3>Mass brands rarely earn the right to charge premium.</h3> <p>
+Kit Kat is one of the world's best-known confection brands — and one
+          of its cheapest. Nestlé wanted to extend into experiential retail
+          without diluting the equity that made the bar work in the first
+          place.
+</p> </div> <div class="case-block"> <div class="label">Insight</div> <h3>The brand's permission was nostalgia, not luxury.</h3> <p>
+Customers weren't lining up to be sold a $9 chocolate. They were
+          lining up to relive a feeling they already trusted, dressed in
+          something they hadn't seen before. The job was to give nostalgia a
+          new container.
+</p> </div> <div class="case-block"> <div class="label">Strategy</div> <h3>"Create Your Break" as a permission engine.</h3> <p>
+We anchored the entire experience on participation — bar
+          customization, in-store moments, and a creative system that gave
+          guests a reason to bring a friend and a phone. The brand stopped
+          selling chocolate and started selling a small ritual.
+</p> </div> <div class="case-block"> <div class="label">Execution</div> <h3>Storefront, system, content, and launch.</h3> <p>
+North America's first permanent Chocolatory opened at Yorkdale — a
+          25-foot signed facade, a guided in-store journey, a packaging
+          system designed for gifting and social sharing, and a launch plan
+          that prioritized credibility over reach.
+</p> </div> <div class="case-block"> <div class="label">Outcome</div> <h3>A flagship that paid back its own marketing.</h3> <p>
+Sustained queues from week one, earned coverage across consumer and
+          trade press, and a customer experience model Nestlé referenced
+          internationally as a template for future Chocolatory openings.
+</p> </div> </div> <div style="margin-top: clamp(3rem,5vw,5rem); padding-top: clamp(2rem,3vw,2.5rem); border-top: var(--rule-w) solid var(--rule); max-width: var(--shell-narrow); margin-left: auto; margin-right: auto;"> <p class="eyebrow" style="display:block;">Score your brand against the OS</p> <p style="font-family: var(--font-display); font-size: var(--t-xl); line-height: 1.3; color: var(--ink); max-width: 32ch; margin-top: 0.85em;">
+Is your brand built for the world Gen-Z is shaping? Score against the eleven principles.
+</p> <div style="margin-top: 1.25rem; display: flex; gap: 0.85rem; flex-wrap: wrap;"> <a href="/modern-brand-os" class="btn hot">Take the Modern Brand OS &rarr;</a> <a href="/diagnostics" class="btn ghost">See all diagnostics</a> </div> </div> <div style="margin-top: clamp(2.5rem,4vw,3.5rem); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;"> <a href="/work" class="btn ghost">&larr; All work</a> <a href="/contact" class="btn">Work together</a> </div> </article> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

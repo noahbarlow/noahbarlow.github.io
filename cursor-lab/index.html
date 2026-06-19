@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cursor lab · Noah Barlow</title><meta name="description" content="Four cursor options. Mouse into each zone, feel which one fits, pick one."><link rel="canonical" href="https://noahbarlow.work/cursor-lab"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Cursor lab · Noah Barlow"><meta property="og:description" content="Four cursor options. Mouse into each zone, feel which one fits, pick one."><meta property="og:url" content="https://noahbarlow.work/cursor-lab"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <style>
+  body.cursor-lab .lab-zone[data-variant="e"],
+  body.cursor-lab .lab-zone[data-variant="e"] * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="2"/></svg>') 16 16, auto !important;
+  }
+  body.cursor-lab .lab-zone[data-variant="e"] a:hover,
+  body.cursor-lab .lab-zone[data-variant="e"] button:hover,
+  body.cursor-lab .lab-zone[data-variant="e"] .btn:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="2"/><circle cx="19" cy="19" r="5" fill="%230a0a0a"/></svg>') 19 19, pointer !important;
+  }
+
+
+  body.cursor-lab .lab-zone[data-variant="f"],
+  body.cursor-lab .lab-zone[data-variant="f"] * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="16" viewBox="0 0 44 16"><path d="M2 3 L36 3 L42 8 L36 13 L2 13 Z" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.2"/></svg>') 4 8, auto !important;
+  }
+  body.cursor-lab .lab-zone[data-variant="f"] a:hover,
+  body.cursor-lab .lab-zone[data-variant="f"] button:hover,
+  body.cursor-lab .lab-zone[data-variant="f"] .btn:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="20" viewBox="0 0 50 20"><path d="M2 2 L40 2 L48 10 L40 18 L2 18 Z" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.5"/></svg>') 4 10, pointer !important;
+  }
+
+
+  body.cursor-lab .lab-zone[data-variant="g"],
+  body.cursor-lab .lab-zone[data-variant="g"] * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M5 17 L13 25 L27 7" stroke="%23d4ff1a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 17 L13 25 L27 7" stroke="%230a0a0a" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/></svg>') 13 25, auto !important;
+  }
+  body.cursor-lab .lab-zone[data-variant="g"] a:hover,
+  body.cursor-lab .lab-zone[data-variant="g"] button:hover,
+  body.cursor-lab .lab-zone[data-variant="g"] .btn:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="16" fill="%23d4ff1a" stroke="%230a0a0a" stroke-width="1.5"/><path d="M9 20 L17 28 L29 10" stroke="%230a0a0a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>') 17 28, pointer !important;
+  }
+
+
+  body.cursor-lab .lab-zone[data-variant="h"],
+  body.cursor-lab .lab-zone[data-variant="h"] * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M6 6 L14 6 M6 6 L6 14 M6 6 L26 26" stroke="%23d4ff1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 6 L14 6 M6 6 L6 14 M6 6 L26 26" stroke="%230a0a0a" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/></svg>') 6 6, auto !important;
+  }
+  body.cursor-lab .lab-zone[data-variant="h"] a:hover,
+  body.cursor-lab .lab-zone[data-variant="h"] button:hover,
+  body.cursor-lab .lab-zone[data-variant="h"] .btn:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><path d="M6 6 L16 6 M6 6 L6 16 M6 6 L32 32" stroke="%23d4ff1a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="6" cy="6" r="3" fill="%230a0a0a"/></svg>') 6 6, pointer !important;
+  }
+</style> <script>
+    document.body.classList.add('cursor-lab');
+  </script> <section style="padding-top: 2rem; padding-bottom: 0;"> <div class="shell"> <p class="eyebrow">Cursor lab</p> <h1 style="margin-top: 1.25rem; max-width: 18ch;">
+Four cursors. <em>Louder this time.</em> </h1> <p style="color: var(--ink-2); max-width: 52ch; margin-top: 1.5rem;">
+Round two — bigger marks, more presence. Each cursor is at smiley-scale
+        (32&ndash;44px) so it actually announces itself on the page. Mouse into
+        a zone, hover the button, pick the one that fits.
+</p> <p style="color: var(--mute); max-width: 52ch; margin-top: 0.5rem; font-size: var(--t-sm);">
+Still off? Reply with what feels wrong and I'll keep pushing.
+</p> </div> </section> <section style="padding-top: 1.5rem;"> <div class="shell"> <div class="lab-grid"> <div class="lab-zone" data-variant="e"> <div class="lab-zone-inner"> <div class="runhead"> <span class="n">E</span> <span class="l">Lime period</span> </div> <h2 style="font-size: var(--t-2xl); max-width: 14ch; margin-top: 1rem;"> Lime period </h2> <p style="color: var(--ink-2); margin-top: 1rem; max-width: 36ch;"> A confident solid dot at smiley-scale (no apologetic shrinking). End-of-sentence energy. The &quot;period.&quot; mark. </p> <p style="color: var(--ink-2); margin-top: 1.5rem; max-width: 38ch; font-size: var(--t-sm);">
+Mouse anywhere in this zone to feel the resting cursor. Hover
+                the button to feel the interactive state.
+</p> <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;"> <a href="#" class="btn hot" onclick="event.preventDefault()">Hover me &rarr;</a> <a href="#" onclick="event.preventDefault()" style="display:inline-flex; align-items:center; padding: 0.6rem 0;">Or a plain link &rarr;</a> </div> </div> </div><div class="lab-zone" data-variant="f"> <div class="lab-zone-inner"> <div class="runhead"> <span class="n">F</span> <span class="l">Chunky highlighter</span> </div> <h2 style="font-size: var(--t-2xl); max-width: 14ch; margin-top: 1rem;"> Chunky highlighter </h2> <p style="color: var(--ink-2); margin-top: 1rem; max-width: 36ch;"> A proper marker shape with an angled chisel tip — not a thin stripe. The cursor IS the highlighter that already lives behind every italic. </p> <p style="color: var(--ink-2); margin-top: 1.5rem; max-width: 38ch; font-size: var(--t-sm);">
+Mouse anywhere in this zone to feel the resting cursor. Hover
+                the button to feel the interactive state.
+</p> <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;"> <a href="#" class="btn hot" onclick="event.preventDefault()">Hover me &rarr;</a> <a href="#" onclick="event.preventDefault()" style="display:inline-flex; align-items:center; padding: 0.6rem 0;">Or a plain link &rarr;</a> </div> </div> </div><div class="lab-zone" data-variant="g"> <div class="lab-zone-inner"> <div class="runhead"> <span class="n">G</span> <span class="l">Lime check</span> </div> <h2 style="font-size: var(--t-2xl); max-width: 14ch; margin-top: 1rem;"> Lime check </h2> <p style="color: var(--ink-2); margin-top: 1rem; max-width: 36ch;"> A thick hand-drawn check stroke. Editorial approval at scale. &quot;Yes — this part.&quot; </p> <p style="color: var(--ink-2); margin-top: 1.5rem; max-width: 38ch; font-size: var(--t-sm);">
+Mouse anywhere in this zone to feel the resting cursor. Hover
+                the button to feel the interactive state.
+</p> <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;"> <a href="#" class="btn hot" onclick="event.preventDefault()">Hover me &rarr;</a> <a href="#" onclick="event.preventDefault()" style="display:inline-flex; align-items:center; padding: 0.6rem 0;">Or a plain link &rarr;</a> </div> </div> </div><div class="lab-zone" data-variant="h"> <div class="lab-zone-inner"> <div class="runhead"> <span class="n">H</span> <span class="l">Marker arrow</span> </div> <h2 style="font-size: var(--t-2xl); max-width: 14ch; margin-top: 1rem;"> Marker arrow </h2> <p style="color: var(--ink-2); margin-top: 1rem; max-width: 36ch;"> A bold lime arrow drawn like a director&#39;s wayfinding mark. Familiar cursor shape, distinctly his. </p> <p style="color: var(--ink-2); margin-top: 1.5rem; max-width: 38ch; font-size: var(--t-sm);">
+Mouse anywhere in this zone to feel the resting cursor. Hover
+                the button to feel the interactive state.
+</p> <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;"> <a href="#" class="btn hot" onclick="event.preventDefault()">Hover me &rarr;</a> <a href="#" onclick="event.preventDefault()" style="display:inline-flex; align-items:center; padding: 0.6rem 0;">Or a plain link &rarr;</a> </div> </div> </div> </div> </div> </section> <section> <div class="shell"> <div class="contact-card"> <div class="left"> <p class="eyebrow">Reply with</p> <h2 style="margin-top: 0.85rem;">E, F, G, or H.</h2> </div> <div class="right"> <p>
+Or "none of the above" — and tell me what feels off. A cursor is
+            a small detail, but it's one of the few elements every visitor
+            touches on every page. Worth getting right.
+</p> <p style="margin-top: 1em; color: var(--mute); font-size: var(--t-sm);">
+This page is a temporary preview. It'll be removed once you pick.
+</p> </div> </div> </div> </section> <style>
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 760px) {
+      .lab-grid { grid-template-columns: 1fr; }
+    }
+    .lab-zone {
+      background: #fff;
+      border: 1px solid rgba(10,10,10,0.12);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      min-height: 360px;
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+    .lab-zone:hover {
+      border-color: var(--accent);
+      background: #fefefe;
+    }
+    .lab-zone-inner { display: flex; flex-direction: column; height: 100%; }
+  </style> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

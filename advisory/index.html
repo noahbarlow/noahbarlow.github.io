@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Advisory · Noah Barlow</title><meta name="description" content="Fractional brand and growth leadership for founder-led challenger companies — embedded strategic partnership rather than outsourced production."><link rel="canonical" href="https://noahbarlow.work/advisory"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Advisory · Noah Barlow"><meta property="og:description" content="Fractional brand and growth leadership for founder-led challenger companies — embedded strategic partnership rather than outsourced production."><meta property="og:url" content="https://noahbarlow.work/advisory"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory" aria-current="page">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory" aria-current="page"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <section class="hero"> <div class="shell"> <p class="eyebrow">Advisory</p> <h1 style="margin-top:1.5rem; max-width: 13ch;">
+Fractional brand &amp; growth leadership.
+</h1> <p class="hero-sub">
+An embedded strategic partner for founder-led companies — senior
+        involvement, limited engagements, and a working style that stays close
+        enough to the P&amp;L to be useful to it.
+</p> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">Engagement model</span> <h2>Built for founders, not for agency rosters.</h2> </div> <div class="right"> <p>
+I take a small number of engagements per year. Each is sized for
+            real strategic involvement: working sessions in the room, brand
+            and packaging decisions made with you rather than presented at
+            you, and an operating cadence designed to compound over months.
+</p> </div> </div> <div class="framework"> <div class="step"> <div class="num">01</div> <h3>Diagnostic</h3> <p>
+A two-to-four-week strategic audit. Brand, package, retail, and
+            demand looked at as a single system — including the things your
+            team is too close to see.
+</p> </div> <div class="step"> <div class="num">02</div> <h3>Engagement</h3> <p>
+A six-to-twelve-month embedded retainer. Brand strategy,
+            packaging system development, creative direction, and the
+            operating cadence to make the change land in market.
+</p> </div> <div class="step"> <div class="num">03</div> <h3>Board</h3> <p>
+For founders who don't need a full retainer: a board-style
+            advisory role — monthly strategic counsel, decision support, and
+            access between sessions when the stakes call for it.
+</p> </div> </div> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">What I do</span> <h2>The work I'm hired to lead.</h2> </div> <div class="right"> <p>
+Strategic leadership where brand, packaging, and demand have to
+            work as one system.
+</p> <p style="margin-top: 1.2em;">
+Need full agency execution too? I work closely with
+<a href="https://smalleragency.com" target="_blank" rel="noopener">Smaller Agency</a>
+&mdash; efficient, founder-friendly, built for this kind of work.
+</p> </div> </div> <div class="advisory"> <div> <p class="pull">
+Strategy and packaging are the same job. Hiring two firms for
+            it is why most launches drift.
+</p> <div style="margin-top: 1.5em; color: var(--mute); font-size: var(--t-md); max-width: 36ch;"> <p>
+I work directly with founders, CEOs, and senior marketing
+              leads — not through account layers. The fewer hands, the
+              sharper the brand.
+</p> </div> </div> <ul class="bullets"> <li><span class="k">01</span><span class="v">Brand strategy and positioning architecture</span></li> <li><span class="k">02</span><span class="v">Packaging systems and shelf psychology</span></li> <li><span class="k">03</span><span class="v">Creative direction and category point of view</span></li> <li><span class="k">04</span><span class="v">Go-to-market sequencing and launch leadership</span></li> <li><span class="k">05</span><span class="v">Retail readiness, trade, and on-premise programs</span></li> <li><span class="k">06</span><span class="v">Demand generation strategy and growth systems</span></li> <li><span class="k">07</span><span class="v">Founder support and board-level brand counsel</span></li> </ul> </div> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">Who I work with</span> <h2>Founder-led challenger companies.</h2> </div> <div class="right"> <p>
+Mostly private, mostly founder-led. What they have in common is
+            readiness — founders who already know what they don't want to do
+            next, and need a senior partner who'll help them commit to what
+            they do.
+</p> </div> </div> <div class="framework"> <div class="step"> <div class="num">CPG</div> <h3>Beverage, food, RTD</h3> <p>Mass-premium, premium-import, alcohol and non-alc, functional drinks, snacks, frozen.</p> </div> <div class="step"> <div class="num">WELL</div> <h3>Wellness &amp; lifestyle</h3> <p>Cannabis, functional wellness, beauty-adjacent, personal care, and emerging consumer.</p> </div> <div class="step"> <div class="num">HOSP</div> <h3>Hospitality &amp; retail</h3> <p>Founder-led hospitality, concept retail, and DTC brands building a physical presence.</p> </div> </div> </div> </section> <section> <div class="shell"> <div class="contact-card"> <div class="left"> <p class="eyebrow">Selectively available · 2026</p> <h2 style="margin-top:0.85rem;">Two to three engagements per quarter.</h2> </div> <div class="right"> <p>
+If you're a founder considering a fractional brand or growth
+            leader, the next move is a thirty-minute call. Bring the
+            problem; I'll bring the framing.
+</p> <div class="actions"> <a href="/contact" class="btn hot">Book a strategy call</a> <a href="/work" class="btn ghost">See case studies</a> </div> </div> </div> </div> </section> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

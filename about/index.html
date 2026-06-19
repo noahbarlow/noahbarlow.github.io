@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>About · Noah Barlow</title><meta name="description" content="Twenty years as an operator across beverage, wellness, food, and lifestyle — strategy, packaging, and growth leadership for founder-led companies."><link rel="canonical" href="https://noahbarlow.work/about"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="About · Noah Barlow"><meta property="og:description" content="Twenty years as an operator across beverage, wellness, food, and lifestyle — strategy, packaging, and growth leadership for founder-led companies."><meta property="og:url" content="https://noahbarlow.work/about"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about" aria-current="page">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about" aria-current="page"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <section class="hero"> <div class="shell"> <p class="eyebrow">About</p> <h1 style="margin-top: 1.5rem; max-width: 16ch;">
+Operator. Strategist.<br><em>Brand builder.</em> </h1> <p class="hero-sub">
+Twenty years across beverage, wellness, RTD, cannabis, food, and
+        lifestyle. Launched Miller Lite in Canada. Built packaging systems
+        for portfolio leaders and challenger brands. Founded an agency. Now
+        consulting as a senior operator.
+</p> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">The shape of the work</span> <h2>Strategy and execution as one job.</h2> </div> <div class="right"> <p>
+Most senior brand work in this industry sits in one of two
+            buckets: strategists who write the deck, or creatives who build
+            what someone else briefed. The interesting work — the work that
+            moves a P&amp;L — happens at the seam between those two roles.
+</p> <p style="margin-top: 1.2em;">
+That seam is where I've spent most of my career. The strategy
+            work matters less than what survives the trip from deck to pack
+            to shelf. Most of the failure modes I've seen aren't strategic
+            or executional in isolation &mdash; they're translation failures
+            between the two.
+</p> </div> </div> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">Trajectory</span> <h2>Two decades, three modes.</h2> </div> <div class="right"> <p>
+Senior brand leader inside global portfolio companies. Founder
+            and operator of a creative business. And now: a partner-level
+            advisor for founder-led companies that need senior involvement
+            without the agency overhead.
+</p> </div> </div> <div class="framework"> <div class="step"> <div class="num">01</div> <h3>Inside</h3> <p>
+Senior strategist on SABMiller's Canadian portfolio — Miller
+            Lite, MGD, Grolsch, Pilsner Urquell, Peroni. Led the Canadian
+            launch of Miller Lite end to end. Built brand and packaging
+            systems for category leaders. Learned how P&amp;Ls actually move.
+</p> </div> <div class="step"> <div class="num">02</div> <h3>Founder</h3> <p>
+Founded Smaller Agency. Grew the Toronto office 300% in the
+            first year and doubled the local roster without adding
+            overhead. Worked across cannabis, wellness, hospitality, food,
+            and lifestyle — challenger brands and category leaders.
+</p> </div> <div class="step"> <div class="num">03</div> <h3>Advisor</h3> <p>
+Now consulting selectively as a senior brand and growth
+            operator. Fewer engagements, deeper involvement, partner-level
+            time with founders who need a strategic operator in the room.
+</p> </div> </div> </div> </section> <section class="bigquote"> <div class="shell shell-narrow"> <p class="q">
+The most useful thing a senior operator brings to a founder isn't
+        another opinion. It's pattern recognition.
+</p> <p class="attr">— Noah Barlow</p> </div> </section> <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">Philosophy</span> <h2>What I believe about how brands grow.</h2> </div> <div class="right"> <p>
+Five operating beliefs I keep coming back to after twenty years
+            of running brands. They're not novel. They're the ones that have
+            held up across every category I've worked in.
+</p> </div> </div> <ul class="bullets" style="list-style:none; padding:0; max-width: 56ch;"> <li style="border-top: var(--rule-w) solid var(--rule); padding: 1em 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem;"> <span class="k" style="font-family: var(--font-display); color: var(--mute);">01</span> <span class="v">Packaging is media. Most founders underfund it.</span> </li> <li style="border-top: var(--rule-w) solid var(--rule); padding: 1em 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem;"> <span class="k" style="font-family: var(--font-display); color: var(--mute);">02</span> <span class="v">Consensus kills demand. Sharp positioning has to alienate someone.</span> </li> <li style="border-top: var(--rule-w) solid var(--rule); padding: 1em 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem;"> <span class="k" style="font-family: var(--font-display); color: var(--mute);">03</span> <span class="v">Premium brands are often emotionally weak. They forget what they're for.</span> </li> <li style="border-top: var(--rule-w) solid var(--rule); padding: 1em 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem;"> <span class="k" style="font-family: var(--font-display); color: var(--mute);">04</span> <span class="v">The package is the brief. If it can't say it, the brand can't either.</span> </li> <li style="border-top: var(--rule-w) solid var(--rule); padding: 1em 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.5rem; border-bottom: var(--rule-w) solid var(--rule);"> <span class="k" style="font-family: var(--font-display); color: var(--mute);">05</span> <span class="v">Most agencies don't understand commerce. The good ones can't hide it.</span> </li> </ul> </div> </section> <section> <div class="shell"> <div class="contact-card"> <div class="left"> <p class="eyebrow">Currently</p> <h2 style="margin-top: 0.85rem;">Based in Toronto. Selectively available.</h2> </div> <div class="right"> <p>
+Working with a small number of founder-led brands across North
+            America. If you're considering bringing on senior brand or
+            growth leadership, let's have a conversation. Also booking
+            6&ndash;10 speaking dates a year &mdash; talks for rooms that
+            want a real read.
+</p> <div class="actions"> <a href="/contact" class="btn hot">Book a call</a> <a href="/advisory" class="btn ghost">Engagement model</a> <a href="/speaking" class="btn ghost">Speaking</a> </div> </div> </div> </div> </section> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

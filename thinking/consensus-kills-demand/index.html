@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Consensus kills demand. · Noah Barlow</title><meta name="description" content="Strategy meetings optimize for the survivable answer. Demand requires the answer most people in the room would not have signed off on."><link rel="canonical" href="https://noahbarlow.work/thinking/consensus-kills-demand"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Consensus kills demand. · Noah Barlow"><meta property="og:description" content="Strategy meetings optimize for the survivable answer. Demand requires the answer most people in the room would not have signed off on."><meta property="og:url" content="https://noahbarlow.work/thinking/consensus-kills-demand"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking" aria-current="page">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking" aria-current="page"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <article class="article"> <header class="article-head shell"> <span class="eyebrow">Essay · 2026 · 4 min</span> <h1>Consensus kills demand.</h1> <p class="lede">
+Strategy meetings optimize for the survivable answer. Demand requires
+        the answer most people in the room would not have signed off on.
+</p> </header> <div class="article-body shell"> <p class="dropcap">
+If you ask seven people to approve a brand, you will get seven
+        people's worth of brand. Each of them has a job, a quarter, a
+        political consideration, and a memory of the last launch that
+        failed. Each of them is trying to make sure their fingerprints
+        aren't on the wrong decision.
+</p> <p>
+The result is rarely catastrophic. It's worse than that. It's
+        survivable. It clears the legal review. It clears the trade review.
+        It clears the focus group. And it lands in market as exactly the
+        thing a focus group would have predicted — which is to say,
+        forgettable.
+</p> <h2>The seven-person problem.</h2> <p>
+Demand is created by sharpness. Sharpness, by definition, alienates
+        someone. That's the deal. The brands that move the category don't
+        do it by being agreed with; they do it by being chosen, which is a
+        different thing. And consensus rooms are biased against being
+        chosen, because being chosen requires being not-chosen first.
+</p> <blockquote>
+The brands that move the category aren't agreed with. They're
+        chosen, which is a different thing.
+</blockquote> <h2>What founders are actually paying for.</h2> <p>
+A founder who hires an outside operator is rarely paying for
+        unfamiliar information. They have the information. What they're
+        paying for is a partner willing to take a position that the rest of
+        the room won't — and willing to defend it in front of the people
+        who will lose status if it's right.
+</p> <h2>How to run a sharper review.</h2> <p>
+A few moves that help. <em>Name the consensus pull before the
+        meeting starts.</em> If you can articulate what the cautious answer
+        is going to be, you can choose whether to take it on its merits or
+        because it's safe. <em>Separate the strategic decision from the
+        execution decision.</em> Most committees can't say no to a strategy
+        but will reflexively edit the execution into the middle. Decide
+        strategy first, in a smaller room. <em>Find your dissenter.</em>
+Every room has one person who will say the uncomfortable thing.
+        Brief them privately and ask them to say it.
+</p> <h2>What this looks like in practice.</h2> <p>
+The Miller Lite Canadian launch had a version where we hedged the
+        category. It tested fine. We didn't run it. The version that ran
+        was the one half the room thought was too direct — and it was the
+        version that worked. The cautious version would not have failed
+        loudly. It would have failed quietly, which is the worst kind.
+</p> <p>
+If the brand strategy clears every meeting without friction, it
+        will likely clear every shopper the same way.
+</p> </div> <div class="shell" style="max-width: var(--shell-narrow); margin-top: clamp(3rem,5vw,5rem);"> <hr> <p class="eyebrow" style="display:block;">Score your brand against this</p> <p style="font-family: var(--font-display); font-size: var(--t-xl); line-height: 1.3; color: var(--ink); max-width: 32ch; margin-top: 0.85em;">
+Sharp enough to be chosen? Score your brand against the seven challenger moves.
+</p> <div style="margin-top: 1.25rem; display: flex; gap: 0.85rem; flex-wrap: wrap;"> <a href="/scorecard" class="btn hot">Take the Challenger Scorecard &rarr;</a> <a href="/contact" class="btn ghost">Book a strategy call</a> </div> </div> </article> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

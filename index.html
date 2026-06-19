@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Noah Barlow — Brand, packaging, and growth for challenger brands</title><meta name="description" content="Senior strategic operator helping founder-led companies build demand through brand, packaging, and growth leadership."><link rel="canonical" href="https://noahbarlow.work/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Noah Barlow — Brand, packaging, and growth for challenger brands"><meta property="og:description" content="Senior strategic operator helping founder-led companies build demand through brand, packaging, and growth leadership."><meta property="og:url" content="https://noahbarlow.work/"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main">  <section class="hero"> <div class="shell"> <div class="hero-split"> <div> <p class="eyebrow">Brand &rarr; Package &rarr; Demand</p> <h1 style="margin-top:1.5rem;">
+I help challenger brands<br> <em>create demand.</em> </h1> <p class="hero-sub">
+Brand strategy, packaging systems, positioning, and growth
+            leadership for founder-led companies &mdash; twenty years of
+            operating experience, delivered as a partner rather than an
+            agency.
+</p> <div class="hero-actions"> <a href="/contact" class="btn hot">Book a strategy call</a> <a href="/scorecard" class="btn ghost">Take the Scorecard &rarr;</a> </div> </div> <div class="hero-portrait" aria-hidden="true"> <div class="tag-overlay"> <span class="tag hot">Selectively available</span> <span class="tag">Toronto &middot; 2026</span> </div> <img src="/img/p1-author.jpg" alt=""> </div> </div> <div class="hero-meta"> <div class="item"><strong>20+</strong><span>years operating</span></div> <div class="item"><strong>7</strong><span>years founder</span></div> <div class="item"><strong>30+</strong><span>brands launched</span></div> <div class="item"><strong>$1B+</strong><span>portfolios advised</span></div> </div> </div> </section>  <div class="ticker" aria-hidden="true"> <div class="ticker-track">  <span>Brand strategy</span> <span class="star">&#10022;</span>  <span>Packaging systems</span> <span class="star">&#10022;</span>  <span>Demand engineering</span> <span class="star">&#10022;</span>  <span>Founder advisory</span> <span class="star">&#10022;</span>  <span>Retail psychology</span> <span class="star">&#10022;</span>  <span>Category positioning</span> <span class="star">&#10022;</span>  <span>GTM leadership</span> <span class="star">&#10022;</span>  <span>Cultural fluency</span> <span class="star">&#10022;</span>  <span>Brand strategy</span> <span class="star">&#10022;</span>  <span>Packaging systems</span> <span class="star">&#10022;</span>  <span>Demand engineering</span> <span class="star">&#10022;</span>  <span>Founder advisory</span> <span class="star">&#10022;</span>  <span>Retail psychology</span> <span class="star">&#10022;</span>  <span>Category positioning</span> <span class="star">&#10022;</span>  <span>GTM leadership</span> <span class="star">&#10022;</span>  <span>Cultural fluency</span> <span class="star">&#10022;</span>  </div> </div>  <section> <div class="shell"> <div class="runhead"><span class="n">01</span><span class="l">What I solve</span></div> <div class="s-head"> <div class="left"> <h2>Brands stall when strategy, package, and demand <em>drift apart.</em></h2> </div> <div class="right"> <p>
+Most founder-led companies don't fail at execution &mdash; they
+            fail between functions. The brand team writes one thing, packaging
+            interprets another, retail sells whatever's left. I work end to
+            end so the original argument survives the trip from deck to shelf.
+</p> <p style="margin-top:1.2em;">
+Engagements typically start with a sharp diagnostic and resolve
+            into one of three modes: brand strategy, packaging system, or
+            embedded growth leadership.
+</p> </div> </div> </div> </section>  <section class="dark"> <div class="shell"> <div class="callout"> <span class="mark">&ldquo;</span> <p class="q">
+Packaging is the most under&#8209;leveraged growth lever a founder
+          owns. It's <em>media</em> you've already paid for.
+</p> <p class="attr">&mdash; Noah Barlow, on shelf economics</p> </div> </div> </section>  <section> <div class="shell"> <div class="runhead"><span class="n">02</span><span class="l">The framework</span></div> <div class="s-head"> <div class="left"> <h2>Brand &rarr; Package &rarr; <em>Demand.</em></h2> </div> <div class="right"> <p>
+The order isn't decorative. Spend on packaging to fix a brand
+            problem and you'll just amplify confusion. Spend on demand to fix
+            a packaging problem and every dollar will lose at shelf. Brand
+            sets the bet. Package carries it. Demand pulls it through. In
+            that order.
+</p> </div> </div> <div class="framework"> <div class="step"> <div class="num">01</div> <h3>Brand</h3> <p>
+Positioning, point of view, and the strategic narrative that lets
+            a founder say no to the wrong opportunities. Sharp enough to be
+            useful inside the building, durable enough to survive a category
+            shift.
+</p> </div> <div class="step"> <div class="num">02</div> <h3>Package</h3> <p>
+The package is the brand's most-touched media buy. We design the
+            system: hierarchy, semiotics, retail psychology, structural
+            cues &mdash; built to win the three-second test before it tests
+            anything else.
+</p> </div> <div class="step"> <div class="num">03</div> <h3>Demand</h3> <p>
+What moves a SKU off-shelf and a brand into culture: distribution
+            strategy, GTM sequencing, retail readiness, and the demand
+            generation engine that turns trial into preference.
+</p> </div> </div> </div> </section>  <section> <div class="shell"> <div class="runhead"><span class="n">03</span><span class="l">Selected work</span></div> <div class="s-head"> <div class="left"> <h2>Twenty years of <em>building demand.</em></h2> </div> <div class="right"> <p>
+A pull from across beverage, wellness, RTD, cannabis, food, and
+            lifestyle &mdash; challenger brands and category leaders.
+            Strategy, packaging, retail systems, and the operating thinking
+            behind them.
+</p> <p style="margin-top:1em;"><a href="/work">See all work &rarr;</a></p> </div> </div> <div class="work-grid"> <a href="/work/miller-lite-canada" class="work-card span-8"> <div class="frame"><img src="/img/work/miller-lite.jpg" alt="Miller Lite — case study" loading="lazy"></div> <div class="meta"> <span class="name">Miller Lite</span> <span class="cat">Beer · Canadian Launch</span> </div> </a><a href="/work/kit-kat-chocolatory" class="work-card span-4"> <div class="frame"><img src="/img/work/kit-kat.jpg" alt="Kit Kat Chocolatory — case study" loading="lazy"></div> <div class="meta"> <span class="name">Kit Kat Chocolatory</span> <span class="cat">Confectionary · Retail</span> </div> </a><a href="/work/pilsner-urquell-canada" class="work-card span-4"> <div class="frame"><img src="/img/work/pilsner-urquell.jpg" alt="Pilsner Urquell — case study" loading="lazy"></div> <div class="meta"> <span class="name">Pilsner Urquell</span> <span class="cat">Beer · Premium Positioning</span> </div> </a><a href="/work/carlsberg-portfolio" class="work-card span-4"> <div class="frame"><img src="/img/work/carlsberg.jpg" alt="Carlsberg — case study" loading="lazy"></div> <div class="meta"> <span class="name">Carlsberg</span> <span class="cat">Beer · Brand Strategy</span> </div> </a><a href="/work/mgd-portfolio" class="work-card span-4"> <div class="frame"><img src="/img/work/mgd.jpg" alt="MGD — case study" loading="lazy"></div> <div class="meta"> <span class="name">MGD</span> <span class="cat">Beer · Heritage</span> </div> </a> </div> </div> </section>  <div class="ticker lime" aria-hidden="true"> <div class="ticker-track">  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  <span>Selectively available</span> <span class="star">&#10022;</span> <span>2&ndash;3 engagements per quarter</span> <span class="star">&#10022;</span> <span>Founders only</span> <span class="star">&#10022;</span> <span>Toronto &amp; remote</span> <span class="star">&#10022;</span>  </div> </div>  <section> <div class="shell"> <div class="runhead"><span class="n">04</span><span class="l">Advisory</span></div> <div class="s-head"> <div class="left"> <h2>Fractional brand &amp; <em>growth leadership.</em></h2> </div> <div class="right"> <p>
+An embedded strategic partner for founder-led companies &mdash;
+            not an outsourced production shop. I take a small number of
+            engagements per year, work in the room, and stay close enough
+            to the P&amp;L to be useful to it.
+</p> </div> </div> <div class="advisory"> <div> <p class="pull">
+For founders who need a senior operator <em>in the room</em> &mdash;
+            not another agency on the roster.
+</p> <div style="margin-top:1.75rem;"><a href="/advisory" class="btn">See engagement model</a></div> </div> <ul class="bullets"> <li><span class="k">01</span><span class="v">Brand strategy and positioning</span></li> <li><span class="k">02</span><span class="v">Packaging systems and retail psychology</span></li> <li><span class="k">03</span><span class="v">Creative direction and category point of view</span></li> <li><span class="k">04</span><span class="v">GTM sequencing and launch leadership</span></li> <li><span class="k">05</span><span class="v">Founder support and board-level brand thinking</span></li> </ul> </div> </div> </section>  <section> <div class="shell"> <div class="runhead"><span class="n">05</span><span class="l">Diagnostics</span></div> <div class="s-head"> <div class="left"> <h2>Three short tools. <em>Score your brand.</em></h2> </div> <div class="right"> <p>
+Interactive versions of the frameworks I use with clients. Score
+            your brand, get a personal note back, decide whether a
+            conversation makes sense.
+</p> </div> </div> <div class="articles"> <a href="/modern-brand-os" class="diagnostic-row"> <div class="left"> <span class="when">Diagnostic &middot; 11 questions &middot; 2 min</span> <span class="title">The Modern Brand OS.</span> <div class="dek">Eleven principles. The operating model for the world Gen-Z is shaping.</div> </div> <span class="go">Start &rarr;</span> </a> <a href="/scorecard" class="diagnostic-row"> <div class="left"> <span class="when">Diagnostic &middot; 8 questions &middot; 90s</span> <span class="title">The Challenger Scorecard.</span> <div class="dek">Score your brand against the moves real challengers actually make.</div> </div> <span class="go">Start &rarr;</span> </a> <a href="/packaging-audit" class="diagnostic-row"> <div class="left"> <span class="when">Diagnostic &middot; 8 questions &middot; 90s</span> <span class="title">The Packaging Audit.</span> <div class="dek">Is your pack winning the three-second test at retail?</div> </div> <span class="go">Start &rarr;</span> </a> </div> </div> </section>  <section> <div class="shell"> <div class="runhead"><span class="n">06</span><span class="l">Thinking</span></div> <div class="s-head"> <div class="left"> <h2>Field notes from the <em>operator's seat.</em></h2> </div> <div class="right"> <p>
+Essays on packaging, positioning, founder traps, and the parts
+            of the category most agencies are paid not to see.
+</p> <p style="margin-top:1em;"><a href="/thinking">All essays &rarr;</a></p> </div> </div> <div class="articles"> <a href="/thinking/packaging-is-media" class="article-row"> <span class="when">Essay · 2026</span> <span class="title">Packaging is media.</span> <span class="read">5 min</span> </a><a href="/thinking/consensus-kills-demand" class="article-row"> <span class="when">Essay · 2026</span> <span class="title">Consensus kills demand.</span> <span class="read">4 min</span> </a><a href="/thinking/why-most-packaging-fails-in-3-seconds" class="article-row"> <span class="when">Essay · 2026</span> <span class="title">Why most packaging fails in three seconds.</span> <span class="read">6 min</span> </a> </div> </div> </section>  <section class="dark"> <div class="shell"> <div class="runhead"><span class="n">07</span><span class="l">Work together</span></div> <h2 style="font-size: var(--t-4xl); max-width: 18ch; line-height: 1.12;">
+If the brief is sharp, <em>the next move is a conversation.</em> </h2> <p class="lede" style="margin-top: 1.75rem;">
+Selective engagements, senior involvement, no production overhead.
+        Start with a thirty-minute call &mdash; we'll know quickly whether
+        there's a fit.
+</p> <div style="margin-top: 2rem; display: flex; gap: 0.85rem; flex-wrap: wrap;"> <a href="/contact" class="btn">Book a strategy call</a> <a href="mailto:noah@smalleragency.com" class="btn ghost">Email directly</a> </div> </div> </section> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

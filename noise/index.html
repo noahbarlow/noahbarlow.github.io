@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Noise — five colors for focus | Noah Barlow</title><meta name="description" content="A small focus tool: white, pink, brown, blue, and violet noise, generated live in your browser. No files, no tracking, works offline."><link rel="canonical" href="https://noahbarlow.work/noise"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Noise — five colors for focus | Noah Barlow"><meta property="og:description" content="A small focus tool: white, pink, brown, blue, and violet noise, generated live in your browser. No files, no tracking, works offline."><meta property="og:url" content="https://noahbarlow.work/noise"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><style>.noise-head[data-astro-cid-bvebxjep]{max-width:38ch;margin-bottom:clamp(2rem,4vw,3.5rem)}.noise-head[data-astro-cid-bvebxjep] h1[data-astro-cid-bvebxjep]{font-size:var(--t-4xl);line-height:1}.noise-head[data-astro-cid-bvebxjep] .lede[data-astro-cid-bvebxjep]{margin-top:1.25em}.noise-grid[data-astro-cid-bvebxjep]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--rule-w);background:var(--rule);border:var(--rule-w) solid var(--rule)}@media (max-width: 760px){.noise-grid[data-astro-cid-bvebxjep]{grid-template-columns:1fr}}.noise-card[data-astro-cid-bvebxjep]{background:var(--paper);text-align:left;color:var(--ink);padding:clamp(1.5rem,2.5vw,2.25rem);min-height:13.5rem;display:flex;flex-direction:column;border:0;border-radius:0;font:inherit;transition:background .16s var(--easing)}button[data-astro-cid-bvebxjep].noise-card{cursor:inherit}button[data-astro-cid-bvebxjep].noise-card:hover{background:var(--paper-2)}.nc-top[data-astro-cid-bvebxjep]{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.1rem}.nc-num[data-astro-cid-bvebxjep]{font-family:var(--font-display);font-size:var(--t-lg);font-variation-settings:"SOFT" 0,"opsz" 144;color:var(--mute);line-height:1}.nc-slope[data-astro-cid-bvebxjep]{width:48px;height:28px;flex-shrink:0}.nc-slope[data-astro-cid-bvebxjep] polyline[data-astro-cid-bvebxjep]{stroke-linecap:round;stroke-linejoin:round}.nc-slope[data-astro-cid-bvebxjep] .line[data-astro-cid-bvebxjep]{stroke:var(--c, var(--ink));stroke-width:2.5}.nc-slope[data-astro-cid-bvebxjep] .halo[data-astro-cid-bvebxjep]{stroke:var(--ink);stroke-width:4}.nc-slope[data-astro-cid-bvebxjep] .axis[data-astro-cid-bvebxjep]{stroke:var(--rule);stroke-width:1}.nc-name[data-astro-cid-bvebxjep]{font-family:var(--font-display);font-size:var(--t-2xl);line-height:1.05;letter-spacing:-.015em;margin-bottom:.35rem}.nc-desc[data-astro-cid-bvebxjep]{font-size:var(--t-sm);color:var(--mute);line-height:1.45;max-width:30ch}.nc-foot[data-astro-cid-bvebxjep]{margin-top:auto;padding-top:1.25rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem}.nc-spec[data-astro-cid-bvebxjep]{font-family:var(--font-display);font-size:var(--t-sm);font-variation-settings:"SOFT" 0;color:var(--mute)}.nc-state[data-astro-cid-bvebxjep]{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}.noise-card[data-astro-cid-bvebxjep].playing,button[data-astro-cid-bvebxjep].noise-card.playing:hover{background:var(--accent)}.noise-card[data-astro-cid-bvebxjep].playing .nc-num[data-astro-cid-bvebxjep],.noise-card[data-astro-cid-bvebxjep].playing .nc-desc[data-astro-cid-bvebxjep],.noise-card[data-astro-cid-bvebxjep].playing .nc-spec[data-astro-cid-bvebxjep]{color:var(--ink)}.noise-card[data-astro-cid-bvebxjep].playing .nc-slope[data-astro-cid-bvebxjep] .axis[data-astro-cid-bvebxjep]{stroke:#0a0a0a4d}.noise-card[data-astro-cid-bvebxjep].playing .nc-state[data-astro-cid-bvebxjep]{color:var(--ink);font-weight:600;display:inline-flex;align-items:center;gap:.45em}.noise-card[data-astro-cid-bvebxjep].playing .nc-state[data-astro-cid-bvebxjep]:before{content:"";width:.5em;height:.5em;background:var(--ink);border-radius:50%;animation:noisePulse 1.4s var(--easing) infinite}@keyframes noisePulse{0%,to{opacity:1}50%{opacity:.25}}.noise-card[data-astro-cid-bvebxjep].is-control{justify-content:center;gap:1.1rem}.noise-card[data-astro-cid-bvebxjep].is-control .nc-num[data-astro-cid-bvebxjep].quiet{font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;font-family:var(--font-sans)}.noise-card[data-astro-cid-bvebxjep].is-control input[data-astro-cid-bvebxjep][type=range]{width:100%;accent-color:var(--ink);height:2px}.noise-card[data-astro-cid-bvebxjep].is-control .kb-hint[data-astro-cid-bvebxjep]{margin:0}@media (prefers-reduced-motion: reduce){.noise-card[data-astro-cid-bvebxjep].playing .nc-state[data-astro-cid-bvebxjep]:before{animation:none}}
+</style>
+<link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <section data-astro-cid-bvebxjep> <div class="shell" data-astro-cid-bvebxjep> <div class="runhead" data-astro-cid-bvebxjep> <span class="n" data-astro-cid-bvebxjep>✦</span> <span class="l" data-astro-cid-bvebxjep>Focus tool</span> </div> <div class="noise-head" data-astro-cid-bvebxjep> <h1 data-astro-cid-bvebxjep>Five colors of <em data-astro-cid-bvebxjep>noise.</em></h1> <p class="lede" data-astro-cid-bvebxjep>
+Pick a color and find your focus. Generated live in your browser —
+          no files, no tracking, works offline.
+</p> </div> <div class="noise-grid" id="grid" data-astro-cid-bvebxjep> <button class="noise-card" data-key="white" type="button" aria-pressed="false" data-astro-cid-bvebxjep> <div class="nc-top" data-astro-cid-bvebxjep> <span class="nc-num" data-astro-cid-bvebxjep>01</span> <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style="--c:#ffffff" data-astro-cid-bvebxjep> <line x1="2" y1="27" x2="46" y2="27" class="axis" data-astro-cid-bvebxjep></line> <polyline points="2,14 46,14" class="halo" data-astro-cid-bvebxjep></polyline> <polyline points="2,14 46,14" class="line" data-astro-cid-bvebxjep></polyline> </svg> </div> <div class="nc-name" data-astro-cid-bvebxjep>White</div> <div class="nc-desc" data-astro-cid-bvebxjep>Equal energy at every frequency. Bright, full, even.</div> <div class="nc-foot" data-astro-cid-bvebxjep> <span class="nc-spec" data-astro-cid-bvebxjep>0 dB/oct</span> <span class="nc-state" data-astro-cid-bvebxjep>Tap to play</span> </div> </button><button class="noise-card" data-key="pink" type="button" aria-pressed="false" data-astro-cid-bvebxjep> <div class="nc-top" data-astro-cid-bvebxjep> <span class="nc-num" data-astro-cid-bvebxjep>02</span> <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style="--c:#e487a6" data-astro-cid-bvebxjep> <line x1="2" y1="27" x2="46" y2="27" class="axis" data-astro-cid-bvebxjep></line>  <polyline points="2,5 46,23" class="line" data-astro-cid-bvebxjep></polyline> </svg> </div> <div class="nc-name" data-astro-cid-bvebxjep>Pink</div> <div class="nc-desc" data-astro-cid-bvebxjep>Falls with frequency. Softer and more natural.</div> <div class="nc-foot" data-astro-cid-bvebxjep> <span class="nc-spec" data-astro-cid-bvebxjep>−3 dB/oct</span> <span class="nc-state" data-astro-cid-bvebxjep>Tap to play</span> </div> </button><button class="noise-card" data-key="brown" type="button" aria-pressed="false" data-astro-cid-bvebxjep> <div class="nc-top" data-astro-cid-bvebxjep> <span class="nc-num" data-astro-cid-bvebxjep>03</span> <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style="--c:#9a6438" data-astro-cid-bvebxjep> <line x1="2" y1="27" x2="46" y2="27" class="axis" data-astro-cid-bvebxjep></line>  <polyline points="2,2 46,26" class="line" data-astro-cid-bvebxjep></polyline> </svg> </div> <div class="nc-name" data-astro-cid-bvebxjep>Brown</div> <div class="nc-desc" data-astro-cid-bvebxjep>Deep and rumbling — like steady rain or distant surf.</div> <div class="nc-foot" data-astro-cid-bvebxjep> <span class="nc-spec" data-astro-cid-bvebxjep>−6 dB/oct</span> <span class="nc-state" data-astro-cid-bvebxjep>Tap to play</span> </div> </button><button class="noise-card" data-key="blue" type="button" aria-pressed="false" data-astro-cid-bvebxjep> <div class="nc-top" data-astro-cid-bvebxjep> <span class="nc-num" data-astro-cid-bvebxjep>04</span> <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style="--c:#4f86c6" data-astro-cid-bvebxjep> <line x1="2" y1="27" x2="46" y2="27" class="axis" data-astro-cid-bvebxjep></line>  <polyline points="2,23 46,5" class="line" data-astro-cid-bvebxjep></polyline> </svg> </div> <div class="nc-name" data-astro-cid-bvebxjep>Blue</div> <div class="nc-desc" data-astro-cid-bvebxjep>Rises with frequency. Crisp, airy, hissy.</div> <div class="nc-foot" data-astro-cid-bvebxjep> <span class="nc-spec" data-astro-cid-bvebxjep>+3 dB/oct</span> <span class="nc-state" data-astro-cid-bvebxjep>Tap to play</span> </div> </button><button class="noise-card" data-key="violet" type="button" aria-pressed="false" data-astro-cid-bvebxjep> <div class="nc-top" data-astro-cid-bvebxjep> <span class="nc-num" data-astro-cid-bvebxjep>05</span> <svg class="nc-slope" viewBox="0 0 48 28" aria-hidden="true" fill="none" style="--c:#8163c9" data-astro-cid-bvebxjep> <line x1="2" y1="27" x2="46" y2="27" class="axis" data-astro-cid-bvebxjep></line>  <polyline points="2,26 46,2" class="line" data-astro-cid-bvebxjep></polyline> </svg> </div> <div class="nc-name" data-astro-cid-bvebxjep>Violet</div> <div class="nc-desc" data-astro-cid-bvebxjep>Steepest high end. Sharp and very bright.</div> <div class="nc-foot" data-astro-cid-bvebxjep> <span class="nc-spec" data-astro-cid-bvebxjep>+6 dB/oct</span> <span class="nc-state" data-astro-cid-bvebxjep>Tap to play</span> </div> </button> <!-- 6th cell completes the 3×2 grid: the control panel. --> <div class="noise-card is-control" data-astro-cid-bvebxjep> <div class="nc-num quiet" data-astro-cid-bvebxjep>Vol</div> <input type="range" id="vol" min="0" max="1" step="0.01" value="0.5" aria-label="Volume" data-astro-cid-bvebxjep> <p class="kb-hint" data-astro-cid-bvebxjep> <kbd data-astro-cid-bvebxjep>1</kbd>–<kbd data-astro-cid-bvebxjep>5</kbd> pick · <kbd data-astro-cid-bvebxjep>Space</kbd> stop
+</p> </div> </div> </div> </section>  <script>
+    (function () {
+      const TYPES = ['white', 'pink', 'brown', 'blue', 'violet'];
+      const BUF_SECONDS = 4;
+      let ctx = null, master = null, current = null;
+      const cards = {};
+      const volEl = document.getElementById('vol');
+
+      function ensureCtx() {
+        if (!ctx) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)();
+          master = ctx.createGain();
+          master.gain.value = parseFloat(volEl.value);
+          master.connect(ctx.destination);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+      }
+
+      function makeNoiseBuffer(type) {
+        const len = ctx.sampleRate * BUF_SECONDS;
+        const buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+        const out = buffer.getChannelData(0);
+        const white = new Float32Array(len);
+        for (let i = 0; i < len; i++) white[i] = Math.random() * 2 - 1;
+
+        if (type === 'white') {
+          out.set(white);
+        } else if (type === 'pink') {
+          let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
+          for (let i = 0; i < len; i++) {
+            const w = white[i];
+            b0 = 0.99886*b0 + w*0.0555179;
+            b1 = 0.99332*b1 + w*0.0750759;
+            b2 = 0.96900*b2 + w*0.1538520;
+            b3 = 0.86650*b3 + w*0.3104856;
+            b4 = 0.55000*b4 + w*0.5329522;
+            b5 = -0.7616*b5 - w*0.0168980;
+            out[i] = (b0+b1+b2+b3+b4+b5+b6 + w*0.5362) * 0.11;
+            b6 = w * 0.115926;
+          }
+        } else if (type === 'brown') {
+          let last = 0;
+          for (let i = 0; i < len; i++) {
+            last = (last + 0.02 * white[i]) / 1.02;
+            out[i] = last * 3.5;
+          }
+        } else if (type === 'blue') {
+          let prev = 0;
+          for (let i = 0; i < len; i++) { out[i] = (white[i] - prev) * 0.5; prev = white[i]; }
+        } else if (type === 'violet') {
+          let prev = 0, prev2 = 0;
+          for (let i = 0; i < len; i++) { out[i] = (white[i] - 2*prev + prev2) * 0.3; prev2 = prev; prev = white[i]; }
+        }
+
+        let peak = 0;
+        for (let i = 0; i < len; i++) { const a = Math.abs(out[i]); if (a > peak) peak = a; }
+        if (peak > 0) { const g = 0.9 / peak; for (let i = 0; i < len; i++) out[i] *= g; }
+        return buffer;
+      }
+
+      function refreshLabels() {
+        TYPES.forEach((k) => {
+          const playing = current && current.key === k;
+          cards[k].classList.toggle('playing', !!playing);
+          cards[k].setAttribute('aria-pressed', String(!!playing));
+          cards[k].querySelector('.nc-state').textContent = playing ? 'Playing' : 'Tap to play';
+        });
+      }
+
+      function stop() {
+        if (current) {
+          try { current.gain.gain.setTargetAtTime(0, ctx.currentTime, 0.04); } catch (e) {}
+          const node = current.node;
+          setTimeout(() => { try { node.stop(); } catch (e) {} }, 120);
+          current = null;
+        }
+        refreshLabels();
+      }
+
+      function play(key) {
+        ensureCtx();
+        const node = ctx.createBufferSource();
+        node.buffer = makeNoiseBuffer(key);
+        node.loop = true;
+        const gain = ctx.createGain();
+        gain.gain.value = 0;
+        node.connect(gain).connect(master);
+        node.start();
+        gain.gain.setTargetAtTime(1, ctx.currentTime, 0.06);
+        current = { key, node, gain };
+        refreshLabels();
+      }
+
+      function toggle(key) {
+        const wasPlaying = current && current.key === key;
+        stop();
+        if (!wasPlaying) play(key);
+      }
+
+      TYPES.forEach((k) => {
+        const el = document.querySelector('.noise-card[data-key="' + k + '"]');
+        cards[k] = el;
+        el.addEventListener('click', () => toggle(k));
+      });
+
+      volEl.addEventListener('input', () => {
+        if (master) master.gain.setTargetAtTime(parseFloat(volEl.value), ctx.currentTime, 0.02);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') { e.preventDefault(); stop(); return; }
+        const i = parseInt(e.key, 10);
+        if (i >= 1 && i <= TYPES.length) toggle(TYPES[i - 1]);
+      });
+    })();
+  </script> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>

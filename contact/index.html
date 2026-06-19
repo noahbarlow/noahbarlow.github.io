@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contact · Noah Barlow</title><meta name="description" content="Send a brief. Senior brand, packaging, and growth leadership for founder-led companies."><link rel="canonical" href="https://noahbarlow.work/contact"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Contact · Noah Barlow"><meta property="og:description" content="Send a brief. Senior brand, packaging, and growth leadership for founder-led companies."><meta property="og:url" content="https://noahbarlow.work/contact"><meta property="og:image" content="https://noahbarlow.work/img/og.jpg"><meta name="twitter:card" content="summary_large_image"><!-- Fonts: Instrument Serif (display) + Instrument Sans (body) + Young Serif (dx alt display) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- Analytics + ad pixels (no-op until IDs are filled in Analytics.astro) --><!--
+  Unified lead-tracking helper.
+  Every form's success handler calls: window.trackLead('contact-page', { ...details })
+  This fires the conversion to GA4 + Google Ads + LinkedIn + Meta in one call.
+  Safe to call even when no pixel IDs are configured — each block guards itself.
+--><script>(function(){const GOOGLE_ADS_ID = "";
+const GOOGLE_ADS_LABEL = "";
+const LINKEDIN_PARTNER_ID = "";
+const META_PIXEL_ID = "";
+
+  window.trackLead = function (formId, details) {
+    details = details || {};
+    try {
+      // GA4 event — 'generate_lead' is the standard recommended name
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', Object.assign({ form: formId }, details));
+      }
+      // Google Ads conversion (only if conversion action configured)
+      if (typeof gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_LABEL) {
+        gtag('event', 'conversion', {
+          send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_LABEL,
+        });
+      }
+      // LinkedIn (uses LinkedIn-side conversion rules tied to URL/event)
+      if (typeof window.lintrk === 'function') {
+        window.lintrk('track', { conversion_id: details.linkedin_conversion_id });
+      }
+      // Meta — generic Lead event; can split into LeadDiagnostic / LeadContact later
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', Object.assign({ form: formId }, details));
+      }
+    } catch (e) {
+      // Never let analytics errors break the form-submit success path
+      console.warn('[trackLead] failed:', e);
+    }
+  };
+})();</script><link rel="stylesheet" href="/_astro/about.CYhjqv87.css"></head> <body> <a href="#main" class="skip" style="position:absolute;left:-9999px;top:0;">Skip to content</a> <header class="nav"> <div class="shell nav-inner"> <a href="/" class="nav-mark bare" aria-label="Noah Barlow — home"> <span class="dot"></span><span class="nav-mark-text">Noah Barlow</span> </a> <!-- Desktop nav (≥761px) --> <nav class="nav-menu" aria-label="Primary">  <a href="/work">Work</a> <span class="sep" aria-hidden="true">·</span> <a href="/advisory">Advisory</a> <span class="sep" aria-hidden="true">·</span> <a href="/speaking">Speaking</a> <span class="sep" aria-hidden="true">·</span> <a href="/diagnostics">Diagnostics</a> <span class="sep" aria-hidden="true">·</span> <a href="/thinking">Thinking</a> <span class="sep" aria-hidden="true">·</span> <a href="/about">About</a>  <a href="/contact" class="contact-cta" aria-current="page">Contact</a> </nav> <!-- Mobile hamburger (≤760px) --> <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="nav-toggle"> <span class="nav-toggle-bars" aria-hidden="true"> <span></span> <span></span> <span></span> </span> </button> </div> </header> <!-- Mobile menu overlay (hidden by default) --> <div class="mobile-menu" id="mobile-menu" aria-hidden="true"> <div class="mobile-menu-inner"> <ul class="mobile-menu-list"> <li> <a href="/work"> <span class="label">Work</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/advisory"> <span class="label">Advisory</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/speaking"> <span class="label">Speaking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/diagnostics"> <span class="label">Diagnostics</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/thinking"> <span class="label">Thinking</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/about"> <span class="label">About</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li><li> <a href="/contact" aria-current="page"> <span class="label">Contact</span> <span class="arr" aria-hidden="true">&rarr;</span> </a> </li> </ul> <div class="mobile-menu-cta"> <a href="/contact" class="btn hot">Book a strategy call &rarr;</a> <p class="legal"> <a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a> </p> </div> </div> </div> <script>
+  (function () {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    // Close if viewport grows past breakpoint while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script> <main id="main"> <script>document.body.setAttribute('data-page', 'contact');</script> <section class="hero"> <div class="shell"> <p class="eyebrow">Contact</p> <h1 style="margin-top: 1.5rem; max-width: 16ch;">
+Bring the brief.<br><em>I'll bring the framing.</em> </h1> <p class="hero-sub">
+Selective engagements only. Send the brief below &mdash; or just
+        email me directly. Either way, I'll personally reply within 48 hours
+        with a read on whether there's a fit.
+</p> </div> </section>  <section style="padding-top: 0;"> <div class="shell"> <div class="contact-grid"> <!-- Left: Brief form --> <div> <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">The brief</p> <h2 style="font-size: var(--t-2xl); max-width: 22ch; margin-bottom: 1.25rem;">
+A few honest answers. <em>Then a real reply.</em> </h2> <p style="color: var(--ink-2); max-width: 56ch; margin-bottom: 2rem;">
+Answer what you have answers to. Leave the rest blank. The honest
+            version of each answer is more useful to me than the polished
+            version. Takes most founders 10&ndash;15 minutes.
+</p> <form action="https://formspree.io/f/xkoerznn" method="POST" id="contact-form" class="contact-form"> <input type="hidden" name="_subject" value="Brief — new lead"> <input type="hidden" name="source" value="brief"> <p class="field-group-label">Basics</p> <div class="field"> <label for="cf-name">Name</label> <input type="text" id="cf-name" name="name" autocomplete="name" required> </div> <div class="field"> <label for="cf-email">Email</label> <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@company.com" required> </div> <div class="field"> <label for="cf-company">Brand or company</label> <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="What you're building" required> </div> <p class="field-group-label">The work</p> <div class="field"> <label for="cf-where">Where you are now</label> <textarea id="cf-where" name="where" rows="4" placeholder="2–3 sentences. Stage, momentum, what's working, what isn't." required></textarea> </div> <div class="field"> <label for="cf-move">What you're trying to move</label> <textarea id="cf-move" name="move" rows="3" placeholder="In 6–12 months, what changes if this works?" required></textarea> </div> <div class="field"> <fieldset> <legend style="font-family: var(--font-sans); font-size: var(--t-sm); font-weight: 600; color: var(--ink); letter-spacing: 0.02em; margin-bottom: 0.4em;">
+What kind of help do you think this is?
+</legend> <div class="field-checks"> <label><input type="checkbox" name="help[]" value="Brand strategy"> Brand strategy</label> <label><input type="checkbox" name="help[]" value="Packaging system"> Packaging system</label> <label><input type="checkbox" name="help[]" value="Growth leadership"> Growth leadership</label> <label><input type="checkbox" name="help[]" value="Not sure yet"> Not sure yet</label> </div> </fieldset> </div> <div class="field"> <label for="cf-budget">Budget shape</label> <select id="cf-budget" name="budget" required> <option value="">Select a range</option> <option value="Under $10k">Under $10k &middot; one-off / discovery</option> <option value="$10k–$25k">$10k&ndash;$25k &middot; project</option> <option value="$25k–$50k">$25k&ndash;$50k &middot; engagement</option> <option value="$50k+">$50k+ &middot; retainer or larger</option> <option value="Not sure yet">Not sure yet &middot; exploring</option> </select> </div> <p class="field-group-label">Optional &middot; the most useful answers I get</p> <div class="field"> <label for="cf-tried">What you've already tried</label> <textarea id="cf-tried" name="tried" rows="3" placeholder="What did you try, and why didn't it land?"></textarea> </div> <div class="field"> <label for="cf-take">The take you'd defend</label> <textarea id="cf-take" name="take" rows="3" placeholder="Is there something you believe about your category, audience, or brand that the room doesn't agree with?"></textarea> <p class="field-help">
+This is the question that tells me most about whether we'll
+                work well together. Skip it if you'd rather get into it on a call.
+</p> </div> <div class="field-actions" style="margin-top: 1.5rem;"> <button type="submit" class="btn hot" id="cf-submit">Send the brief &rarr;</button> <span class="legal">One human reply within 48h. No newsletter, no follow-up sequence.</span> </div> </form> <div class="contact-thanks" id="contact-thanks"> <h3>Thanks &mdash; that's in.</h3> <p>
+I'll personally reply within 48 hours with a read on whether
+              there's a fit. If we're a match, the next move is a thirty-minute
+              call to discuss the actual problem.
+</p> </div> </div> <!-- Right: Just email me callout + alt paths --> <div> <div class="contact-email-callout"> <p class="eyebrow" style="display:block;">Don't want to fill it out?</p> <p class="big">Just email me.</p> <p style="margin: 0;"> <a href="mailto:noah@smalleragency.com?subject=Brief%20%E2%80%94%20direct" class="addr">noah@smalleragency.com</a> </p> <p>
+Three honest sentences beat thirty form fields. The shortest
+              version of your actual problem is the one most useful to me.
+</p> </div> <p class="eyebrow" style="display:block; margin-bottom: 0.85em;">Also</p> <p style="font-size: var(--t-sm); margin-bottom: 0.4em;"> <a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn &rarr;</a> </p> <p style="font-size: var(--t-sm); margin-bottom: 0.4em;"> <a href="/diagnostics">Take a diagnostic instead &rarr;</a> </p> </div> </div> </div> </section>  <section> <div class="shell"> <div class="s-head"> <div class="left"> <span class="eyebrow">What happens next</span> <h2>A simple process.</h2> </div> <div class="right"> <p>
+No drawn-out discovery calls. No pitch decks. The first
+            conversation is thirty minutes, focused on the actual problem,
+            and ends with a clear next step &mdash; either a scoped engagement
+            proposal or a referral to someone better-fit.
+</p> </div> </div> <div class="framework"> <div class="step"> <div class="num">01</div> <h3>Intro call</h3> <p>Thirty minutes. The problem, the constraints, what's already been tried. Honest read on whether there's a fit.</p> </div> <div class="step"> <div class="num">02</div> <h3>Scope</h3> <p>A short written proposal. One page. Outcomes, sequencing, and time commitment &mdash; nothing decorative.</p> </div> <div class="step"> <div class="num">03</div> <h3>Start</h3> <p>Diagnostic kicks off within ten business days. Working sessions, not status meetings. Decisions get made.</p> </div> </div> </div> </section> <section style="text-align: center;"> <div class="shell shell-narrow"> <p class="eyebrow">Based in Toronto</p> <h2 style="margin-top: 1rem;">Working with founders across North America.</h2> <p style="margin-top: 1.25rem; color: var(--mute);">
+Selectively available &middot; 2026
+</p> </div> </section> <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const thanks = document.getElementById('contact-thanks');
+      const submitBtn = document.getElementById('cf-submit');
+      if (!form) return;
+
+      const showError = (msg) => {
+        let err = document.getElementById('cf-err');
+        if (!err) {
+          err = document.createElement('p');
+          err.id = 'cf-err';
+          err.className = 'legal';
+          err.style.color = '#a31d10';
+          err.style.marginTop = '0.6rem';
+          form.appendChild(err);
+        }
+        err.innerHTML = msg || "That didn't send. Email <a href=\"mailto:noah@smalleragency.com\">noah@smalleragency.com</a> directly and I'll respond personally.";
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+          if (res.ok) {
+            // Fire conversion to GA4 + Google Ads + LinkedIn + Meta
+            if (typeof window.trackLead === 'function') {
+              const budget = form.querySelector('[name="budget"]')?.value || '';
+              window.trackLead('brief', { budget });
+            }
+            form.style.display = 'none';
+            thanks.style.display = 'block';
+            window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: 'instant' });
+          } else {
+            showError();
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send the brief →'; }
+          }
+        } catch (err) {
+          showError();
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send the brief →'; }
+        }
+      });
+    })();
+  </script> </main> <footer class="footer"> <div class="shell"> <div class="footer-inner"> <div> <div class="mark">Noah Barlow</div> <p class="tagline">
+Brand, packaging, and growth leadership for founder-led challenger companies.
+</p> </div> <div class="col"> <h5>Site</h5> <ul> <li><a href="/work">Work</a></li> <li><a href="/advisory">Advisory</a></li> <li><a href="/speaking">Speaking</a></li> <li><a href="/thinking">Thinking</a></li> <li><a href="/about">About</a></li> <li><a href="/contact">Contact</a></li> </ul> </div> <div class="col"> <h5>Diagnostics</h5> <ul> <li><a href="/diagnostics">All three &rarr;</a></li> <li><a href="/modern-brand-os">Modern Brand OS</a></li> <li><a href="/scorecard">Challenger Scorecard</a></li> <li><a href="/packaging-audit">Packaging Audit</a></li> </ul> </div> <div class="col"> <h5>Direct</h5> <ul> <li><a href="mailto:noah@smalleragency.com">noah@smalleragency.com</a></li> <li><a href="https://www.linkedin.com/in/noahbarlow/" target="_blank" rel="noopener">LinkedIn</a></li> <li><a href="/contact">Book a strategy call</a></li> <li><a href="/resume">Resume / CV</a></li> </ul> </div> </div> <div class="legal"> <span>© 2026 Noah Barlow</span> <span>Toronto · Selectively available</span> </div> </div> </footer> <!-- Mobile-only sticky CTA bar. Hidden on desktop via CSS. --> <aside class="mobile-cta" aria-label="Quick contact"> <a href="/contact" class="mobile-cta-btn">Book a strategy call <span aria-hidden="true">&rarr;</span></a> </aside> </body></html>
