@@ -270,23 +270,10 @@ const formats = [
     </div>
   </section>
 
-  <!-- RECENT STAGES — photo gallery -->
-  <section>
+  <!-- STAGES — visual relief strip. No headings, no captions; just a clean
+       4-up photo band that breaks up the copy density of the page. -->
+  <section class="stages-band" aria-label="Recent speaking stages">
     <div class="shell">
-      <div class="runhead"><span class="n">04</span><span class="l">Recent stages</span></div>
-      <div class="s-head">
-        <div class="left">
-          <h2>Where the work has <em>landed.</em></h2>
-        </div>
-        <div class="right">
-          <p>
-            Industry stages, private brand workshops, founder offsites. The
-            talks travel &mdash; the underlying argument doesn't bend to fit
-            the room.
-          </p>
-        </div>
-      </div>
-
       <div class="stages-grid">
         {stages.map((s) => (
           <figure class="stage">
@@ -296,15 +283,10 @@ const formats = [
               ) : (
                 <div class="stage-placeholder" aria-hidden="true">
                   <span class="ph-n">{s.index}</span>
-                  <span class="ph-l">{s.eyebrow}</span>
                   <span class="ph-drop">Drop photo at <code>public/img/speaking/{s.file}</code></span>
                 </div>
               )}
             </div>
-            <figcaption>
-              <p class="eyebrow" style="display:block;">{s.eyebrow}</p>
-              <p class="stage-body">{s.body}</p>
-            </figcaption>
           </figure>
         ))}
       </div>
@@ -574,46 +556,41 @@ const formats = [
       padding-top: 1.25rem;
     }
 
-    /* Stages — editorial photo gallery. Grayscale-by-default with a hover
-       reveal to color; thin paper frame; eyebrow + body caption beneath. */
+    /* Stages — visual-relief photo strip. 4-up band, no captions, designed
+       to break up the page's copy density. Grayscale by default with a
+       hover reveal to full color. */
+    .stages-band {
+      padding-block: clamp(1.5rem, 3vw, 2.5rem);
+    }
     .stages-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(1.75rem, 3.5vw, 3rem);
-      margin-top: clamp(2rem, 4vw, 3.5rem);
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(0.5rem, 1vw, 0.85rem);
     }
-    @media (max-width: 720px) {
-      .stages-grid { grid-template-columns: 1fr; gap: 2rem; }
+    @media (max-width: 900px) {
+      .stages-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .stage { margin: 0; display: flex; flex-direction: column; }
+    @media (max-width: 480px) {
+      .stages-grid { grid-template-columns: 1fr; }
+    }
+    .stage { margin: 0; }
     .stage-frame {
       position: relative;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4 / 5;
       background: var(--paper-2);
       overflow: hidden;
-      border: 1px solid rgba(10,10,10,0.08);
     }
     .stage-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: grayscale(82%) contrast(1.06);
+      filter: grayscale(85%) contrast(1.06);
       transition: filter 450ms var(--easing), transform 650ms var(--easing);
     }
     .stage:hover .stage-frame img {
       filter: grayscale(0%) contrast(1);
       transform: scale(1.02);
-    }
-    .stage figcaption {
-      margin-top: 1.1rem;
-    }
-    .stage-body {
-      color: var(--ink-2);
-      font-size: var(--t-sm);
-      margin: 0;
-      max-width: 44ch;
-      line-height: 1.55;
     }
 
     /* Placeholder slot (rendered when no real photo file exists at the path). */
