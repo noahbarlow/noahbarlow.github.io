@@ -24,12 +24,6 @@ const stages = [
     alt: 'Noah Barlow leading an Arc’teryx brand workshop',
   },
   {
-    file: '03-founder-workshop.jpg',
-    eyebrow: 'Founder offsite · Workshop',
-    body: 'Working session on bringing brand promise to life through packaging, retail, and demand sequencing.',
-    alt: 'Noah Barlow presenting brand strategy at a founder offsite',
-  },
-  {
     file: '04-tech-halls.jpg',
     eyebrow: 'Tech in the Halls · Westage',
     body: 'Industry talk on commerce-led brand strategy for tech and SaaS audiences. Toronto.',
@@ -564,19 +558,16 @@ const formats = [
     }
     .stages-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: clamp(0.5rem, 1vw, 0.85rem);
     }
-    @media (max-width: 900px) {
-      .stages-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
+    @media (max-width: 720px) {
       .stages-grid { grid-template-columns: 1fr; }
     }
     .stage { margin: 0; }
     .stage-frame {
       position: relative;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 4 / 3;
       background: var(--paper-2);
       overflow: hidden;
     }
