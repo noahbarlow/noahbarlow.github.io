@@ -1,374 +1,519 @@
-# Noah Barlow — Brand & Design System
+# Smaller Agency — Design System
 
-A portable reference for **noahbarlow.work**. Paste this (or the raw URL at the bottom) into any chat where you need on-brand help — copy, design, slides, packaging mocks, decks, etc.
-
-> **Live site:** https://noahbarlow.work
-> **Stack:** Astro 4 static site → GitHub Pages → custom domain via Cloudflare DNS
-> **Repo:** https://github.com/noahbarlow/noahbarlow.github.io
-
----
-
-## At a glance
-
-- **Positioning:** Senior brand, packaging, and growth operator for founder-led challenger brands (CPG, beverage, RTD, cannabis, food, wellness). Not an agency; not a fractional CMO platform. A partner-level operator who works in the seam between strategy and execution.
-- **Voice:** Editorial, direct, opinionated, lived-in. Think a NYTimes magazine column or a sharp Substack essay — not a TED talk, not a McKinsey deck, not a LinkedIn post.
-- **Palette:** Cream paper, near-black ink, electric lime accent. That's it.
-- **Typography (locked):** Instrument Serif (display, italic carries the highlighter) + Instrument Sans (body). Both free, OFL, on Google Fonts. Italic always gets +12 letter-spacing. **No substitutions** on any artifact — web, deck, proposal, or print.
-- **Format:** Magazine-style sections. Generous whitespace. Large display type. Eyebrows + numbered runheads. No carousels, no gradients, no decorative motion.
-- **Signature move:** A lime "highlighter" stripe behind every italicized phrase.
+> Canonical visual and verbal system for Smaller Agency, Noah Barlow, agency-owned diagnostics, proposals, decks, reports, social content and future digital products.
+>
+> **Source of truth:** [smalleragency.com](https://smalleragency.com)  
+> **System line:** **Serious brand work. Small-team overhead.**  
+> **Last updated:** 2026-08-06
 
 ---
 
-## Voice & copy
+## 1. The idea
+
+Smaller is a Toronto brand and packaging studio built around a simple advantage: the people in the first meeting stay close to the work.
+
+The identity should feel:
+
+- **serious about the work** — exact typography, useful hierarchy, strong case-study proof;
+- **small by design** — direct, human and free of corporate agency theatre;
+- **visually alert** — one sharp colour decision, deliberate scale and confident cropping;
+- **expensive in judgement, not overhead** — refined without looking precious or overproduced.
+
+The design is not minimal because there is little to say. It is edited because every element should earn its place.
+
+### The recurring contrast
+
+**Serious brand work.** is the promise.  
+**Small-team overhead.** is the operating advantage.
+
+Use the contrast as a writing and layout principle, not as a slogan that must appear everywhere.
+
+---
+
+## 2. Scope
+
+This system governs agency-owned work:
+
+- smalleragency.com and future Smaller digital properties;
+- noahbarlow.work and Noah Barlow thought leadership;
+- diagnostics, scorecards and interactive tools;
+- proposals, scopes, capabilities decks and case studies;
+- Smaller-authored reports, audits and research;
+- Smaller social and launch content;
+- email graphics, event materials and internal templates.
+
+### Brand ownership rule
+
+The **Smaller Agency logo** appears only when Smaller is the sender. Noah’s personal work uses his name, but shares this design language. Client deliverables use the client’s identity; the Smaller system belongs on the cover, colophon or presentation shell, not over the client brand.
+
+---
+
+## 3. Logo
+
+The supplied Smaller Agency wordmark is the only authoritative logo. Never rebuild it with live type.
+
+### Primary files
+
+- `assets/logo-black.svg` — ink wordmark on Paper, Paper 2, Signal or white.
+- `assets/logo-paper.svg` — light wordmark on Ink or photography with sufficient contrast.
+
+### Clear space
+
+Keep clear space equal to the height of the wordmark’s lowercase **s** on every side. More is encouraged in editorial layouts.
+
+### Minimum size
+
+- Digital: **96 px wide** minimum.
+- Print: **25 mm wide** minimum.
+- Header use: size by optical presence, not by matching neighbouring type.
+
+### Placement
+
+Preferred positions are upper-left and lower-left. The wordmark should feel anchored to the grid, never floated as decoration.
+
+### Never
+
+- retype, redraw, stretch, condense or rotate the logo;
+- recolour individual letters;
+- use gradients, outlines, shadows or effects;
+- place it in a holding shape;
+- repeat it in the same view;
+- use the logo as both header and oversized footer decoration on one page.
+
+---
+
+## 4. Colour
+
+The core palette is disciplined. **Blue carries identity. Signal carries action.** Project imagery supplies most of the remaining colour.
+
+| Token | Hex | Role |
+|---|---:|---|
+| `--ink` | `#11110F` | Primary text, rules, dark fields and dark CTAs |
+| `--paper` | `#F2F3EF` | Default background |
+| `--paper-2` | `#E5E7E1` | Quiet section change, image placeholder, table band |
+| `--white` | `#FFFFFF` | Cards over photography and reversed text support |
+| `--blue` | `#3F4DFF` | Brand signature, links, active states and one key phrase |
+| `--signal` | `#F0FF58` | Action, selection, progress and high-attention moments |
+| `--rule` | `#CFD2CA` | Secondary dividers and quiet structure |
+| `--mute` | `#686A64` | Metadata, notes and captions |
+
+### Supporting project colours
+
+These colours may appear when a project, chart or proof moment needs them. They do not compete with Blue as the agency signature.
+
+| Token | Hex | Use |
+|---|---:|---|
+| `--red` | `#FF4B2F` | Warnings, specific client fields, evidence coding |
+| `--pink` | `#FF89BA` | Client-led accent or evidence coding |
+| `--sky` | `#A8C8FF` | Client-led accent or quiet data field |
+
+### Colour rules
+
+1. Use **Paper + Ink** as the default condition.
+2. Use **Blue once with intent**: a hero phrase, active nav, project title or primary interaction.
+3. Use **Signal for behaviour**, not decoration: hover, progress, selection, callout or result.
+4. Full Blue and Signal fields are allowed, but body copy must remain accessible.
+5. Let project photography keep its own colour. Do not wash every image into the agency palette.
+6. No gradients unless they are part of client work being shown.
+7. Avoid the old coral/script system. Coral is no longer an agency signature.
+
+### Accessible pairings
+
+- Ink on Paper, Paper 2, White or Signal.
+- White on Ink or Blue.
+- Paper on Ink.
+- Blue on Paper or White for display text and controls; use Ink for long reading.
+
+---
+
+## 5. Typography
+
+Typography carries most of the identity. It should feel designed, not decorated.
+
+### Families
+
+| Role | Family | Use |
+|---|---|---|
+| Display | **Anybody Variable** | Headlines, project names, large numbers and statements |
+| Body | **Instrument Sans** | Paragraphs, captions, buttons, labels and navigation |
+| Utility | **Instrument Sans** | Eyebrows, metadata, tables and interface language |
+
+Google Fonts:
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,300..900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+```
+
+### Display settings
+
+Default display treatment:
+
+```css
+font-family: "Anybody", Arial, sans-serif;
+font-weight: 820;
+font-variation-settings: "wdth" 108;
+letter-spacing: -0.055em;
+line-height: 0.94;
+```
+
+Use the variable width deliberately:
+
+- `"wdth" 104–112` — primary headlines and project names;
+- `"wdth" 118–125` — short numbers and compact proof statements;
+- never go below `"wdth" 100` to force copy into a box;
+- if copy does not fit, reduce scale, edit the line or let it wrap naturally.
+
+### Body settings
+
+```css
+font-family: "Instrument Sans", Arial, sans-serif;
+font-weight: 400;
+line-height: 1.55–1.65;
+letter-spacing: -0.012em;
+```
+
+### Utility settings
+
+```css
+font-family: "Instrument Sans", Arial, sans-serif;
+font-size: 0.62–0.72rem;
+font-weight: 600;
+letter-spacing: 0.08–0.12em;
+text-transform: uppercase;
+```
+
+### Headline rules
+
+- Use lowercase or sentence case. Do not use Title Case display copy.
+- Keep the writing short enough to retain shape.
+- Prefer natural wrapping. **Do not insert a manual `<br>` simply to imitate a comp.**
+- One phrase may use Blue to create contrast. It should keep a readable width and relaxed tracking.
+- Do not assign different widths to adjacent lines of the same phrase.
+- No script font, outlined type, gradient type or decorative italics.
+- Large type may touch the edge optically, but must never clip.
+
+### Current hero recipe
+
+```html
+<h1>
+  <span class="hero-main">serious brand work.</span>
+  <span class="accent">small-team overhead.</span>
+</h1>
+```
+
+The black phrase is one natural sentence. The blue phrase is the only typographic contrast. On mobile, both wrap according to available width; no forced line breaks.
+
+### Fluid scale
+
+| Role | Suggested range |
+|---|---|
+| Hero | `clamp(3.8rem, 9.4vw, 9.6rem)` |
+| Page H1 | `clamp(3.5rem, 9vw, 9rem)` |
+| H2 | `clamp(2.5rem, 5.7vw, 5.75rem)` |
+| H3 | `clamp(1.35rem, 2vw, 2rem)` |
+| Lead | `clamp(1.1rem, 1.6vw, 1.45rem)` |
+| Body | `1rem` |
+| Utility | `0.62–0.72rem` |
+
+---
+
+## 6. Layout
+
+The system is an editorial proof wall: large statements, visible structure and client work allowed to take over the frame.
+
+### Core tokens
+
+```css
+--shell: 92rem;
+--gutter: clamp(1.25rem, 3vw, 3rem);
+--section-y: clamp(5rem, 9vw, 9rem);
+--header-h: 5.25rem;
+```
+
+### Principles
+
+- Use a wide shell and meaningful margins.
+- Alternate between **argument** and **proof**: statement, image, explanation, work.
+- Hairline rules encode structure. They are not decoration.
+- Use asymmetry with a clear reason: copy beside proof, label beside result, image beside role.
+- Let one image go full-bleed before introducing a dense grid.
+- Fewer, larger project moments beat a wall of equal cards.
+- Empty space is active pacing. It must still feel intentional on mobile.
+
+### Preferred structures
+
+**Editorial split**
+
+```text
+[ large argument 7/12 ]   [ explanation 5/12 ]
+```
+
+**Proof split**
+
+```text
+[ large image 7/12 ]      [ secondary image 5/12 ]
+[ project + scope ]        [ project + scope ]
+```
+
+**Full-bleed feature**
+
+```text
+[ client work fills viewport ]
+[ compact white caption anchored lower-left ]
+```
+
+### Avoid
+
+- repetitive three-card rows used only because they are easy;
+- rounded SaaS cards, pills and soft shadows;
+- tilted “creative agency” tiles;
+- text boxed into arbitrary fixed heights;
+- crowded transitions between sections;
+- duplicated logos or oversized decorative footer marks.
+
+---
+
+## 7. Rules, labels and components
+
+### Rules
+
+- Primary boundary: `1px solid var(--ink)`.
+- Secondary divider: `1px solid var(--rule)`.
+- Use borders to clarify groups, not to frame every object.
+
+### Eyebrows
+
+Small, uppercase Instrument Sans. They orient the reader: location, section, role or project status. Keep them factual.
+
+Good:
+
+- `SMALLER AGENCY / TORONTO`
+- `FEATURED PROOF / SUPA POWER`
+- `SELECTED WORK / NOT THE ATTIC`
+
+Avoid vague labels like `OUR APPROACH` when a more specific label exists.
+
+### Buttons
+
+- Rectangular, never pill-shaped.
+- Minimum target: 44 × 44 px.
+- Utility type with an outbound arrow `↗`.
+- Primary: Ink field with white type.
+- Hover: Blue field; Signal may be used for an especially important state.
+- Button copy names the action: `See the work`, `Start a project`, `View case study`.
+
+### Project cards
+
+- Image first.
+- Straight edges and consistent aspect ratios.
+- Project name in Anybody, scope in utility type.
+- One rule separates image and caption.
+- Hover is a subtle image scale and Blue title shift. No tilt, flip or shadow.
+
+---
+
+## 8. Photography and work imagery
+
+The portfolio is the colour and texture of the site. Treat it as evidence, not decoration.
+
+### Direction
+
+- Show the designed object clearly: package, system, retail moment, identity or interface.
+- Mix establishing shots with close detail.
+- Prefer real project photography and finished executions over mood imagery.
+- Crop confidently, but do not obscure the work to make a dramatic composition.
+- Sequence case studies to show scope: identity → package → content → channel → result.
+- Use full-bleed images for marquee work and grids for supporting proof.
+
+### Image preparation
+
+- Web: modern JPEG/WebP, usually 1600–2400 px on the long edge.
+- Social and packaging text must remain legible after responsive cropping.
+- Remove export seams, accidental horizontal lines and montage artifacts.
+- Supply an intentional mobile crop when the desktop crop fails.
+
+### Never
+
+- substitute a related brand or competitor for the actual client;
+- add generic stock images to “fill” a case study;
+- apply a global colour overlay that hides the work;
+- place every available image at the bottom of a page.
+
+---
+
+## 9. Motion
+
+Motion should reveal scope and improve orientation. It should never be the concept by itself.
+
+### Approved behaviour
+
+- restrained page entrance for the hero;
+- image swaps in a pinned feature to show a system, not a colour filter;
+- subtle image scale on hover;
+- short caption or rule reveals;
+- horizontal filmstrips when there is a real sequence to explore;
+- a single clear progress signal in long interactive tools.
+
+### Timing
+
+- Interface transitions: `180–250ms`.
+- Image transitions: `450–700ms` with an ease-out curve.
+- Orchestrated hero entrance: under `700ms` total.
+
+### Avoid
+
+- colour-shifting full-bleed imagery on scroll;
+- multiple competing scroll effects in one viewport;
+- perpetual marquee movement without a content reason;
+- velocity distortion that hurts reading;
+- scroll-jacking;
+- animation that leaves blank space before content arrives.
+
+Always support `prefers-reduced-motion` and preserve the complete reading experience without animation.
+
+---
+
+## 10. Voice
+
+The writing should sound like a person who has made the work, defended it and watched it reach the shelf.
 
 ### Tone
 
-A senior brand operator with strong opinions, talking to founders directly. Confident without performing toughness. Lived-in, not LinkedIn. The writing sounds like someone who has been in the room and made the bet, not someone who has read about being in the room.
+- direct, observant and lightly playful;
+- confident without agency chest-beating;
+- specific about the work and consequences;
+- conversational enough to use contractions;
+- concise, but not clipped into slogan fragments everywhere.
 
-### Words and shapes to use
+### Use
 
-- **Contractions** — "isn't," "won't," "you're," "I'll," "we'd"
-- **First person** — "I've watched founders…" / "the failure modes I've seen…"
-- **Specific consequences** — "lose at shelf," "amplify confusion," "every dollar will fight the pack," "trial that won't repeat"
-- **Proper nouns** — Miller Lite Canada, Kit Kat Chocolatory, Yorkdale, Pilsner Urquell, SABMiller, Smaller Agency
-- **Concrete numbers** — "$9 chocolate," "three-second test," "18 months," "30+ brands launched"
-- **Direct verbs** — Stop, Cut, Defend, Skip, Survive, Land, Earn
-- **Short closers** — "In that order." / "These are the things I'll defend in a room." / "Decisions get made."
+- concrete verbs: make, name, package, launch, fix, choose, sell;
+- real categories, brands, channels and constraints;
+- plain explanations of what Smaller did;
+- occasional humour when it sounds like Noah, not a copywriter trying to be disruptive;
+- short CTAs that tell the reader what happens next.
 
-### AI tells to avoid (pruned during the copy sweep)
+### Avoid AI tells
 
-If a draft has more than one or two of these, it isn't shippable yet.
+- three parallel claims in identical sentence shapes;
+- “not just X, but Y” constructions repeated across a page;
+- empty declarations such as “This matters” or “There is no shortcut”;
+- em-dashes in every paragraph;
+- abstract stacks: strategy, storytelling, culture, impact;
+- fortune-cookie closers;
+- generic agency phrases: bold ideas, meaningful connections, at the intersection of;
+- explaining the cleverness of the copy.
 
-1. **Triadic parallel structure** — three sentences in identical shape, e.g. "X without Y will not earn Z" three times. Real writing breaks the pattern.
-2. **Anaphora as a crutch** — same verb or opener repeated across sentences without earning it ("almost always X, almost always Y, almost always Z").
-3. **Empty opening assertions** — "The order is not decorative." / "This matters." / "There is no shortcut." (Tells you something is important without giving a reason.)
-4. **Awkward inversions to fit rhythm** — "Neither without demand will earn a P&L." (Phrasings no human says out loud.)
-5. **No contractions** — reads as a TED-talk transcript.
-6. **Abstract throughout** — paragraph after paragraph with no founders, no brands, no consequences, no real-world stakes.
-7. **Em-dash overuse** — em-dashes everywhere instead of periods or "but."
-8. **Fortune-cookie closings** — paragraphs ending on a wise-sounding maxim that doesn't actually conclude anything ("The connecting tissue is the work.").
-9. **Hedge words** — "simply," "merely," "fundamentally," "often," "typically" sprinkled where a specific would land harder.
-10. **Listy abstract-noun stacks** — "Positioning, point of view, and the strategic narrative" (three abstract nouns where one specific would do).
-11. **Decorative business jargon** — "P&L," "ROI," "leverage" used to *sound* business-y, not to do semantic work.
+### A useful test
 
-### Headline pattern
-
-Most H1s and H2s on the site follow the same shape: **a flat declarative + an italicized payoff.** The italic gets the lime highlighter automatically.
-
-Live examples:
-
-- `Score your brand. *Get a real read.*`
-- `Brand → Package → *Demand.*`
-- `Quick. Useful. *No newsletter trap.*`
-- `Bring the brief. *I'll bring the framing.*`
-- `Twenty years of *building demand.*`
-- `Operator. Strategist. *Brand builder.*`
-
-When generating new headlines, ask: *what's the noun the reader should remember?* That goes in the italic.
-
-### Body copy examples (live, on-brand)
-
-> *The order isn't decorative. Spend on packaging to fix a brand problem and you'll just amplify confusion. Spend on demand to fix a packaging problem and every dollar will lose at shelf. Brand sets the bet. Package carries it. Demand pulls it through. In that order.*
-
-> *Most founder-led companies don't fail at execution — they fail between functions. The brand team writes one thing, packaging interprets another, retail sells whatever's left. I work end to end so the original argument survives the trip from deck to shelf.*
-
-> *Five operating beliefs I keep coming back to after twenty years of running brands. They're not novel. They're the ones that have held up across every category I've worked in.*
+Read it aloud. If Noah would not say it to a founder across a table, rewrite it.
 
 ---
 
-## Color palette
+## 11. Noah Barlow application
 
-### Light / primary (default pages)
+Noah’s personal work uses the same typography, colour, grid and writing discipline so the relationship to Smaller is obvious.
 
-| Token | Hex | Use |
-|------|-----|-----|
-| `--ink`           | `#0a0a0a` | Body text, primary marks, dark CTAs |
-| `--ink-2`         | `#1a1a1a` | Slightly softened body for long-form |
-| `--paper`         | `#f5f1e8` | Site background — cream |
-| `--paper-2`       | `#ede8dc` | Callout backgrounds, alternate section variants |
-| `--rule`          | `#d8d2c2` | 1px rules, dividers |
-| `--mute`          | `#6a665d` | Muted text, captions, legal copy |
-| `--mute-2`        | `#8a857a` | Quieter still |
-| `--accent`        | `#d4ff1a` | Lime — the only color that fights ink and paper |
-| `--accent-shadow` | `#aacf00` | Darker lime for subtle depth |
+Differences:
 
-### Dark / diagnostic pages
+- use `NOAH BARLOW / TORONTO` instead of the Smaller logo when Noah is the sender;
+- first person is appropriate;
+- long-form pieces may be denser, but retain the same section rhythm and proof-first logic;
+- Blue remains the signature; Signal marks tools, scores and actions;
+- Instrument Serif and the lime highlighter are retired from the primary personal system.
 
-The interactive diagnostics (`/scorecard`, `/packaging-audit`, `/modern-brand-os`) invert the palette for focus.
-
-| Token | Hex | Use |
-|------|-----|-----|
-| `--dx-bg`     | `#000000`                  | Page background |
-| `--dx-ink`    | `#ffffff`                  | Body text |
-| `--dx-mute`   | `rgba(255,255,255,0.55)`   | Muted text on dark |
-| `--dx-rule`   | `rgba(255,255,255,0.18)`   | Rules on dark |
-| `--dx-accent` | `#e1e326`                  | Slightly desaturated lime — better contrast on black |
-
-**No other colors are sanctioned.** If a draft needs a chart or visual that adds a third hue, use a tint of `--ink` or `--paper-2` first. Add color only as a last resort.
+The personal site should feel like the founder’s desk inside the same studio, not a separate brand universe.
 
 ---
 
-## Typography (locked)
+## 12. Documents, decks and reports
 
-This typography is the **official brand standard**. It applies to every artifact that carries the Noah Barlow name:
+### Cover
 
-- The website (noahbarlow.work)
-- Proposals, engagement letters, scopes of work
-- Pitch decks, capability decks, working-session decks
-- Brand readouts, audits, written diagnostics
-- One-pagers, case studies, leave-behinds
-- Email signatures and templates
-- Slides for talks, panels, and guest appearances
-- Social posts, story templates, profile graphics
+- Paper background.
+- Smaller logo or Noah name in the upper-left.
+- One oversized Anybody title.
+- Blue may carry one phrase only.
+- Small factual metadata along a rule.
 
-**No substitutions.** If a tool doesn't have the fonts, install them or don't make the artifact in that tool.
+### Content pages
 
-### The fonts
+- One argument per page or spread.
+- Instrument Sans body, short measure.
+- Use rules, labels and large numbers instead of decorative shapes.
+- Client imagery should dominate whenever it is available.
+- Signal is reserved for decisions, next steps and selected data.
 
-| Role | Family | Source |
-|------|--------|--------|
-| Display (all headlines, big quotes, slide titles) | **Instrument Serif** | https://fonts.google.com/specimen/Instrument+Serif |
-| Body (paragraphs, bullets, captions, slide body copy) | **Instrument Sans** | https://fonts.google.com/specimen/Instrument+Sans |
-| Diagnostic alt display (the dark interactive pages only) | Young Serif | https://fonts.google.com/specimen/Young+Serif |
+### Tables and diagnostics
 
-Both Instrument fonts are free, **OFL-licensed**, no commercial restriction. Designed by Instrument studio as a system — pair behavior is intentional.
+- Prefer open tables with horizontal rules.
+- Align numbers and labels precisely.
+- Use colour only to encode a real state.
+- Explain methodology in plain language.
+- Never turn every result into a card.
 
-### The rules (apply everywhere, web and off-web)
+---
 
-1. **Display = Instrument Serif.** Headlines, big quotes, callouts, hero copy, slide titles, deck section dividers, masthead.
-2. **Body = Instrument Sans.** Paragraphs, bullets, captions, legal, slide body copy.
-3. **Italics always get +12 tracking** (`letter-spacing: 0.012em` in CSS, +12 in Figma/Adobe). Instrument Serif's italic is tight by default; this is non-negotiable for legibility.
-4. **The lime highlighter is the italic's only valid decoration.** No underline, no color swap, no boldface. Just the lime stripe behind the italic word.
-5. **Light text on lime = banned.** When an italic appears on a dark background, the text becomes ink (`#0a0a0a`) so it reads *on* the lime stripe instead of fighting it. Light-on-lime is unreadable.
-6. **Use italics for the word you most want read.** The lime is doing emphasis work — don't burn it on filler. One italicized phrase per paragraph, max.
-7. **Sentence case for everything except eyebrows.** No Title Case headlines. Eyebrows use `letter-spacing: 0.14em; text-transform: uppercase` and live above headlines.
+## 13. Accessibility and production
 
-### Install once, use everywhere
+- Meet WCAG AA contrast for body copy and controls.
+- Minimum interactive target: 44 px.
+- Every image needs useful alt text; decorative images use empty alt text.
+- Provide visible keyboard focus.
+- Maintain logical heading order.
+- Do not rely on colour alone for state.
+- Mobile layouts are designed independently, not compressed desktop comps.
+- Test at 360, 390, 768, 1024 and 1440 px.
+- Check for clipping at browser zoom 200%.
+- Respect reduced-motion preferences.
 
-**Mac (the master install — gives you the fonts in every app):**
-1. Go to https://fonts.google.com/specimen/Instrument+Serif → **Get font → Download all**
-2. Go to https://fonts.google.com/specimen/Instrument+Sans → **Get font → Download all**
-3. Unzip both. Open each `.ttf` in **Font Book**, click **Install Font**.
-4. Restart any open apps.
+---
 
-**Figma:**
-- Desktop app reads system-installed fonts automatically (do the Mac install above)
-- For Figma web: install the [Figma Font Helper](https://www.figma.com/downloads/) agent
-- In the layer's text properties, set tracking to **+12** on italic text
+## 14. Quick shipping checklist
 
-**Google Docs / Slides:**
-- In any doc, font dropdown → **More fonts** → search "Instrument Serif" → click to add → **OK**
-- Same for "Instrument Sans"
-- Both now show in the regular font picker
+- [ ] Correct Smaller logo asset; no duplicate logo?
+- [ ] Paper, Ink, Blue and Signal used in their proper roles?
+- [ ] Anybody for display and Instrument Sans for everything else?
+- [ ] Display type readable without extreme width compression?
+- [ ] Headline wrapping naturally rather than forced with decorative breaks?
+- [ ] One clear visual idea per section?
+- [ ] Real client work doing most of the visual work?
+- [ ] No filler cards, stock imagery, gradients, shadows or tilted tiles?
+- [ ] Copy sounds like Noah and names the actual work?
+- [ ] Mobile spacing and crop checked independently?
+- [ ] Keyboard, contrast, alt text and reduced motion checked?
 
-**Adobe (InDesign / Illustrator / Photoshop):**
-- Not yet in Adobe Fonts. Use the Mac system install — all Adobe apps read system fonts.
-- In Character panel, set **Tracking** to **+12** on any italic text
+---
 
-**Microsoft 365 (Word, PowerPoint, Outlook):**
-- Mac install picks them up automatically
-- Windows: download `.ttf` files, right-click → **Install**
-- When sharing files, **embed the fonts** (File → Options → Save → "Embed fonts in the file") so recipients don't see a fallback
-
-**Keynote / Pages / Numbers:**
-- Mac install picks them up automatically
-- When sharing, choose **File → Advanced → Reduce File Size**, and tick "Always include preview" so the typography is preserved in the rendered preview
-
-**Email signatures (Gmail / Outlook / Apple Mail):**
-- Most email clients ignore custom fonts unless rendered as an image
-- Best approach: keep signature in **Instrument Sans** with a system fallback: `font-family: 'Instrument Sans', Helvetica, Arial, sans-serif`
-- For the wordmark / "● Noah Barlow" line, use **Instrument Serif** with the same fallback chain
-- If you want the lime highlighter on italic in signatures, render that line as an image (PNG/SVG) and embed
-
-### Web (canonical CSS)
-
-CSS variables in `src/styles/global.css`:
+## 15. Copy-paste tokens
 
 ```css
---font-display:       'Instrument Serif', 'Times New Roman', Georgia, serif;
---font-sans:          'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
---font-serif-display: 'Young Serif', 'Cooper Black', serif;
-```
+:root {
+  --ink: #11110f;
+  --paper: #f2f3ef;
+  --paper-2: #e5e7e1;
+  --white: #ffffff;
+  --blue: #3f4dff;
+  --signal: #f0ff58;
+  --rule: #cfd2ca;
+  --mute: #686a64;
+  --red: #ff4b2f;
+  --pink: #ff89ba;
+  --sky: #a8c8ff;
 
-Google Fonts loader (one line, in `BaseLayout.astro`):
+  --font-display: "Anybody", Arial, sans-serif;
+  --font-body: "Instrument Sans", Arial, sans-serif;
+  --font-utility: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
 
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Young+Serif&display=swap" />
-```
-
-### Type scale (fluid clamp — web)
-
-| Token | Range | Use |
-|-------|-------|-----|
-| `--t-xs`  | 0.75 → 0.85rem  | Eyebrow, legal |
-| `--t-sm`  | 0.875 → 1rem    | Small body, captions |
-| `--t-md`  | 1 → 1.125rem    | Default body |
-| `--t-lg`  | 1.125 → 1.25rem | Lede |
-| `--t-xl`  | 1.375 → 1.75rem | Subhead, H4 |
-| `--t-2xl` | 1.75 → 2.5rem   | H3 |
-| `--t-3xl` | 2.25 → 3.75rem  | H2 |
-| `--t-4xl` | 2.75 → 5.5rem   | H1 (standard) |
-| `--t-5xl` | 3.5 → 7.5rem    | H1 (hero / display) |
-| `--t-6xl` | 4.5 → 10rem     | Editorial extra-display |
-
-**Deck/proposal equivalents** (use as a starting point, scale to slide size):
-
-| Role | Point size (slides) | Point size (proposals/docs) |
-|-----|--------------------|------------------------------|
-| Hero / cover headline | 56–80pt | 32–44pt |
-| Section divider | 40–56pt | 28–36pt |
-| Slide title / H2 | 28–36pt | 20–28pt |
-| Subhead / H3 | 20–24pt | 16–20pt |
-| Body | 14–18pt | 11–13pt |
-| Eyebrow / caption | 10–12pt | 9–10pt |
-
-### The italic highlighter — signature move
-
-The most recognizable typographic mark on every artifact. A horizontal lime stripe (color `#d4ff1a`) sits behind italicized phrases at display sizes, like an actual highlighter pass.
-
-**Web (CSS for display headlines):**
-
-```css
-h1 em, h2 em, h3 em, .hero h1 em, .display em {
-  font-style: italic;
-  letter-spacing: 0.012em;
-  background-image: linear-gradient(
-    transparent 0 56%,
-    var(--accent) 56% 92%,
-    transparent 92% 100%
-  );
-  background-repeat: no-repeat;
-  background-position: 0 0.08em;
-  padding: 0 0.1em 0.02em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  --shell: 92rem;
+  --gutter: clamp(1.25rem, 3vw, 3rem);
+  --section-y: clamp(5rem, 9vw, 9rem);
+  --header-h: 5.25rem;
 }
 ```
 
-**Off-web (Figma / Adobe / PowerPoint):**
-
-1. Italicize the word(s) and set tracking to **+12**.
-2. Behind the italic text, draw a **rectangle** filled with `#d4ff1a`.
-3. Size the rectangle to cover the **lower ~36% of the cap height** (visually: the rectangle should sit from roughly the x-line down to just below the baseline).
-4. The italic text stays its normal color (ink `#0a0a0a` on cream; ink `#0a0a0a` on dark backgrounds too — see Rule 5).
-5. Group the text + rectangle so they move together.
-
-**Rule again:** italicize the word you most want read. The lime is doing emphasis work — don't burn it on filler.
-
-### What changed when we locked this
-
-The previous standard was Fraunces + Inter. It was swapped to Instrument Serif + Instrument Sans because Fraunces + Inter had become the unmistakable AI-generated-portfolio pairing in 2025–26, undercutting the senior positioning. Instrument's italic is sharper, more bookish, and pairs with a body sans that has more humanist warmth than Inter — both push the system toward genuinely editorial rather than templated-editorial. The decision is locked unless brand direction itself changes.
-
 ---
 
-## Layout
+## 16. Superseded system
 
-### Shells & rhythm
-
-```css
---shell:        78rem;  /* default content max-width */
---shell-narrow: 44rem;  /* long-form article + contact card width */
---gutter:       clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
-```
-
-`.shell` wraps every section. `.shell-narrow` is for article body copy and tight contact moments. No nested grids — sections are stacked, each one a complete spread.
-
-### Section sequencing convention
-
-Most pages stack `01 / 02 / 03 / 04 / 05` numbered sections via the `.runhead` pattern. Each section is its own argument. No "next section" teasers, no carousels, no parallax. Pages read like a magazine spread top to bottom.
-
----
-
-## Key components
-
-| Class | What it is |
-|-------|------------|
-| `.eyebrow`         | Small uppercase tracked label above a headline. Tracking `0.14em`, color `--mute`. |
-| `.runhead`         | Numbered section opener — `01 + What I solve` style. |
-| `.s-head`          | Two-column section head: H2 left, supporting paragraph right. |
-| `.hero`            | First section on every page. H1 + eyebrow + lede + optional meta band of stats. |
-| `.hero-meta`       | The horizontal stats band (e.g. `30+ brands launched` · `300+ packages shipped`). |
-| `.framework`       | Three-step grid (`01 / 02 / 03`) used for process explanations. |
-| `.contact-card`    | Cream callout block: eyebrow + H2 + paragraph + button row. |
-| `.work-grid`       | Asymmetric image-led grid for case-study tiles. |
-| `.btn`             | Default ink button. |
-| `.btn.hot`         | Lime fill, ink text — the primary CTA on every page. |
-| `.btn.ghost`       | Outlined, transparent — secondary CTA. |
-| `.bigquote`        | Centered editorial pull-quote, narrow shell. |
-| `.dx-page`         | The dark-mode wrapper for diagnostic interactives. |
-| `.contact-form`    | Branded form styling (inputs, textareas, selects, checkboxes). |
-| `.contact-email-callout` | Bordered "Just email me." block (paper-2 bg, lime left border). |
-
-### The wordmark
-
-```html
-<a href="/" class="nav-mark">
-  <span class="dot"></span>
-  <span class="nav-mark-text">Noah Barlow</span>
-</a>
-```
-
-Text wordmark, not an image. Lime dot + name on one line. Never break to two lines on mobile (uses `white-space: nowrap` + responsive font size).
-
-### Section sequencing — example skeleton
-
-```astro
-<section class="hero">
-  <div class="shell">
-    <p class="eyebrow">Section label</p>
-    <h1>Flat declarative. <em>Italicized payoff.</em></h1>
-    <p class="hero-sub">One sentence of context.</p>
-  </div>
-</section>
-
-<section>
-  <div class="shell">
-    <div class="runhead"><span class="n">01</span><span class="l">What I solve</span></div>
-    <div class="s-head">
-      <div class="left"><h2>Brands stall when strategy, package, and demand <em>drift apart.</em></h2></div>
-      <div class="right"><p>One short paragraph of stakes-and-consequence body copy.</p></div>
-    </div>
-  </div>
-</section>
-```
-
----
-
-## Stack & operations
-
-- **Generator:** Astro 4 (static)
-- **Deploy:** Manual build → force-push `dist/` to `gh-pages` branch (the user's OAuth lacks `workflow` scope, so no GitHub Actions)
-- **Domain:** `noahbarlow.work` via Cloudflare DNS — four A records on `@` pointing to GitHub Pages IPs (`185.199.108-111.153`) + CNAME `www` → `noahbarlow.github.io`. DNS-only (grey cloud), not proxied.
-- **Fonts:** Google Fonts (Instrument Serif + Instrument Sans + Young Serif)
-- **Lead capture:** Single Formspree endpoint, distinguished by `source` and `diagnostic` hidden fields per form. All leads land in `noah@smalleragency.com`.
-- **Analytics:** GA4 + Google Ads + LinkedIn + Meta scaffolding installed in `src/components/Analytics.astro` — IDs configured per account once they're created.
-- **Cursor:** Custom SVG smiley face (lime fill, ink eyes + smile, ink ring) on default; inverted (ink fill, lime details) on `:hover`.
-
----
-
-## How to use this file in another chat
-
-Plug it in as the first message or as supporting context:
-
-```
-Raw URL (paste anywhere):
-https://raw.githubusercontent.com/noahbarlow/noahbarlow.github.io/main/DESIGN.md
-
-GitHub view URL (browsable):
-https://github.com/noahbarlow/noahbarlow.github.io/blob/main/DESIGN.md
-```
-
-Suggested prompt opener:
-
-> *"Use the Noah Barlow brand + design system from this reference: [paste URL or contents]. Build me [a deck slide / packaging mock / email / one-pager / etc.] on-brand. Match the voice and the AI-tells-to-avoid list precisely."*
-
-The assistant should then be able to:
-
-- Write headlines in the declarative + italicized-payoff pattern
-- Draft body copy that passes the AI-tells test
-- Reference color tokens by name (`--accent`, `--ink`, `--paper`) when writing CSS
-- Generate visuals using only the cream / ink / lime palette
-- Mirror the section rhythm (eyebrow → runhead → s-head → body)
-- Avoid the specific anti-patterns pruned during the copy sweep
-
-Keep this file updated whenever the brand evolves. The site is the source of truth; this is the readable summary.
+This document replaces the earlier Objectivity + Snell/Pinyon + Coral system and the separate Instrument Serif + lime Noah Barlow system. Do not mix those systems into new Smaller or Noah-owned work unless reproducing an archived artifact.
